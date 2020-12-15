@@ -21,6 +21,8 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css" />
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
 
+	<script src="jquery.mockjax.min.js"></script>
+
 	<!-- TOOLTIPSTER -->
 	<!-- <link rel="stylesheet" type="text/css" href="js/tooltipster/dist/css/tooltipster.bundle.min.css" />
 	<script type="text/javascript" src="js/tooltipster/dist/js/tooltipster.bundle.min.js"></script> -->
@@ -57,10 +59,15 @@
 		let linkedsheetTypes = new Set();
 		let linkMap = new Map();
 
+		$.mockjax({
+			url: "/json/data",
+			proxy: "/kc_roio.json"
+		});
+
 		//var table_data = JSON.parse("kc_roio.json");
 
 		$('#example').dataTable({
-			"ajax": "kc_roio.json"
+			"ajax": "/json/data"
 		});
 	</script>
 </head>
