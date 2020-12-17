@@ -59,49 +59,111 @@
 		let keys = {};
 		let linkedsheetTypes = new Set();
 		let linkMap = new Map();
+		var table;
 
-		function doTheThing() {
-			return new Promise((resolve, reject) => {
-				$.mockjax({
-					url: "/json/data",
-					dataType: "json",
-					contentType: "application/json",
-					proxy: "/kc_roio.json",
-					onAfterSuccess: function (data) {
-						console.log("mock complete");
-						resolve(data)
-					},
-					onAfterError: function (error) {
-						console.log("mock complete");
-						reject(error)
-					},
-					onAfterComplete: function () {
-						console.log("mock complete");
-					}
-				})
-			})
-		}
-		doTheThing()
-			.then((data) => {
-				console.log(data);
-				$.getJSON("/json/data", function (response) {
-					if (response.status == "success") {
-						$("#activity").html("Succes: " + response.status);
-					} else {
-						$("#activity").html("Fail: " + response.status);
-					}
-				});
+		var jason;
+		$.mockjax({
+			url: "/json/data",
+			dataType: "json",
+			contentType: "application/json",
+			proxy: "/kc_roio.json",
+			onAfterSuccess: function (data) {
+				console.log("mock success");
+				//resolve(data);
+			},
+			onAfterError: function (error) {
+				console.log("mock error");
+				//reject(error);
+			},
+			onAfterComplete: function () {
+				console.log("mock complete");
+				//resolve(data);
+			}
+		})
 
-				$('#example').dataTable({
-					"ajax": "/json/data"
-				});
-			})
-			.catch((error) => {
-				console.log(error);
-			})
+		document.addEventListener('DOMContentLoaded', function () {
+			table = document.getElementById("example");
+			$.ajax({
+				dataType: "json",
+				url: "/json/data",
+				//data: data,
+				success: function (data) {
+					console.log("asynchronous HTTP (Ajax) request DONE");
+					jason = data;
+					let tableheader = table.querySelector("thead tr");
+					Object.keys(jason[Object.keys(jason)[0]][Object.keys(jason[Object.keys(jason)[0]])[0]]).forEach(function (el) {
+						const th = document.createElement("th");
+						const thtext = document.createTextNode(el);
+						th.appendChild(thtext);
+						tableheader.appendChild(th);
+					});
+
+					$('#example').dataTable({
+						ajax: {
+							url: "kc_roio.json",
+							dataSrc: "show"
+						},
+						// data: jason.show,
+						// columns: jason.show.columns
+					});
+				}
+			});
+
+			// $.getJSON("/json/data", function (response) {
+			// 	if (response.status == "success") {
+			// 		$("#activity").html("Succes: " + response.status);
+			// 	} else {
+			// 		$("#activity").html("Fail: " + response.status);
+			// 	}
+			// });
+
+			// function doTheThing() {
+			// 	return new Promise((resolve, reject) => {
+			// 		$.mockjax({
+			// 			url: "/json/data",
+			// 			dataType: "json",
+			// 			contentType: "application/json",
+			// 			proxy: "/kc_roio.json",
+			// 			onAfterSuccess: function (data) {
+			// 				//console.log("mock complete");
+			// 				resolve(data);
+			// 			},
+			// 			onAfterError: function (error) {
+			// 				console.log("mock complete");
+			// 				reject(error);
+			// 			},
+			// 			onAfterComplete: function () {
+			// 				console.log("mock complete");
+			// 				resolve(data);
+			// 			}
+			// 		})
+			// 	})
+			// }
+			// doTheThing()
+			// 	.then((data) => {
+			// 		console.log(data);
+			// 		$.getJSON("/json/data", function (response) {
+			// 			if (response.status == "success") {
+			// 				$("#activity").html("Succes: " + response.status);
+			// 			} else {
+			// 				$("#activity").html("Fail: " + response.status);
+			// 			}
+			// 		});
+
+			// 		$('#example').dataTable({
+			// 			"ajax": "/json/data"
+			// 		});
+			// 	})
+			// 	.catch((error) => {
+			// 		console.log(error);
+			// 	})
 
 
-		//var table_data = JSON.parse("kc_roio.json");
+			//var table_data = JSON.parse("kc_roio.json");
+
+
+
+		});
 
 
 	</script>
@@ -123,7 +185,12 @@
 	</nav>
 	<section>
 		<div id="results">
-			<table id="example" class="display" width="100%"></table>
+			<table id="example" class="display" width="100%">
+				<thead>
+					<tr></tr>
+				</thead>
+				<tbody></tbody>
+			</table>
 		</div>
 	</section>
 </body>
