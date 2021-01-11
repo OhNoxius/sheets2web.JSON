@@ -18,15 +18,15 @@
 	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
 		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
-	<!-- DATATABLES (fixedHeader) -->
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.7/datatables.min.css"/>
-	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.7/datatables.min.js"></script>
-
-	<!-- TOOLTIPSTER -->
-	<link rel="stylesheet" type="text/css" href="js/tooltipster/dist/css/tooltipster.bundle.min.css" />
-	<script type="text/javascript" src="js/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+	<!-- DATATABLES -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css" />
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
 
 	<script src="jquery.mockjax.min.js"></script>
+
+	<!-- TOOLTIPSTER -->
+	<!-- <link rel="stylesheet" type="text/css" href="js/tooltipster/dist/css/tooltipster.bundle.min.css" />
+	<script type="text/javascript" src="js/tooltipster/dist/js/tooltipster.bundle.min.js"></script> -->
 
 	<!-- CUSTOM -->
 	<!-- <link rel="stylesheet" href="css/grid-linkedsheets.css" />
@@ -38,7 +38,10 @@
 	<!-- <script src="js/database-keys.js"></script>
 	<script src="js/database.js"></script>
 	<script src="js/sheet-datatable.js"></script> -->
-	
+
+	<!-- NOG IMPLEMENTEREN:-->
+	<!-- <script src="js/timeline_render.js"></script> -->
+
 	<script>
 		//set source .xml filename
 		//let datafile = getFilename();
@@ -88,44 +91,24 @@
 					console.log("asynchronous HTTP (Ajax) request DONE");
 					jason = data;
 					let tableheader = table.querySelector("thead tr");
-					let tablefooter = table.querySelector("tfoot tr");
-					Object.keys(jason[Object.keys(jason)[0]][Object.keys(jason[Object.keys(jason)[0]])[0]]).forEach(function (el, key, arr) {
-						if (Object.is(0, key)) {
-							console.log(key);
-						}
-						else if (el.startsWith(".")) {
-							console.log(key);
-						}
-						else if (el.startsWith("CE_")) {
-							console.log(key);
-						}
-						else {
-							const th = document.createElement("th");
-							const thtext = document.createTextNode(el);
-							th.appendChild(thtext);
-							tableheader.appendChild(th);
-							jsonColumns.push({ data: el });
-						}
+					Object.keys(jason[Object.keys(jason)[0]][Object.keys(jason[Object.keys(jason)[0]])[0]]).forEach(function (el) {
+						const th = document.createElement("th");
+						const thtext = document.createTextNode(el);
+						th.appendChild(thtext);
+						tableheader.appendChild(th);
+						//jsonColumns.push({})
 					});
-					console.log(jsonColumns);
-					const th = document.createElement("th");
-					const thtext = document.createTextNode("filter");
-					th.setAttribute('colspan', jsonColumns.length);
-					th.appendChild(thtext);
-					tablefooter.appendChild(th);
-					//jsonColumns.shift(); //removes first item
 
 					$('#example').dataTable({
-						fixedHeader: {
-							header: true,
-							footer: true
-						},
-						ajax: {
-							url: "kc_roio.json",
-							dataSrc: "show"
-						},
-						columns: jsonColumns,
-						paging: false
+						// ajax: {
+						// 	url: "kc_roio.json",
+						// 	dataSrc: "show"
+						// },
+						// columns: {
+						// 	"id"
+						// }
+						data: jason.show,
+						columns: jason.show.columns
 					});
 				}
 			});
@@ -194,8 +177,9 @@
 	<header>
 		<div id="heading"></div>
 		<div id="status">
-			<!-- <label for="statusBar">Loading xml:</label>
-			<progress id="statusBar"></progress> -->
+			<progress id="statusBar">
+				<label for="statusBar">Loading xml:</label>
+			</progress>
 		</div>
 		<div id="activity"></div>
 		<!-- <div id="filters"></div> -->
@@ -210,9 +194,6 @@
 					<tr></tr>
 				</thead>
 				<tbody></tbody>
-				<tfoot>
-					<tr></tr>
-				</thead>
 			</table>
 		</div>
 	</section>
