@@ -27,22 +27,19 @@
 	<link rel="stylesheet" type="text/css" href="js/tooltipster/dist/css/tooltipster.bundle.min.css" />
 	<script type="text/javascript" src="js/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
 
+	<!-- MOCKJAX?-->
 	<script src="jquery.mockjax.min.js"></script>
+
+	<!-- CUSTOM HELPER FUNCTIONS -->
+	<script src="js/helper functions/lastUpdated.js"></script>
 
 	<!-- CUSTOM -->
 	<!-- <link rel="stylesheet" href="css/grid-linkedsheets.css" /> -->
 	<link rel="stylesheet" href="css/sheet.css" />
 
-	<!-- <script src="js/helper functions/xslFunctions.js"></script>
-	<script src="js/helper functions/lastUpdated.js"></script> -->
-
-	<!-- <script src="js/database-keys.js"></script>
-	<script src="js/database.js"></script>
-	<script src="js/sheet-datatable.js"></script> -->
-
 	<script>
 		//set source .xml filename
-		//let datafile = getFilename();
+		let datafile = getFilename("json");
 		//choose normal display (=false) or database mode (=true)
 		//const databaseMode = true;
 		//set header title to display above table
@@ -59,15 +56,22 @@
 		let linkMap = new Map();
 		var table, dTable, jqtable;
 
-		var jason, jsonColumns = [], jsonChildRows = [], jsonChildRowsIndexes = [], jsonChildRowsHeaders = [];
-		let tableheader, tablefooter;
+		////////////////////
+		///SEPARATE JS/////
+		//////////////////
+		var jason;
+		let sheets, mainsheet, linkedsheet;
+		let mainsheetKeys, mainsheetKeys_vis, linkedheetKeys, linkedheetKeys_vis;
+		let mainColumns = [], mainChildRowsIndexes = [], mainChildRowsHeaders = [];
+		let header_row, footer_row, headerfilters_row;
 		let DTCol;
 		let chilrowVis = [];
+
 		$.mockjax({
 			url: "/json/data",
 			dataType: "json",
 			contentType: "application/json",
-			proxy: "/kc_roio.json",
+			proxy: "/" + datafile,
 			onAfterSuccess: function (data) {
 				console.log("mock success");
 				//resolve(data);
@@ -76,144 +80,233 @@
 				console.log("mock error");
 				//reject(error);
 			},
-			onAfterComplete: function () {
-				console.log("mock complete");
-				//resolve(data);
-			}
+			// onAfterComplete: function () {
+			// 	console.log("mock complete");
+			// 	//resolve(data);
+			// }
 		})
 
 		document.addEventListener('DOMContentLoaded', function () {
-			table = document.getElementById("example");
+			table = document.getElementById("datatable");
+			jqtable = $(table);
 			$.ajax({
 				dataType: "json",
 				url: "/json/data",
 				//data: data,
 				success: function (data) {
-					console.log("asynchronous HTTP (Ajax) request DONE");
-
-					//FORMAT JSON DATA for use in DataTables
-					// + create HTML table
+					console.log("asynchronous HTTP (mockjax) request DONE");
 					jason = data;
-					tableheader = table.querySelector("thead tr");
-					tablefooter = table.querySelector("tfoot tr");
-					Object.keys(jason[Object.keys(jason)[0]][Object.keys(jason[Object.keys(jason)[0]])[0]]).forEach(function (el, key, arr) {
+
+					//identify important nodes
+					sheets = Object.keys(jason);
+					mainsheet = sheets[0];
+					linkedsheet = sheets.find(e => e.startsWith("+"));
+
+					mainsheetKeys = Object.keys(jason[mainsheet][0]);
+					mainsheetKeys_vis = mainsheetKeys.filter(el => !(el.startsWith(".") || el.startsWith("-")));
+					linkedsheetKeys = Object.keys(jason[linkedsheet][0]);
+					linkedsheetKeys_vis = linkedsheetKeys.filter(el => !(el.startsWith(".") || el.startsWith("-")));
+
+					//CREATE MAP of json?
+					//first create index from mainsheet					
+					jason[mainsheet].forEach(function (el, key, arr) {
+						linkMap.set(el[mainsheetKeys[0]], {});
+					});
+					//then loop through linkedsheet ONCE, and add info into above Map
+					let linkItem;
+					jason[linkedsheet].forEach(function (el, key, arr) {
+						if (el[mainsheet]) {
+							el[mainsheet].split("\n").forEach(function (linkid) {
+								linkid = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
+								//!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
+								if (linkMap.has(linkid)) {
+									linkItem = linkMap.get(linkid);
+									linkItem[key] = el["type"];
+								}
+								else {
+									linkMap.set(linkid, {});
+									console.log("unknown id " + linkid);
+								}
+							});
+						}
+					});
+
+					//FORMAT JSON DATA for use in DataTables					
+					header_row = table.querySelector("thead tr");
+					headerfilters_row = table.querySelector("thead tr.columnfilters");
+					footer_row = table.querySelector("tfoot tr");
+					mainsheetKeys.forEach(function (el, key, arr) {
 						//1. datatables column element
 						//console.log( el.replace(/\./g, '\\\\.'));
 						let keyname = el;
-						if (Array.isArray(jason[Object.keys(jason)[0]][Object.keys(jason[Object.keys(jason)[0]])[0]][el])) keyname += "[; ]";
+						if (Array.isArray(jason[mainsheet][0][el])) keyname += "[; ]";
 						DTCol = {
-							//"data": keyname, 						// .id  => doesn't work with keys that contain dots
-							//"data": ["'"+keyname+"'"], 			// ["id"] => doesn't work
-							//"data": key 							// 0 => doesn't work
-							"data": keyname.replace(/\./g, '\\\\.') // still doesn't work, should work...
+							//"title": el,
+							"data": keyname.replace(/\./g, '\\\\.'), // still doesn't work, should work...
+							"visible": false
 						};
 						//2. HTML
 						const th = document.createElement("th");
-						const thtext = document.createTextNode(el);
-						th.append(thtext);
-						tableheader.append(th);
+						header_row.append(th);
+						headerfilters_row.append(th.cloneNode(true));
+						th.append(document.createTextNode(el));
 
 						//First element: id						
 						if (Object.is(0, key)) {
-							//console.log(key);
-							DTCol.visible = false
 							DTCol.class = "id";
-							jsonColumns.push(DTCol);
 							chilrowVis.push(0);
 						}
-						//concat columns
+						//merger columns
 						else if (el.startsWith(".") || el.startsWith("-")) {
-							//console.log(key);
-							DTCol.visible = false
 							DTCol.class = "merger";
-							jsonColumns.push(DTCol);
 							chilrowVis.push(0);
 						}
 						//child rows
 						else if (el.startsWith("CE_")) {
-							//console.log(key);
-							DTCol.visible = false
 							DTCol.class = "childrow";
-							jsonColumns.push(DTCol);
-							jsonChildRows.push(DTCol);
-							jsonChildRowsIndexes.push(key);
-							jsonChildRowsHeaders.push(el.substring(3));
+							mainChildRowsIndexes.push(key);
+							mainChildRowsHeaders.push(el.substring(3));
 							chilrowVis.push(1);
 						}
 						//normal column
 						else {
-							//console.log(key);
-							jsonColumns.push(DTCol);
+							DTCol.visible = true;
 							chilrowVis.push(0);
 						}
+						mainColumns.push(DTCol);
 					});
 
 					// (?) dropdown childrow column
-					if (jsonChildRows.length > 0) {
+					if (mainChildRowsIndexes.length > 0) {
 						DTCol = {
-							"className": 'details',
+							"className": 'DTdetails',
 							"orderable": false,
 							"data": null,
 							"defaultContent": ''
 						};
 						const th = document.createElement("th");
-						tableheader.prepend(th);
-						jsonColumns.unshift(DTCol);
+						header_row.prepend(th);
+						headerfilters_row.prepend(th.cloneNode(true));
+						mainColumns.unshift(DTCol);
 						//chilrowVis.unshift(1);
-						jsonChildRowsIndexes.forEach(x => x + 1);
+						mainChildRowsIndexes.forEach(x => x + 1);
 					}
 
 					//Table Footer
 					const th = document.createElement("th");
 					const thtext = document.createTextNode("filter");
-					th.setAttribute('colspan', jsonColumns.length);
+					th.setAttribute('colspan', mainColumns.length);
 					th.appendChild(thtext);
-					tablefooter.appendChild(th);
-					//jsonColumns.shift(); //removes first item
+					footer_row.appendChild(th);
+					//mainColumns.shift(); //removes first item
 
-					dTable = $('#example').DataTable({
-						"ajax": {
-							url: "kc_roio.json",
-							dataSrc: "show"
-						},
+					//DATATABLE
+					let dataNoVis, linkedrows;
+					dTable = jqtable.DataTable({
+						"data": jason[mainsheet],
+						"autoWidth": false,
+						"order": [[1, 'asc']],
+						"orderCellsTop": true,
+						//"order-column": true,
+						"orderClasses": false,
+						"deferRender": true,
+						"columns": mainColumns,
+						"paging": false,
 						"createdRow": function (row, data, dataIndex) {
-							//let arr = Object.keys(data).map(function (k) { return data[k] });
-							let arrMultiplied = Object.keys(data).map((x, i) => !!data[x] && chilrowVis[i])
-							let dataNoVis = Object.keys(data).map((x, i) => !!data[x] && chilrowVis[i]).reduce((accumulator, currentValue, currentIndex, array) => accumulator + currentValue);
-							//let dataNoVis = datarr.map((x, i) => x.substring(0, x.length * chilrowVis[i])).reduce((accumulator, currentValue, currentIndex, array) => accumulator + currentValue);
-							// if (dataIndex == 1) {
-							// 	console.log(arr);
-							// 	console.log(arrMultiplied);
-							// 	console.log(dataNoVis);
-							// }
-							if (dataNoVis > 0) {
-								$(row).children("td.details").addClass('details-control');
+							//if (dataIndex < 10) console.log(data[mainsheetKeys[0]]);
+							//let arrMultiplied = Object.keys(data).map((x, i) => !!data[x] && chilrowVis[i])
+							dataNoVis = mainsheetKeys.map((x, i) => !!data[x] && chilrowVis[i]).reduce((acc, value, index, array) => acc + value);
+							linkedrows = Object.keys(linkMap.get(data[mainsheetKeys[0]])).length;
+							$(row).children("td.DTdetails").text(linkedrows);
+							if (dataNoVis + linkedrows > 0) {
+								$(row).children("td.DTdetails").addClass('details-control');
 							}
+							//colummmn size...
+							//$('td:not(:eq(0))', row).css('min-width', '15ex');
 						},
 						"fixedHeader": {
 							header: true,
 							footer: true
 						},
-						"deferRender": true,
-						"columns": jsonColumns,
-						"paging": false
+						"initComplete": function () {
+							//create tooltips
+							//createTooltips(table);
+
+							//COLUMN FILTERS
+							this.api().columns(':visible').every(function () {
+								let column = this;
+								let jqth = column.header();
+
+								//let headerText = jqth.innerText;
+								//if (sheetNames.includes(column.header().innerText)) {
+								let jqthisfilter = $(table).find('thead > tr.columnfilters > th').eq(column.index('visible'));
+								if (jqth.classList.contains("DTdetails")) {
+									//$("table.mainsheet thead tr:eq(1) th").eq(column.index()).empty();
+								}
+								else if (jqth.classList.contains("linkedinfo")) {
+									//$("table.mainsheet thead tr:eq(1) th").eq(column.index()).empty();
+									linkedsheetTypes.forEach(function (value, index, array) {
+										$('<div class="nowrap"><input type="checkbox" id="' + jqth.innerText + value + '" name="' + jqth.innerText + '" value="' + value + '" class="headercheckbox" />' +
+											'<label for="' + jqth.innerText + value + '">' + value + '</label></div>')
+											.appendTo(jqthisfilter);
+									});
+									//$("table.mainsheet thead tr:eq(1) th").attr("colspan", "2");
+									$('input:checkbox').on('change', function (e) {
+										//build a regex filter string with an or(|) condition
+										let checkboxes = $('input:checkbox:checked').map(function () {
+											return this.value;
+										}).get().join('|');
+										//filter in column 1, with an regex, no smart filtering, not case sensitive
+										column.search(checkboxes, true, false, false).draw(false);
+									});
+									dropdowns.set(column.index(), linkedsheetTypes);
+								}
+								else {
+									let input = $('<input type="search" size="10" autocomplete="off" list="' + jqth.innerText + '-list" id="' + jqth.innerText + '-input" name="' + jqth.innerText + '" class="headersearch" />'
+									)//+ '<datalist id="' + th.innerText + '-list"></datalist>')
+										//.appendTo($(column.footer()).empty())
+										.appendTo(jqthisfilter)
+										.on('change search', function () {
+											if (column.search() !== this.value) {
+												column
+													.search(this.value)
+													.draw('page');
+											}
+										});
+
+									let ARR = column.data().unique().toArray();
+									const delims = /([:+\r\n]+)|((?<!\s)\()/g
+									let temp = ARR.join(delimiter).replace(delims, ";");
+									ARR = temp.split(delimiter);
+									ARR.forEach((o, i, a) => a[i] = a[i].trim());
+									let SET = new Set(ARR);
+									ARR = [...SET].sort();
+
+									//OPTION 1: HTML5 datalists
+									//column.data().unique().sort().each(function (d, j) {
+									let datalist = $('<datalist id="' + jqth.innerText + '-list"></datalist>').insertAfter($(input));
+									ARR.forEach(function (val) {
+										datalist.append('<option value="' + val + '" />')
+									});
+									//OPTION 2: jQuery UI autocomplete (see xml code)
+								}
+								//}
+							});
+						}
 					});
-					$('#example tbody').on('click', 'td.details-control', function () {
+
+					jqtable.children('tbody').on('click', 'td.details-control', function () {
 						let jqtr = $(this).closest('tr');
 						let dRow = dTable.row(jqtr);
 
 						//select data (columns) that are hidden
-						let idx = jsonChildRowsIndexes.map(x => x + 1);
+						let idx = mainChildRowsIndexes.map(x => x + 1);
 						let cells = dTable.cells(dRow, idx);
-						//let idx = dTable.cell(dRow, jsonChildRowsIndexes).index().column;
-
 
 						//format that data into a new table
 						let title = "", details = "", detailsTable = "";
 						for (let i = 0; i < cells.data().length; i++) {
-							//title = dRow.column(jsonChildRowsIndexes[i]).header();
-							//console.log(cells.data()[i]);
-							if (cells.data()[i]) details += format(jsonChildRowsHeaders[i], cells.data()[i]);
+							if (cells.data()[i]) details += format(mainChildRowsHeaders[i], cells.data()[i]);
 						}
 						if (details != "") detailsTable = '<table class="detailsTable">' + details + '</table>';
 
@@ -230,61 +323,6 @@
 					});
 				}
 			});
-
-			// $.getJSON("/json/data", function (response) {
-			// 	if (response.status == "success") {
-			// 		$("#activity").html("Succes: " + response.status);
-			// 	} else {
-			// 		$("#activity").html("Fail: " + response.status);
-			// 	}
-			// });
-
-			// function doTheThing() {
-			// 	return new Promise((resolve, reject) => {
-			// 		$.mockjax({
-			// 			url: "/json/data",
-			// 			dataType: "json",
-			// 			contentType: "application/json",
-			// 			proxy: "/kc_roio.json",
-			// 			onAfterSuccess: function (data) {
-			// 				//console.log("mock complete");
-			// 				resolve(data);
-			// 			},
-			// 			onAfterError: function (error) {
-			// 				console.log("mock complete");
-			// 				reject(error);
-			// 			},
-			// 			onAfterComplete: function () {
-			// 				console.log("mock complete");
-			// 				resolve(data);
-			// 			}
-			// 		})
-			// 	})
-			// }
-			// doTheThing()
-			// 	.then((data) => {
-			// 		console.log(data);
-			// 		$.getJSON("/json/data", function (response) {
-			// 			if (response.status == "success") {
-			// 				$("#activity").html("Succes: " + response.status);
-			// 			} else {
-			// 				$("#activity").html("Fail: " + response.status);
-			// 			}
-			// 		});
-
-			// 		$('#example').dataTable({
-			// 			"ajax": "/json/data"
-			// 		});
-			// 	})
-			// 	.catch((error) => {
-			// 		console.log(error);
-			// 	})
-
-
-			//var table_data = JSON.parse("kc_roio.json");
-
-
-
 		});
 
 		function format(h, d) {
@@ -294,8 +332,6 @@
 				'<td>' + d + '</td>' +
 				'</tr>'
 		}
-
-
 	</script>
 </head>
 
@@ -314,14 +350,15 @@
 	</nav>
 	<section>
 		<div id="results">
-			<table id="example" class="display" width="100%">
+			<table id="datatable" class="display" width="100%">
 				<thead>
 					<tr></tr>
+					<tr class="columnfilters"></tr>
 				</thead>
 				<tbody></tbody>
 				<tfoot>
 					<tr></tr>
-					</thead>
+				</tfoot>
 			</table>
 		</div>
 	</section>

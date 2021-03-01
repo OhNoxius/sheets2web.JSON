@@ -1,0 +1,330 @@
+<!--<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>KC ROIO</title>
+	<meta name="KC Roio Archive" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+	<!-- JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> -->
+	<!-- JQUERY UI -->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+	<!-- DATATABLES (fixedHeader) -->
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.7/datatables.min.css" />
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.7/datatables.min.js"></script>
+
+	<!-- TOOLTIPSTER -->
+	<link rel="stylesheet" type="text/css" href="js/tooltipster/dist/css/tooltipster.bundle.min.css" />
+	<script type="text/javascript" src="js/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+
+	<script src="jquery.mockjax.min.js"></script>
+
+	<!-- CUSTOM -->
+	<!-- <link rel="stylesheet" href="css/grid-linkedsheets.css" /> -->
+	<link rel="stylesheet" href="css/sheet.css" />
+
+	<!-- <script src="js/helper functions/xslFunctions.js"></script>
+	<script src="js/helper functions/lastUpdated.js"></script> -->
+
+	<!-- <script src="js/database-keys.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/sheet-datatable.js"></script> -->
+
+	<script>
+		//set source .xml filename
+		//let datafile = getFilename();
+		//choose normal display (=false) or database mode (=true)
+		//const databaseMode = true;
+		//set header title to display above table
+		let headerTitle = "KC ROIO";
+		//set drive link to display next to header title
+		let editLink = "https://docs.google.com/spreadsheets/d/1gTCRmbPqV-EL3g4KG7JdGnbVH5xIQvu0xcCTb7-JzKE/edit?usp=sharing";
+		//choose character that will be used to separate content inside cells
+		let delimiter = ";";
+		let cashing = false; //disable cashing
+
+		//DON'T TOUCH
+		let keys = {};
+		let linkedsheetTypes = new Set();
+		let linkMap = new Map();
+		var table, dTable, jqtable;
+
+		var jason, jsonColumns = [], jsonChildRows = [], jsonChildRowsIndexes = [], jsonChildRowsHeaders = [];
+		let tableheader, tablefooter;
+		let DTCol;
+		let chilrowVis = [];
+		$.mockjax({
+			url: "/json/data",
+			dataType: "json",
+			contentType: "application/json",
+			proxy: "/kc_roio.json",
+			onAfterSuccess: function (data) {
+				console.log("mock success");
+				//resolve(data);
+			},
+			onAfterError: function (error) {
+				console.log("mock error");
+				//reject(error);
+			},
+			onAfterComplete: function () {
+				console.log("mock complete");
+				//resolve(data);
+			}
+		})
+
+		document.addEventListener('DOMContentLoaded', function () {
+			table = document.getElementById("example");
+			$.ajax({
+				dataType: "json",
+				url: "/json/data",
+				//data: data,
+				success: function (data) {
+					console.log("asynchronous HTTP (Ajax) request DONE");
+
+					//FORMAT JSON DATA for use in DataTables
+					// + create HTML table
+					jason = data;
+					tableheader = table.querySelector("thead tr");
+					tablefooter = table.querySelector("tfoot tr");
+					Object.keys(jason[Object.keys(jason)[0]][Object.keys(jason[Object.keys(jason)[0]])[0]]).forEach(function (el, key, arr) {
+						//1. datatables column element
+						//console.log( el.replace(/\./g, '\\\\.'));
+						let keyname = el;
+						if (Array.isArray(jason[Object.keys(jason)[0]][Object.keys(jason[Object.keys(jason)[0]])[0]][el])) keyname += "[; ]";
+						DTCol = {
+							//"data": keyname, 						// .id  => doesn't work with keys that contain dots
+							//"data": ["'"+keyname+"'"], 			// ["id"] => doesn't work
+							//"data": key 							// 0 => doesn't work
+							"data": keyname.replace(/\./g, '\\\\.') // still doesn't work, should work...
+						};
+						//2. HTML
+						const th = document.createElement("th");
+						const thtext = document.createTextNode(el);
+						th.append(thtext);
+						tableheader.append(th);
+
+						//First element: id						
+						if (Object.is(0, key)) {
+							//console.log(key);
+							DTCol.visible = false
+							DTCol.class = "id";
+							jsonColumns.push(DTCol);
+							chilrowVis.push(0);
+						}
+						//concat columns
+						else if (el.startsWith(".") || el.startsWith("-")) {
+							//console.log(key);
+							DTCol.visible = false
+							DTCol.class = "merger";
+							jsonColumns.push(DTCol);
+							chilrowVis.push(0);
+						}
+						//child rows
+						else if (el.startsWith("CE_")) {
+							//console.log(key);
+							DTCol.visible = false
+							DTCol.class = "childrow";
+							jsonColumns.push(DTCol);
+							jsonChildRows.push(DTCol);
+							jsonChildRowsIndexes.push(key);
+							jsonChildRowsHeaders.push(el.substring(3));
+							chilrowVis.push(1);
+						}
+						//normal column
+						else {
+							//console.log(key);
+							jsonColumns.push(DTCol);
+							chilrowVis.push(0);
+						}
+					});
+
+					// (?) dropdown childrow column
+					if (jsonChildRows.length > 0) {
+						DTCol = {
+							"className": 'details',
+							"orderable": false,
+							"data": null,
+							"defaultContent": ''
+						};
+						const th = document.createElement("th");
+						tableheader.prepend(th);
+						jsonColumns.unshift(DTCol);
+						//chilrowVis.unshift(1);
+						jsonChildRowsIndexes.forEach(x => x + 1);
+					}
+
+					//Table Footer
+					const th = document.createElement("th");
+					const thtext = document.createTextNode("filter");
+					th.setAttribute('colspan', jsonColumns.length);
+					th.appendChild(thtext);
+					tablefooter.appendChild(th);
+					//jsonColumns.shift(); //removes first item
+
+					dTable = $('#example').DataTable({
+						"ajax": {
+							url: "kc_roio.json",
+							dataSrc: "show"
+						},
+						"createdRow": function (row, data, dataIndex) {
+							//let arr = Object.keys(data).map(function (k) { return data[k] });
+							let arrMultiplied = Object.keys(data).map((x, i) => !!data[x] && chilrowVis[i])
+							let dataNoVis = Object.keys(data).map((x, i) => !!data[x] && chilrowVis[i]).reduce((accumulator, currentValue, currentIndex, array) => accumulator + currentValue);
+							//let dataNoVis = datarr.map((x, i) => x.substring(0, x.length * chilrowVis[i])).reduce((accumulator, currentValue, currentIndex, array) => accumulator + currentValue);
+							// if (dataIndex == 1) {
+							// 	console.log(arr);
+							// 	console.log(arrMultiplied);
+							// 	console.log(dataNoVis);
+							// }
+							if (dataNoVis > 0) {
+								$(row).children("td.details").addClass('details-control');
+							}
+						},
+						"fixedHeader": {
+							header: true,
+							footer: true
+						},
+						"deferRender": true,
+						"columns": jsonColumns,
+						"paging": false
+					});
+					$('#example tbody').on('click', 'td.details-control', function () {
+						let jqtr = $(this).closest('tr');
+						let dRow = dTable.row(jqtr);
+
+						//select data (columns) that are hidden
+						let idx = jsonChildRowsIndexes.map(x => x + 1);
+						let cells = dTable.cells(dRow, idx);
+						//let idx = dTable.cell(dRow, jsonChildRowsIndexes).index().column;
+
+
+						//format that data into a new table
+						let title = "", details = "", detailsTable = "";
+						for (let i = 0; i < cells.data().length; i++) {
+							//title = dRow.column(jsonChildRowsIndexes[i]).header();
+							//console.log(cells.data()[i]);
+							if (cells.data()[i]) details += format(jsonChildRowsHeaders[i], cells.data()[i]);
+						}
+						if (details != "") detailsTable = '<table class="detailsTable">' + details + '</table>';
+
+						if (dRow.child.isShown()) {
+							// This row is already open - close it
+							dRow.child.hide();
+							jqtr.removeClass('shown');
+						}
+						else {
+							// Open this row
+							dRow.child(detailsTable).show();
+							jqtr.addClass('shown');
+						}
+					});
+				}
+			});
+
+			// $.getJSON("/json/data", function (response) {
+			// 	if (response.status == "success") {
+			// 		$("#activity").html("Succes: " + response.status);
+			// 	} else {
+			// 		$("#activity").html("Fail: " + response.status);
+			// 	}
+			// });
+
+			// function doTheThing() {
+			// 	return new Promise((resolve, reject) => {
+			// 		$.mockjax({
+			// 			url: "/json/data",
+			// 			dataType: "json",
+			// 			contentType: "application/json",
+			// 			proxy: "/kc_roio.json",
+			// 			onAfterSuccess: function (data) {
+			// 				//console.log("mock complete");
+			// 				resolve(data);
+			// 			},
+			// 			onAfterError: function (error) {
+			// 				console.log("mock complete");
+			// 				reject(error);
+			// 			},
+			// 			onAfterComplete: function () {
+			// 				console.log("mock complete");
+			// 				resolve(data);
+			// 			}
+			// 		})
+			// 	})
+			// }
+			// doTheThing()
+			// 	.then((data) => {
+			// 		console.log(data);
+			// 		$.getJSON("/json/data", function (response) {
+			// 			if (response.status == "success") {
+			// 				$("#activity").html("Succes: " + response.status);
+			// 			} else {
+			// 				$("#activity").html("Fail: " + response.status);
+			// 			}
+			// 		});
+
+			// 		$('#example').dataTable({
+			// 			"ajax": "/json/data"
+			// 		});
+			// 	})
+			// 	.catch((error) => {
+			// 		console.log(error);
+			// 	})
+
+
+			//var table_data = JSON.parse("kc_roio.json");
+
+
+
+		});
+
+		function format(h, d) {
+			// `d` is the original data object for the row
+			return '<tr class="detailsRow">' +
+				'<td class="detailsHeader">' + h + ':</td>' +
+				'<td>' + d + '</td>' +
+				'</tr>'
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<header>
+		<div id="heading"></div>
+		<div id="status">
+			<!-- <label for="statusBar">Loading xml:</label>
+			<progress id="statusBar"></progress> -->
+		</div>
+		<div id="activity"></div>
+		<!-- <div id="filters"></div> -->
+	</header>
+	<nav>
+		<div id="menu"></div>
+	</nav>
+	<section>
+		<div id="results">
+			<table id="example" class="display" width="100%">
+				<thead>
+					<tr></tr>
+				</thead>
+				<tbody></tbody>
+				<tfoot>
+					<tr></tr>
+					</thead>
+			</table>
+		</div>
+	</section>
+</body>
+
+</html>
