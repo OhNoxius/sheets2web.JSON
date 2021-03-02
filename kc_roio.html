@@ -35,7 +35,7 @@
 
 	<!-- CUSTOM -->
 	<!-- <link rel="stylesheet" href="css/grid-linkedsheets.css" /> -->
-	<link rel="stylesheet" href="css/sheet.css" />
+	<link rel="stylesheet" href="css/sheets2web.css" />
 	<script src="js/sheets2web.js"></script>
 
 	<script>
@@ -47,11 +47,6 @@
 		//let editLink = "https://docs.google.com/spreadsheets/d/1gTCRmbPqV-EL3g4KG7JdGnbVH5xIQvu0xcCTb7-JzKE/edit?usp=sharing";
 		//choose character that will be used to separate content inside cells
 		let delimiter = ";";
-
-		//use cashing to fetch files?
-		let cashing = false;
-
-		
 	</script>
 </head>
 
@@ -65,22 +60,18 @@
 		<div id="activity"></div>
 		<!-- <div id="filters"></div> -->
 	</header>
-	<nav>
-		<div id="menu"></div>
-	</nav>
-	<section>
-		<div id="results">
-			<table id="mainsheet" class="display" width="100%">
-				<thead>
-					<tr></tr>
-					<tr class="columnfilters"></tr>
-				</thead>
-				<tbody></tbody>
-				<tfoot>
-					<tr></tr>
-				</tfoot>
-			</table>
-		</div>
+	<section id="database">
+		<table id="maintable" class="display" width="100%">
+			<thead id="maintheader"></thead>
+			</thead>
+			<tbody id="maintbody"></tbody>
+			<tfoot id="maintfooter">
+				<tr></tr>
+				<tr>
+					<th colspan="100" id="navfooter"></th>
+				</tr>
+			</tfoot>
+		</table>
 	</section>
 </body>
 

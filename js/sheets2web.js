@@ -1,3 +1,5 @@
+//use cashing to fetch files?
+let cashing = false;
 //DON'T TOUCH
 let linkMap = new Map();
 var table, dTable, jqtable;
@@ -9,10 +11,11 @@ let mainColumns = [], mainChildRowsIndexes = [], mainChildRowsHeaders = [];
 let header_row, footer_row, headerfilters_row;
 let DTCol;
 let chilrowVis = [];
+let DOMel;
 
 document.addEventListener('DOMContentLoaded', function () {
     mockjax(datafile);
-    table = document.getElementById("mainsheet");
+    table = document.getElementById("maintable");
     jqtable = $(table);
     $.ajax({
         dataType: "json",
@@ -53,6 +56,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
+            //3. main webpage layout
+            //HEADING
+            let heading = document.createElement("h1");
+            if (headerTitle) heading.innerText = headerTitle;
+            else heading.innerText = datafile;
+            document.getElementById("heading").append(heading);
+            //NAV
+            let tabs_ul = document.createElement("ul");
+            sheets.forEach(function (sheet) {
+                let tab_li = document.createElement("li");
+                tabs_ul.append(tab_li);
+                let tab_a = document.createElement("a");
+                tab_a.setAttribute("id", "btn-" + sheet);
+                tab_a.setAttribute("class", "menu tab");
+                tab_a.setAttribute("href", "#" + sheet);
+                tab_a.setAttribute("sheet", sheet);
+                tab_a.addEventListener('click', function () {
+                    $(this).addClass('active');
+                    $(this).siblings().removeClass('active');
+
+                    dTable.destroy();
+                    document.getElementById("maintheader").innerHTML = "";
+                    document.getElementById("maintbody").innerHTML = "";
+
+                    makeDataTable(table, jason[mainsheet]);
+                }, false);
+                tab_a.innerText = sheet;
+                tab_li.append(tab_a);
+            });
+            //document.getElementsByTagName("nav")[0].append(tabs_ul);
+            document.getElementById("navfooter").append(tabs_ul);
+
             makeDataTable(table, jason[mainsheet]);
 
 
@@ -61,12 +96,19 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function makeDataTable(table, jsondata, childmode = false) {
+    //prepare HTML
+    header_row = document.createElement("tr");
+    document.getElementById("maintheader").append(header_row);
+    headerfilters_row =  document.createElement("tr");
+    headerfilters_row.setAttribute("class", "columnfilters");
+    document.getElementById("maintheader").append(headerfilters_row);
+    //header_row = table.querySelector("thead tr");
+    //headerfilters_row = table.querySelector("thead tr.columnfilters");
+    footer_row = table.querySelector("tfoot tr");
+   
+    //FORMAT JSON DATA for use in DataTables					
     let jasonKeys = Object.keys(jsondata[0]);
     let columns = [], childRowsIndexes = [], childRowsHeaders = [];
-    //FORMAT JSON DATA for use in DataTables					
-    header_row = table.querySelector("thead tr");
-    headerfilters_row = table.querySelector("thead tr.columnfilters");
-    footer_row = table.querySelector("tfoot tr");
     jasonKeys.forEach(function (el, key, arr) {
         //1. datatables column element
         //console.log( el.replace(/\./g, '\\\\.'));
