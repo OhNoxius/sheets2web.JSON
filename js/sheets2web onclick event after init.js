@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function makeDataTable(table, jsondata, sheet) {
 
     //detect mode
-    const maintable = sheet;
+    let maintable = sheet;
     let linktable;
     if (sheet == LINKSHEET) linktable = MAINSHEET;
     else if (sheet == MAINSHEET) linktable = LINKSHEET;
@@ -222,6 +222,29 @@ function makeDataTable(table, jsondata, sheet) {
                     let thismaintable = jqtr.attr("sheet");
                     let thislinktable = jqtr.attr("linked");
 
+                    //A.select data (columns) that are hidden
+                    let idx = childRowsIndexes.map(x => x + 1);
+                    let cells = dTable.cells(dRow, idx);
+                    let details = "", childrowTable = "";
+                    for (let i = 0; i < cells.data().length; i++) {
+                        if (cells.data()[i]) details += formatChildRows(childRowsHeaders[i], cells.data()[i]);
+                    }
+                    if (details != "") childrowTable = '<table class="childrowtable">' + details + '</table>';
+
+                    let childrowsDOM = document.createElement('div');
+                    childrowsDOM.innerHTML = childrowTable;
+
+                    console.log("maintable: '" + thismaintable + "'");
+                    console.log("linktable: '" + thislinktable + "'");
+                    console.log("id: '" + thisid + "'");
+                    //linkedItems = jason[linktable].filter(x => (x[maintable] == thisid));
+
+                    let linkTableDOM = document.createElement('div');
+                    linkTableDOM.innerHTML = '<table id="' + thisid + "|" + thislinktable + '" class="linktable display" width="100%">' +
+                        '<thead></thead>' +
+                        '<tbody></tbody>' +
+                        '<tfoot></tfoot>' +
+                        '</table>';
 
                     if (dRow.child.isShown()) {
                         // This row is already open - close it
@@ -229,34 +252,9 @@ function makeDataTable(table, jsondata, sheet) {
                         jqtr.removeClass('shown');
                     }
                     else {
-                        //A.select data (columns) that are hidden
-                        let idx = childRowsIndexes.map(x => x + 1);
-                        let cells = dTable.cells(dRow, idx);
-                        let details = "", childrowTable = "";
-                        for (let i = 0; i < cells.data().length; i++) {
-                            if (cells.data()[i]) details += formatChildRows(childRowsHeaders[i], cells.data()[i]);
-                        }
-                        if (details != "") childrowTable = '<table class="childrowtable">' + details + '</table>';
-
-                        let childrowsDOM = document.createElement('div');
-                        childrowsDOM.innerHTML = childrowTable;
-
-                        console.log("maintable: '" + thismaintable + "'");
-                        console.log("linktable: '" + thislinktable + "'");
-                        console.log("id: '" + thisid + "'");
-                        //linkedItems = jason[linktable].filter(x => (x[maintable] == thisid));
-
-                        let linkTableDOM = document.createElement('div');
-                        linkTableDOM.innerHTML = '<table id="' + thisid + "|" + thislinktable + '" class="linktable">' +
-                            '<thead></thead>' +
-                            '<tbody></tbody>' +
-                            '<tfoot></tfoot>' +
-                            '</table>';
-
                         // Open this row
                         dRow.child([linkTableDOM, childrowsDOM], "child").show();
                         console.log(jqtr);
-                        console.log(jqtr.next('tr').find('table.linktable')[0]);
                         makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, thislinktable);
                         jqtr.addClass('shown');
                     }
@@ -322,6 +320,74 @@ function makeDataTable(table, jsondata, sheet) {
             });
         }
     });
+
+    // $(table).children('tbody').on('click', 'td.details-control', function () {
+    //     console.log("!!!!CLICK DROPDOWN!!!!");
+    //     let jqtr = $(this).closest('tr');
+    //     let dRow = dTable.row(jqtr);
+    //     let thisid = jqtr.attr("id");
+    //     let linktableID = thisid + linkedsheet;
+    //     let linkedids, linkedItems;
+
+
+    //     //A.select data (columns) that are hidden
+    //     let idx = childRowsIndexes.map(x => x + 1);
+    //     let cells = dTable.cells(dRow, idx);
+    //     let details = "", childrowTable = "";
+    //     for (let i = 0; i < cells.data().length; i++) {
+    //         if (cells.data()[i]) details += formatChildRows(childRowsHeaders[i], cells.data()[i]);
+    //     }
+    //     if (details != "") childrowTable = '<table class="childrowtable">' + details + '</table>';
+
+    //     var childrowsDOM = document.createElement('div');
+    //     childrowsDOM.innerHTML = childrowTable;
+
+    //     console.log("maintable: '" + maintable + "'");
+    //     console.log("linktable: '" + linktable + "'");
+    //     console.log("id: '"+ thisid + "'");
+    //     //B.linkedsheet
+    //     // if (sheet == mainsheet) {
+    //     //     linkedids = Object.keys(linkMap.get(thisid)).map(x => parseInt(x));
+    //     //     linkedItems = jason[linkedsheet].filter((e, i) => linkedids.includes(i));
+    //     // }
+    //     // else {
+
+    //         linkedItems = jason[linktable].filter(x => (x[maintable] == thisid));
+    //     //}
+    //     //console.log(linkedItems);       
+
+    //     var linkTableDOM = document.createElement('div');
+    //     linkTableDOM.innerHTML = '<table id="' + linktableID + '" class="linktable display" width="100%">' +
+    //         '<thead>' +
+    //         '<tr></tr>' +
+    //         '<tr class="columnfilters"></tr>' +
+    //         '</thead>' +
+    //         '<tbody></tbody>' +
+    //         '<tfoot>' +
+    //         '<tr></tr>' +
+    //         '</tfoot>' +
+    //         '</table>';
+
+    //     if (dRow.child.isShown()) {
+    //         // This row is already open - close it
+    //         dRow.child.hide();
+    //         jqtr.removeClass('shown');
+    //     }
+    //     else {
+    //         // Open this row
+    //         //dRow.child(childRow).show();
+    //         //childrowTableDiv.appendChild(childrowTableDOM.querySelector("table.childrowtable"));
+    //         //linkTableDiv.appendChild(linkTableDOM.getElementById(thisid + linkedsheet));
+
+    //         dRow.child([linkTableDOM, childrowsDOM], 'child').show();
+
+    //         console.log(linkedItems);
+
+    //         makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
+
+    //         jqtr.addClass('shown');
+    //     }
+    // });
 }
 
 function formatChildRows(h, d) {
@@ -331,6 +397,19 @@ function formatChildRows(h, d) {
         '<td>' + d + '</td>' +
         '</tr>'
 }
+
+// function createLinkTable() {
+//     <table id="main" class="display" width="100%">
+// 				<thead>
+// 					<tr></tr>
+// 					<tr class="columnfilters"></tr>
+// 				</thead>
+// 				<tbody></tbody>
+// 				<tfoot>
+// 					<tr></tr>
+// 				</tfoot>
+// 			</table>
+// }
 
 function mockjax(datafile) {
     $.mockjax({

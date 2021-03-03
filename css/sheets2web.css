@@ -5,7 +5,7 @@ body {
     color: #333;
     background-color: #fff;
     display: grid;
-    grid-template-rows: 50px auto 3em;
+    grid-template-rows: 50px auto;
 }
 
 /*GRID*/
@@ -13,18 +13,21 @@ body {
 header {
     grid-row-start: 1;
 }
-#maintfooter {
+/* #maintfooter {
     grid-row-start: 3;
     padding: 0;
     margin: 0;
-}
+/*} */
 section#database {
     grid-row-start: 2;
 }
 
-ul{
-	position: absolute;
+#navfooter {
+    position: absolute;
 	bottom: 0;
+}
+
+ul{
     margin: 0;
     padding: 0;
 }

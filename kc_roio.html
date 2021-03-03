@@ -20,8 +20,8 @@
 
 	<!-- DATATABLES (fixedHeader) -->
 	<link rel="stylesheet" type="text/css"
-		href="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.7/datatables.min.css" />
-	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.7/datatables.min.js"></script>
+		href="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.8/datatables.min.css" />
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.8/datatables.min.js"></script>
 
 	<!-- TOOLTIPSTER -->
 	<link rel="stylesheet" type="text/css" href="js/tooltipster/dist/css/tooltipster.bundle.min.css" />
@@ -58,19 +58,12 @@
 			<progress id="statusBar"></progress> -->
 		</div>
 		<div id="activity"></div>
-		<!-- <div id="filters"></div> -->
 	</header>
 	<section id="database">
-		<table id="maintable" class="display" width="100%">
-			<thead id="maintheader"></thead>
-			</thead>
-			<tbody id="maintbody"></tbody>
-			<tfoot id="maintfooter">
-				<tr></tr>
-				<tr>
-					<th colspan="100" id="navfooter"></th>
-				</tr>
-			</tfoot>
+		<table id="fixedtable" class="display" width="100%">
+			<thead id="fixedtheader"></thead>
+			<tbody id="fixedtbody"></tbody>
+			<tfoot id="fixedtfooter"></tfoot>
 		</table>
 	</section>
 </body>
