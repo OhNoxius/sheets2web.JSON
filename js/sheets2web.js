@@ -34,28 +34,28 @@ document.addEventListener('DOMContentLoaded', function () {
             LINKSHEET_keys = Object.keys(jason[LINKSHEET][0]);
 
             //2. create Map() of mainsheet<->linksheet
-            //first create index from mainsheet					
-            jason[MAINSHEET].forEach(function (el, key, arr) {
-                linkMap.set(el[MAINSHEET_keys[0]], {});
-            });
-            //then loop through linkedsheet ONCE, and add info into above Map
-            let linkItem;
-            jason[LINKSHEET].forEach(function (el, key, arr) {
-                if (el[MAINSHEET]) {
-                    el[MAINSHEET].split("\n").forEach(function (linkid) {
-                        linkid = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
-                        //!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
-                        if (linkMap.has(linkid)) {
-                            linkItem = linkMap.get(linkid);
-                            linkItem[key] = el["type"];
-                        }
-                        else {
-                            linkMap.set(linkid, {});
-                            console.log("unknown id " + linkid);
-                        }
-                    });
-                }
-            });
+            // //first create index from mainsheet					
+            // jason[MAINSHEET].forEach(function (el, key, arr) {
+            //     linkMap.set(el[MAINSHEET_keys[0]], {});
+            // });
+            // //then loop through linkedsheet ONCE, and add info into above Map
+            // let linkItem;
+            // jason[LINKSHEET].forEach(function (el, key, arr) {
+            //     if (el[MAINSHEET]) {
+            //         el[MAINSHEET].split("\n").forEach(function (linkid) {
+            //             linkid = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
+            //             //!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
+            //             if (linkMap.has(linkid)) {
+            //                 linkItem = linkMap.get(linkid);
+            //                 linkItem[key] = el["type"];
+            //             }
+            //             else {
+            //                 linkMap.set(linkid, {});
+            //                 console.log("unknown id " + linkid);
+            //             }
+            //         });
+            //     }
+            // });
 
             //3. main webpage layout
             //HEADING
