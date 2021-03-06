@@ -37,7 +37,7 @@ li{
 	float: left;
 	padding: 0;
 }
-a{
+a.tab{
 	padding: 4px 5px;
 	text-decoration: none;
 	color: #222;
@@ -46,6 +46,10 @@ a{
 }
 
 /*TABLE*/
+
+th, td {
+    white-space: pre;
+}
 
 input.headersearch {
     display:table-cell;
@@ -60,3 +64,8 @@ td.details-control {
 tr.shown td.details-control {
     background: url('../css/details_close.png') no-repeat center center;
 }
+
+/* DataTables OVERRIDE */
+div.dataTables_wrapper div.dataTables_processing {
+    top: 0;
+ }
