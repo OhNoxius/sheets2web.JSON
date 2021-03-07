@@ -64,13 +64,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function makeDataTable(table, jsondata, sheet) {
 
-    const jasonKeys = Object.keys(jsondata[0]);
+    const maintableKeys = Object.keys(jsondata[0]);
     const maintable = sheet;
-    const childRowsIndexMap = new Array(jasonKeys.length);
-    childRowsIndexMap.fill(0);
+    //const childRowsIndexMap = new Array(maintableKeys.length);
+    //childRowsIndexMap.fill(0);
 
     let DTcolumn;
-    let columns = [], childRowsIndexes = [], childRowsHeaders = [];
+    let columns = [], childRowsHeaders = [], mergecolumnHeaders = [];
     let linktable;
 
     //detect mode
@@ -89,15 +89,15 @@ function makeDataTable(table, jsondata, sheet) {
     table.getElementsByTagName("tfoot")[0].prepend(footer_row);
 
     //FORMAT JSON DATA for use in DataTables
-    jasonKeys.forEach(function (key, index, arr) {
+    maintableKeys.forEach(function (key, index, arr) {
 
         //1. datatables column element
         //console.log( el.replace(/\./g, '\\\\.'));
-        let keyname = key;
+        let keyname = key.replace(/\./g, '\\\\.');
         if (Array.isArray(jsondata[0][key])) keyname += "[; ]";
         DTcolumn = {
             //"title": el,
-            "data": keyname.replace(/\./g, '\\\\.'), // still doesn't work, should work...
+            "data": keyname, // still doesn't work, should work...
             "visible": true
         };
 
@@ -111,21 +111,33 @@ function makeDataTable(table, jsondata, sheet) {
         }
         //merger columns
         else if (key.startsWith(".") || key.startsWith("-")) {
+            const prevkey = columns[columns.length - 1].data;
             DTcolumn.className = "merger";
             DTcolumn.visible = false;
+            columns[columns.length - 1].data = null;
+            // columns[columns.length-1].render = {
+            //     "_": prevkey,
+            //     "display": prevkey
+            //   };
+            columns[columns.length - 1].render = {
+                "_": prevkey,
+                "display": function (data, type, row) {
+                    return data[prevkey] + ' (' + data[keyname] + ')';
+                },
+                "filter": prevkey
+            };
         }
         //namespace column
-        else if (jasonKeys.includes(key.substr(0, key.indexOf(":")))) {
+        else if (maintableKeys.includes(key.substr(0, key.indexOf(":")))) {
             DTcolumn.className = "namespace";
             DTcolumn.visible = false;
+            mergecolumnHeaders.push(key);
         }
         //child rows
         else if (key.startsWith("CE_")) {
             DTcolumn.className = "childrow";
-            childRowsIndexes.push(index);
-            childRowsHeaders.push(key);
-            childRowsIndexMap[index] = 1;
             DTcolumn.visible = false;
+            childRowsHeaders.push(key);
         }
         columns.push(DTcolumn);
 
@@ -137,7 +149,7 @@ function makeDataTable(table, jsondata, sheet) {
 
     let fixedHeader, dom, order;
     if (maintable == LINKSHEET) order = [[LINKSHEET_keys.indexOf(MAINSHEET), 'asc']];
-    else order = [[2, 'asc']];
+    else order = [[1, 'asc']];
     //EXTRA: linkcolumn
     if (linktable) {
         DTcolumn = {
@@ -150,7 +162,7 @@ function makeDataTable(table, jsondata, sheet) {
         const th = document.createElement("th");
         header_row.prepend(th);
         columns.unshift(DTcolumn);
-        childRowsIndexes.forEach(x => x + 1);
+        //childRowsIndexes.forEach(x => x + 1);
         order[0][0] += 1;
     }
     //set some DT options    
@@ -169,7 +181,7 @@ function makeDataTable(table, jsondata, sheet) {
         fixedHeader = false;
         dom = "lft";
     }
-    console.log(order);
+
     //DATATABLE
     let childrowsVIS = 0, linkedrowsVIS = 0;
     const dTable = $(table).DataTable({
@@ -184,9 +196,15 @@ function makeDataTable(table, jsondata, sheet) {
         //"orderClasses": false,
         "deferRender": true,
         "columns": columns,
-        "createdRow": function (row, data, dataIndex) {
+        "createdRow": function (row, data, dataIndex, cells) {
             //colummmn size...
             //$('td:not(:eq(0))', row).css('min-width', '15ex');
+
+            //CONCAT COLUMNS
+            // mergecolumnHeaders.forEach(function(h, i) {
+            //     cells[maintableKeys.indexOf(h)-1]
+            // });
+
 
             let linkedItems = [];
             //html attributes
@@ -196,15 +214,15 @@ function makeDataTable(table, jsondata, sheet) {
                 linkedItems = jason[MAINSHEET].filter(x => data[MAINSHEET]?.split("\n").includes(x[MAINSHEET_keys[0]]));
             }
             else {
-                row.setAttribute("summary", data[jasonKeys[0]]);
-                linkedItems = jason[linktable].filter(x => x[maintable]?.includes(data[jasonKeys[0]]));
+                row.setAttribute("summary", data[maintableKeys[0]]);
+                linkedItems = jason[linktable].filter(x => x[maintable]?.includes(data[maintableKeys[0]]));
             }
             row.setAttribute("id", rowid);
             //row.setAttribute("sheet", maintable);
             //row.setAttribute("linked", linktable);
 
             //COUNT CHILD ROWS
-            //childrowsVIS = jasonKeys.map((x, i) => !!data[x] && childRowsIndexMap[i]).reduce((acc, value, index, array) => acc + value);
+            //childrowsVIS = maintableKeys.map((x, i) => !!data[x] && childRowsIndexMap[i]).reduce((acc, value, index, array) => acc + value);
             childrowsVis = childRowsHeaders.reduce((acc, value, index, array) => acc + data[value]?.length);
             linkedrowsVIS = linkedItems.length;
 
@@ -221,7 +239,7 @@ function makeDataTable(table, jsondata, sheet) {
                     let linkedtableID = rowid + "." + linktable;
 
                     let details, childrowTable;
-                    let linkTableDOM, childrowsDOM
+                    let linkTableDOM, childrowsDOM;
 
                     if (dRow.child.isShown()) {
                         // This row is already open - close it

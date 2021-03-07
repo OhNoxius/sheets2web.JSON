@@ -48,7 +48,7 @@ a.tab{
 /*TABLE*/
 
 th, td {
-    white-space: pre;
+    white-space: pre-wrap;
 }
 
 input.headersearch {
