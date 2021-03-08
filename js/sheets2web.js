@@ -166,7 +166,7 @@ function makeDataTable(table, jsondata, sheet) {
     });
 
     let fixedHeader, dom, order;
-    if (maintable == LINKSHEET) order = [[LINKSHEET_keys.indexOf(MAINSHEET), 'asc']];
+    if (maintable == LINKSHEET) order = [[startIndex + LINKSHEET_keys.indexOf(MAINSHEET), 'asc']];
     else order = [[startIndex + 1, 'asc']];
 
     //set some DT options    
@@ -188,8 +188,7 @@ function makeDataTable(table, jsondata, sheet) {
 
     //console.log(columns);
 
-    //DATATABLE
-    let childrowsVIS = 0, linkedrowsVIS = 0;
+    //DATATABLE    
     const dTable = $(table).DataTable({
         "data": jsondata,
         "fixedHeader": fixedHeader,
@@ -203,8 +202,6 @@ function makeDataTable(table, jsondata, sheet) {
         "deferRender": true,
         "columns": columns,
         "createdRow": function (row, data, dataIndex, cells) {
-            //colummmn size...
-            //$('td:not(:eq(0))', row).css('min-width', '15ex');
 
             //CONCAT COLUMNS
             mergecolumns.forEach(function (mergecolumn, i) {
@@ -213,7 +210,6 @@ function makeDataTable(table, jsondata, sheet) {
                 mergeDOM.innerText = data[mergecolumn.cat];
                 cells[mergecolumn.indexVis].append(mergeDOM);
             });
-
 
             let linkedItems = [];
             //html attributes
@@ -227,28 +223,32 @@ function makeDataTable(table, jsondata, sheet) {
                 linkedItems = jason[linktable].filter(x => x[maintable]?.includes(data[maintableKeys[0]]));
             }
             row.setAttribute("id", rowid);
-            //row.setAttribute("sheet", maintable);
-            //row.setAttribute("linked", linktable);
 
-            //COUNT CHILD ROWS
-            //childrowsVIS = maintableKeys.map((x, i) => !!data[x] && childRowsIndexMap[i]).reduce((acc, value, index, array) => acc + value);
-            childrowsVis = childRowsHeaders.reduce((acc, value, index, array) => acc + data[value]?.length, "");
-            linkedrowsVIS = linkedItems.length;
+            const childrowsVis = childRowsHeaders.reduce((acc, value, index, array) => acc + data[value]?.length, "");
 
-            if (childrowsVIS + linkedrowsVIS > 0) $(row).children("td.IDcolumn").addClass('details-control');
-            if (linkedrowsVIS > 0) {
-                $(row).children("td.linkcolumn").text(linkedrowsVIS);
+            if (childrowsVis > 0 || linkedItems.length > 0) {
+                $(row).children("td.IDcolumn").addClass('details-control');
+                let linkTableDOM = "", childrowsDOM = "";
+                if (childrowsVis > 0) {
+                    let details = "", childrowTable = "";
+                    childRowsHeaders.forEach(x => details += formatChildRows(x, data[x]));
+                    if (details != "") childrowTable = '<table class="childrowtable">' + details + '</table>';
+                    childrowsDOM = document.createElement('div');
+                    childrowsDOM.innerHTML = childrowTable;
+                }
+                if (linkedItems.length > 0) {
+                    $(row).children("td.linkcolumn").text(linkedItems.length);
+                    linkTableDOM = document.createElement('div');
+                    linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable">' +
+                        '<thead></thead>' +
+                        '<tbody></tbody>' +
+                        '<tfoot></tfoot>' +
+                        '</table>';
+                }
                 $(row).children("td.IDcolumn").on('click', function () {
-                    let jqtr = $(this).closest('tr');
-                    let dRow = dTable.row(jqtr);
-                    //let thisid = jqtr.attr("id");
-                    //let thismaintable = jqtr.attr("sheet");
-                    //let thislinktable = jqtr.attr("linked");
-
-                    let linkedtableID = rowid + "." + linktable;
-
-                    let details, childrowTable;
-                    let linkTableDOM, childrowsDOM;
+                    const jqtr = $(this).closest('tr');
+                    const dRow = dTable.row(jqtr);
+                    console.log(" (+) --> CLICK DROPDOWN maintable: '" + maintable + "' / linktable: '" + linktable + "' / id: '" + jqtr.attr("id") + "'");
 
                     if (dRow.child.isShown()) {
                         // This row is already open - close it
@@ -256,23 +256,6 @@ function makeDataTable(table, jsondata, sheet) {
                         jqtr.removeClass('shown');
                     }
                     else {
-                        //A.select data (columns) that are hidden                        
-                        details = "", childrowTable = "";
-                        childRowsHeaders.forEach(x => details += formatChildRows(x, data[x]));
-                        if (details != "") childrowTable = '<table class="childrowtable">' + details + '</table>';
-
-                        childrowsDOM = document.createElement('div');
-                        childrowsDOM.innerHTML = childrowTable;
-
-                        console.log(" (+) --> CLICK DROPDOWN maintable: '" + maintable + "' / linktable: '" + linktable + "' / id: '" + jqtr.attr("id") + "'");
-
-                        linkTableDOM = document.createElement('div');
-                        linkTableDOM.innerHTML = '<table id="' + linkedtableID + '" class="linktable">' +
-                            '<thead></thead>' +
-                            '<tbody></tbody>' +
-                            '<tfoot></tfoot>' +
-                            '</table>';
-
                         // Open this row
                         dRow.child([linkTableDOM, childrowsDOM], "child").show();
                         makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
