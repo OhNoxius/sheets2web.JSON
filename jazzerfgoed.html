@@ -1,0 +1,71 @@
+<!--<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>jazzerfgoed</title>
+	<meta name="jazzerfgoed" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+	<!-- JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<!-- JQUERY UI -->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+	<!-- DATATABLES (fixedHeader) -->
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.8/datatables.min.css" />
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/fh-3.1.8/datatables.min.js"></script>
+
+	<!-- TOOLTIPSTER -->
+	<link rel="stylesheet" type="text/css" href="js/tooltipster/dist/css/tooltipster.bundle.min.css" />
+	<script type="text/javascript" src="js/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+
+	<!-- MOCKJAX?-->
+	<script src="jquery.mockjax.min.js"></script>
+
+	<!-- CUSTOM HELPER FUNCTIONS -->
+	<script src="js/helper functions/lastUpdated.js"></script>
+
+	<!-- CUSTOM -->
+	<!-- <link rel="stylesheet" href="css/grid-linkedsheets.css" /> -->
+	<link rel="stylesheet" href="css/sheets2web.css" />
+	<script src="js/sheets2web.js"></script>
+
+	<script>
+		//set source .xml filename
+		const datafile = getFilename("json");
+		//set header title to display above table
+		const headerTitle = "jazzerfgoed";
+		//set drive link to display next to header title
+		//let editLink = "https://docs.google.com/spreadsheets/d/1gTCRmbPqV-EL3g4KG7JdGnbVH5xIQvu0xcCTb7-JzKE/edit?usp=sharing";
+		//choose character that will be used to separate content inside cells
+		const delimiter = ";";
+		const typeheader = "type";
+	</script>
+</head>
+
+<body>
+	<header>
+		<div id="heading"></div>
+		<div id="status">
+			<!-- <label for="statusBar">Loading xml:</label>
+			<progress id="statusBar"></progress> -->
+		</div>
+		<div id="activity"></div>
+	</header>
+	<section id="database">
+		<table id="fixedtable" class="display" width="100%">
+			<thead id="fixedtheader"></thead>
+			<tbody id="fixedtbody"></tbody>
+			<tfoot id="fixedtfooter"></tfoot>
+		</table>
+	</section>
+</body>
+
+</html>

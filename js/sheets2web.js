@@ -70,7 +70,7 @@ function makeDataTable(table, jsondata, sheet) {
     //childRowsIndexMap.fill(0);
 
     let DTcolumn;
-    let columns = [], childRowsHeaders = [], mergecolumnHeaders = [];
+    let columns = [], childRowsHeaders = [], mergecolumns = [];
     let linktable;
 
     //detect mode
@@ -89,67 +89,7 @@ function makeDataTable(table, jsondata, sheet) {
     table.getElementsByTagName("tfoot")[0].prepend(footer_row);
 
     //FORMAT JSON DATA for use in DataTables
-    maintableKeys.forEach(function (key, index, arr) {
-
-        //1. datatables column element
-        //console.log( el.replace(/\./g, '\\\\.'));
-        let keyname = key.replace(/\./g, '\\\\.');
-        if (Array.isArray(jsondata[0][key])) keyname += "[; ]";
-        DTcolumn = {
-            //"title": el,
-            "data": keyname, // still doesn't work, should work...
-            "visible": true
-        };
-
-        //First element: id	(NOT ALWAYS?)					
-        if (Object.is(0, index) && maintable != LINKSHEET) {
-            DTcolumn.title = "";
-            DTcolumn.className = "IDcolumn";
-            DTcolumn.orderable = false;
-            DTcolumn.data = null;
-            DTcolumn.defaultContent = '';
-        }
-        //merger columns
-        else if (key.startsWith(".") || key.startsWith("-")) {
-            const prevkey = columns[columns.length - 1].data;
-            DTcolumn.className = "merger";
-            DTcolumn.visible = false;
-            columns[columns.length - 1].data = null;
-            // columns[columns.length-1].render = {
-            //     "_": prevkey,
-            //     "display": prevkey
-            //   };
-            columns[columns.length - 1].render = {
-                "_": prevkey,
-                "display": function (data, type, row) {
-                    return data[prevkey] + ' (' + data[keyname] + ')';
-                },
-                "filter": prevkey
-            };
-        }
-        //namespace column
-        else if (maintableKeys.includes(key.substr(0, key.indexOf(":")))) {
-            DTcolumn.className = "namespace";
-            DTcolumn.visible = false;
-            mergecolumnHeaders.push(key);
-        }
-        //child rows
-        else if (key.startsWith("CE_")) {
-            DTcolumn.className = "childrow";
-            DTcolumn.visible = false;
-            childRowsHeaders.push(key);
-        }
-        columns.push(DTcolumn);
-
-        //2. HTML
-        const th = document.createElement("th");
-        header_row.append(th);
-        th.append(document.createTextNode(key));
-    });
-
-    let fixedHeader, dom, order;
-    if (maintable == LINKSHEET) order = [[LINKSHEET_keys.indexOf(MAINSHEET), 'asc']];
-    else order = [[1, 'asc']];
+    let startIndex = 0;
     //EXTRA: linkcolumn
     if (linktable) {
         DTcolumn = {
@@ -161,10 +101,74 @@ function makeDataTable(table, jsondata, sheet) {
         };
         const th = document.createElement("th");
         header_row.prepend(th);
-        columns.unshift(DTcolumn);
-        //childRowsIndexes.forEach(x => x + 1);
-        order[0][0] += 1;
+        columns.push(DTcolumn);//columns.unshift(DTcolumn);
+        startIndex += 1;
     }
+    maintableKeys.forEach(function (key, index, arr) {
+        //1. datatables column element
+        let keyname = key.replace(/\./g, '\\\\.');
+        if (Array.isArray(jsondata[0][key])) keyname += "[; ]";
+
+        DTcolumn = {
+            //"title": el,
+            "data": keyname, // still doesn't work, should work...
+            "visible": true,
+            // "createdCell": function (td, cellData, rowData, rowIndex, colIndex) {
+            //     if (rowIndex < 2) console.log(colIndex + ": " + cellData);
+            // }
+        };
+        //First element: id	(NOT ALWAYS?)					
+        if (Object.is(0, index) && maintable != LINKSHEET) {
+            DTcolumn.title = "";
+            DTcolumn.className = "IDcolumn";
+            DTcolumn.orderable = false;
+            DTcolumn.data = null;
+            DTcolumn.defaultContent = '';
+            DTcolumn.cellIndex = startIndex + index;
+        }
+        //merger columns
+        else if (key.startsWith(".") || key.startsWith("-")) {
+            DTcolumn.className = "merger";
+            DTcolumn.visible = false;
+            const maincolumn = columns[columns.length - 1];
+            // columns[columns.length - 1].data = null;
+            // columns[columns.length - 1].render = {
+            //     "_": prevkey,
+            //     "display": function (data, type, row) {
+            //         return data[prevkey] + ' (' + data[keyname] + ')';
+            //     },
+            //     "filter": prevkey
+            // };
+            const merger = { "indexVis": maincolumn.cellIndex, "con": maincolumn.data, "cat": key };
+            mergecolumns.push(merger);
+        }
+        //namespace column
+        else if (maintableKeys.includes(key.substr(0, key.indexOf(":")))) {
+            const maincolumn = columns.find(x => x.data == key.substr(0, key.indexOf(":")));
+            DTcolumn.className = "namespace";
+            DTcolumn.visible = false;
+            const merger = { "indexVis": maincolumn.cellIndex, "con": maincolumn.data, "cat": key };
+            mergecolumns.push(merger);
+        }
+        //child rows
+        else if (key.startsWith("CE_")) {
+            DTcolumn.className = "childrow";
+            DTcolumn.visible = false;
+            childRowsHeaders.push(key);
+        }
+        else DTcolumn.cellIndex = startIndex + index;
+        columns.push(DTcolumn);
+
+        //2. HTML
+        const th = document.createElement("th");
+        header_row.append(th);
+        th.append(document.createTextNode(key));
+    });
+
+    let fixedHeader, dom, order;
+    if (maintable == LINKSHEET) order = [[LINKSHEET_keys.indexOf(MAINSHEET), 'asc']];
+    else order = [[startIndex + 1, 'asc']];
+
     //set some DT options    
     if (table.getAttribute("id") == "fixedtable") {
         fixedHeader = {
@@ -181,6 +185,8 @@ function makeDataTable(table, jsondata, sheet) {
         fixedHeader = false;
         dom = "lft";
     }
+
+    //console.log(columns);
 
     //DATATABLE
     let childrowsVIS = 0, linkedrowsVIS = 0;
@@ -201,9 +207,12 @@ function makeDataTable(table, jsondata, sheet) {
             //$('td:not(:eq(0))', row).css('min-width', '15ex');
 
             //CONCAT COLUMNS
-            // mergecolumnHeaders.forEach(function(h, i) {
-            //     cells[maintableKeys.indexOf(h)-1]
-            // });
+            mergecolumns.forEach(function (mergecolumn, i) {
+                const mergeDOM = document.createElement("p");
+                mergeDOM.classList.add("subdetails");
+                mergeDOM.innerText = data[mergecolumn.cat];
+                cells[mergecolumn.indexVis].append(mergeDOM);
+            });
 
 
             let linkedItems = [];
@@ -223,7 +232,7 @@ function makeDataTable(table, jsondata, sheet) {
 
             //COUNT CHILD ROWS
             //childrowsVIS = maintableKeys.map((x, i) => !!data[x] && childRowsIndexMap[i]).reduce((acc, value, index, array) => acc + value);
-            childrowsVis = childRowsHeaders.reduce((acc, value, index, array) => acc + data[value]?.length);
+            childrowsVis = childRowsHeaders.reduce((acc, value, index, array) => acc + data[value]?.length, "");
             linkedrowsVIS = linkedItems.length;
 
             if (childrowsVIS + linkedrowsVIS > 0) $(row).children("td.IDcolumn").addClass('details-control');
@@ -279,10 +288,10 @@ function makeDataTable(table, jsondata, sheet) {
             if (table.getAttribute("id") == "fixedtable") {
                 //COLUMN FILTERS
                 this.api().columns(':visible').every(function () {
-                    let column = this;
-                    let jqth = column.header();
-
+                    const column = this;
+                    const jqth = column.header();
                     const jqthisfilter = $(table).find('thead > tr.columnfilters > th').eq(column.index('visible'));
+
                     jqthisfilter.empty();
                     if (jqth.classList.contains("IDcolumn")) {
                         //$("table.mainsheet thead tr:eq(1) th").eq(column.index()).empty();
