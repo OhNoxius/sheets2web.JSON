@@ -99,32 +99,74 @@ function makeDataTable(table, jsondata, sheet) {
             "DTcolumn.data": null,
             "defaultContent": ''
         };
-        const th = document.createElement("th");
-        header_row.prepend(th);
+        header_row.prepend(document.createElement("th"));
         columns.push(DTcolumn);//columns.unshift(DTcolumn);
         startIndex += 1;
     }
     maintableKeys.forEach(function (key, index, arr) {
         //1. datatables column element
-        let keyname = key.replace(/\./g, '\\\\.');
-        if (Array.isArray(jsondata[0][key])) keyname += "[; ]";
-
+        const keyname = key.replace(/\./g, '\\\\.');
         DTcolumn = {
             //"title": el,
-            "data": keyname, // still doesn't work, should work...
+            "data": key, // still doesn't work, should work...
             "visible": true,
-            // "createdCell": function (td, cellData, rowData, rowIndex, colIndex) {
-            //     if (rowIndex < 2) console.log(colIndex + ": " + cellData);
-            // }
+            "createdCell": function (td, cellData, rowData, rowIndex, colIndex) {
+                $(td).find('.linktip').tooltipster({
+                    functionBefore: function (instance, helper) {
+                        const el = helper.origin;
+                        const $origin = $(helper.origin);
+                        // we set a variable so the data is only loaded once via Ajax, not every time the tooltip opens
+                        if ($origin.data('loaded') !== true) {
+                            const query = jason[key]?.filter(x => x[Object.keys(jason[key][0])[0]] == el.textContent);
+                            if (query) {
+                                instance.content(formatTooltip(query[0]));
+                            }
+                            $origin.data('loaded', true); //maybe makes the tooltips not work after searching and ordering?
+                        }
+                    },
+                    interactive: true
+                });
+            }
         };
-        //First element: id	(NOT ALWAYS?)					
-        if (Object.is(0, index) && maintable != LINKSHEET) {
-            DTcolumn.title = "";
-            DTcolumn.className = "IDcolumn";
-            DTcolumn.orderable = false;
-            DTcolumn.data = null;
-            DTcolumn.defaultContent = '';
-            DTcolumn.cellIndex = startIndex + index;
+        if (Array.isArray(jsondata[0][key])) {
+            DTcolumn.render = function (data, type, row, meta) {
+                if (data) {
+                    let result = "";
+                    let i = 0, len = data.length;
+                    while (i < len) {
+                        result += '<span class="linktip">' + data[i] + '</span>' + "; "; //title="' + jason[key]?.filter(x => x[Object.keys(jason[key][0])[0]] == data[i]) + '"
+                        i++
+                    }
+                    return result;
+                }
+                else return "";
+            }
+        }
+        else DTcolumn.render = function (data, type, row, meta) {
+            if (data) return '<span class="linktip">' + data + '</span>'; //title="' + jason[key]?.filter(x => x[Object.keys(jason[key][0])[0]] == data) + '"
+            else return "";
+        };
+        //1st element					
+        if (Object.is(0, index)) { //remove linkcolumn
+            if (maintable == LINKSHEET) {
+                columns[columns.length - 1].title = "";
+                columns[columns.length - 1].className = "IDcolumn";
+                columns[columns.length - 1].data = null;
+                columns[columns.length - 1].orderable = false;
+            }
+            else { //separate ID column
+                DTcolumn.title = "";
+                DTcolumn.className = "IDcolumn";
+                DTcolumn.defaultContent = '';
+                DTcolumn.render = function (data, type, row, meta) {
+                    return null;
+                };
+                DTcolumn.createdCell = function (cell, cellData, rowData, rowIndex, colIndex) {
+                    cell.setAttribute("title", cellData);
+                    $(cell).tooltipster();
+                };
+                DTcolumn.cellIndex = startIndex + index;
+            }
         }
         //merger columns
         else if (key.startsWith(".") || key.startsWith("-")) {
@@ -143,7 +185,7 @@ function makeDataTable(table, jsondata, sheet) {
             mergecolumns.push(merger);
         }
         //namespace column
-        else if (maintableKeys.includes(key.substr(0, key.indexOf(":")))) {
+        else if (arr.includes(key.substr(0, key.indexOf(":")))) {
             const maincolumn = columns.find(x => x.data == key.substr(0, key.indexOf(":")));
             DTcolumn.className = "namespace";
             DTcolumn.visible = false;
@@ -186,7 +228,7 @@ function makeDataTable(table, jsondata, sheet) {
         dom = "lft";
     }
 
-    //console.log(columns);
+    console.log(columns);
 
     //DATATABLE    
     const dTable = $(table).DataTable({
@@ -202,18 +244,23 @@ function makeDataTable(table, jsondata, sheet) {
         "deferRender": true,
         "columns": columns,
         "createdRow": function (row, data, dataIndex, cells) {
+            let linkedItems = [];
 
             //CONCAT COLUMNS
             mergecolumns.forEach(function (mergecolumn, i) {
-                const mergeDOM = document.createElement("p");
-                mergeDOM.classList.add("subdetails");
-                mergeDOM.innerText = data[mergecolumn.cat];
-                cells[mergecolumn.indexVis].append(mergeDOM);
+                if (data[mergecolumn.cat]) {
+                    const mergeDOM = document.createElement("p");
+                    mergeDOM.classList.add("subdetails");
+                    mergeDOM.innerText = data[mergecolumn.cat];
+                    cells[mergecolumn.indexVis].append(mergeDOM);
+                }
             });
 
-            let linkedItems = [];
             //html attributes
+            //ROW
             const rowid = maintable.replace(/\s+/g, '') + ":" + dataIndex;
+            row.setAttribute("id", rowid);
+            //FILL IN SOME LINK VALUES
             if (maintable == LINKSHEET) {
                 row.setAttribute("summary", data[MAINSHEET] + LINKSHEET);
                 linkedItems = jason[MAINSHEET].filter(x => data[MAINSHEET]?.split("\n").includes(x[MAINSHEET_keys[0]]));
@@ -222,29 +269,12 @@ function makeDataTable(table, jsondata, sheet) {
                 row.setAttribute("summary", data[maintableKeys[0]]);
                 linkedItems = jason[linktable].filter(x => x[maintable]?.includes(data[maintableKeys[0]]));
             }
-            row.setAttribute("id", rowid);
 
             const childrowsVis = childRowsHeaders.reduce((acc, value, index, array) => acc + data[value]?.length, "");
 
             if (childrowsVis > 0 || linkedItems.length > 0) {
                 $(row).children("td.IDcolumn").addClass('details-control');
-                let linkTableDOM = "", childrowsDOM = "";
-                if (childrowsVis > 0) {
-                    let details = "", childrowTable = "";
-                    childRowsHeaders.forEach(x => details += formatChildRows(x, data[x]));
-                    if (details != "") childrowTable = '<table class="childrowtable">' + details + '</table>';
-                    childrowsDOM = document.createElement('div');
-                    childrowsDOM.innerHTML = childrowTable;
-                }
-                if (linkedItems.length > 0) {
-                    $(row).children("td.linkcolumn").text(linkedItems.length);
-                    linkTableDOM = document.createElement('div');
-                    linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable">' +
-                        '<thead></thead>' +
-                        '<tbody></tbody>' +
-                        '<tfoot></tfoot>' +
-                        '</table>';
-                }
+                if (linkedItems.length > 0) $(row).children("td.linkcolumn").text(linkedItems.length);
                 $(row).children("td.IDcolumn").on('click', function () {
                     const jqtr = $(this).closest('tr');
                     const dRow = dTable.row(jqtr);
@@ -257,6 +287,22 @@ function makeDataTable(table, jsondata, sheet) {
                     }
                     else {
                         // Open this row
+                        let linkTableDOM = "", childrowsDOM = "";
+                        if (childrowsVis > 0) {
+                            let details = "", childrowTable = "";
+                            childRowsHeaders.forEach(x => details += formatChildRows(x, data[x]));
+                            if (details != "") childrowTable = '<table class="childrowtable">' + details + '</table>';
+                            childrowsDOM = document.createElement('div');
+                            childrowsDOM.innerHTML = childrowTable;
+                        }
+                        if (linkedItems.length > 0) {
+                            linkTableDOM = document.createElement('div');
+                            linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable">' +
+                                '<thead></thead>' +
+                                '<tbody></tbody>' +
+                                '<tfoot></tfoot>' +
+                                '</table>';
+                        }
                         dRow.child([linkTableDOM, childrowsDOM], "child").show();
                         makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
                         jqtr.addClass('shown');
@@ -265,6 +311,8 @@ function makeDataTable(table, jsondata, sheet) {
             }
         },
         "initComplete": function () {
+            //FIXED TOOLTIPS on ID column            
+
             //create tooltips
             //createTooltips(table);
 
@@ -279,21 +327,21 @@ function makeDataTable(table, jsondata, sheet) {
                     if (jqth.classList.contains("IDcolumn")) {
                         //$("table.mainsheet thead tr:eq(1) th").eq(column.index()).empty();
                     }
-                    else if (jqth.classList.contains("linkedcolumn")) {
-                        linkedsheetTypes.forEach(function (value, index, array) {
-                            $('<div class="nowrap"><input type="checkbox" id="' + jqth.innerText + value + '" name="' + jqth.innerText + '" value="' + value + '" class="headercheckbox" />' +
-                                '<label for="' + jqth.innerText + value + '">' + value + '</label></div>')
-                                .appendTo(jqthisfilter);
-                        });
-                        $('input:checkbox').on('change', function (e) {
-                            //build a regex filter string with an or(|) condition
-                            let checkboxes = $('input:checkbox:checked').map(function () {
-                                return this.value;
-                            }).get().join('|');
-                            //filter in column 1, with an regex, no smart filtering, not case sensitive
-                            column.search(checkboxes, true, false, false).draw(false);
-                        });
-                        dropdowns.set(column.index(), linkedsheetTypes);
+                    else if (jqth.classList.contains("linkcolumn")) {
+                        // linkedsheetTypes.forEach(function (value, index, array) {
+                        //     $('<div class="nowrap"><input type="checkbox" id="' + jqth.innerText + value + '" name="' + jqth.innerText + '" value="' + value + '" class="headercheckbox" />' +
+                        //         '<label for="' + jqth.innerText + value + '">' + value + '</label></div>')
+                        //         .appendTo(jqthisfilter);
+                        // });
+                        // $('input:checkbox').on('change', function (e) {
+                        //     //build a regex filter string with an or(|) condition
+                        //     let checkboxes = $('input:checkbox:checked').map(function () {
+                        //         return this.value;
+                        //     }).get().join('|');
+                        //     //filter in column 1, with an regex, no smart filtering, not case sensitive
+                        //     column.search(checkboxes, true, false, false).draw(false);
+                        // });
+                        // dropdowns.set(column.index(), linkedsheetTypes);
                     }
                     else {
                         let input = $('<input type="search" size="10" autocomplete="off" list="' + jqth.innerText + '-list" id="' + jqth.innerText + '-input" name="' + jqth.innerText + '" class="headersearch" />'
@@ -360,6 +408,7 @@ function createNavFooter(sheets) {
     sheets.forEach(function (sheet) {
         if (sheet == LINKSHEET || MAINSHEET_keys.includes(sheet) || LINKSHEET_keys.includes(sheet)) {
             const tab_li = document.createElement("li");
+            tab_li.setAttribute("class", "menu tab");
             tabs_ul.append(tab_li);
             const tab_a = document.createElement("a");
             tab_a.setAttribute("id", "btn-" + sheet);
@@ -367,7 +416,6 @@ function createNavFooter(sheets) {
             tab_a.setAttribute("href", "#" + sheet);
             tab_a.setAttribute("sheet", sheet);
             tab_a.addEventListener('click', function () {
-                console.log(sheet);
                 $(this).addClass('active');
                 $(this).siblings().removeClass('active');
 
@@ -382,7 +430,9 @@ function createNavFooter(sheets) {
 
                 dfixedtable = makeDataTable(fixedtable, jason[sheet], sheet);
             }, false);
-            tab_a.innerText = sheet;
+            if (MAINSHEET_keys.includes(sheet)) tab_a.innerText = MAINSHEET + ":" + sheet;
+            else if (LINKSHEET_keys.includes(sheet)) tab_a.innerText = LINKSHEET + ":" + sheet;
+            else tab_a.innerText = sheet;
             tab_li.append(tab_a);
         }
     });
@@ -390,13 +440,26 @@ function createNavFooter(sheets) {
     return navfooter;
 }
 
-function formatTooltip(name, value) {
-    return ("<li style='list-style-type:none;'><span class='inline description'>" + name + ": </span>" + createHyperlinks(value) + "</li>")
+function formatTooltip(object) {
+    let result = [];
+    // for (let entry of Object.entries(object)) {
+    //     if (entry[1]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + entry[0] + ": </span>" + createHyperlinks(entry[1]) + "</li>"));
+    // }
+    //option 1
+    // Object.getOwnPropertyNames(object).forEach(key => {
+    //     if (object[key]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + key + ": </span>" + createHyperlinks(object[key]) + "</li>"));
+    // });
+    // return result.slice(1);
+    //option 2
+    const props = Object.getOwnPropertyNames(object);
+    for (let i = 1; i < props.length; i++) {
+        if (object[props[i]]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + props[i] + ": </span>" + createHyperlinks(object[props[i]].toString()) + "</li>"));
+    }
+    return result;
 }
-
+const exp_match = /(\b(https?|):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig; //find https?
 function createHyperlinks(content) {
-    // OPTION2: SLIM ALTERNATIEF, mr voorlopig nog volledig url weergave, en $ teken loopt mis
-    let exp_match = /(\b(https?|):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig; //find https?
+    // OPTION2: SLIM ALTERNATIEF, mr voorlopig nog volledig url weergave, en $ teken loopt mis    
     let element_content = content.replace(exp_match, "<a class='url' target='_blank' title='$1' href='$1'>$1</a>");
     let new_exp_match = /(^|[^\/])(www\.[\S]+(\b|$))/gim; //find www?
     let new_content = element_content.replace(new_exp_match, '$1<a class="url" title="http://$2" target="_blank" href="http://$2">$2</a>');

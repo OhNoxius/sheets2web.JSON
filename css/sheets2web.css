@@ -47,11 +47,11 @@ section#database {
 
 
 
-ul{
+ul.tabs{
     margin: 0;
     padding: 0;
 }
-li{
+li.tab{
 	position: relative;
 	list-style: none;
 	float: left;
