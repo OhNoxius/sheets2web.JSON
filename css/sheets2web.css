@@ -69,6 +69,11 @@ a.tab{
 th, td {
     white-space: pre-wrap;
 }
+td.child {
+    padding: 0px 2px 4px 20px;
+    background-color: #ededed;
+}
+
 
 input.headersearch {
     display:table-cell;

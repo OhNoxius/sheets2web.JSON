@@ -7,6 +7,8 @@ let jason;
 let SHEETS, MAINSHEET, LINKSHEET;
 let MAINSHEET_keys = [], LINKSHEET_keys = [];
 
+const delims = /([:+\r\n]+)|((?<!\s)\()/g
+
 document.addEventListener('DOMContentLoaded', function () {
     mockjax(datafile);
     fixedtable = document.getElementById("fixedtable");
@@ -106,6 +108,7 @@ function makeDataTable(table, jsondata, sheet) {
     maintableKeys.forEach(function (key, index, arr) {
         //1. datatables column element
         const keyname = key.replace(/\./g, '\\\\.');
+        //BASIC TEMPLATE
         DTcolumn = {
             //"title": el,
             "data": key, // still doesn't work, should work...
@@ -134,6 +137,7 @@ function makeDataTable(table, jsondata, sheet) {
                     let result = "";
                     let i = 0, len = data.length;
                     while (i < len) {
+                        //SPLIT UP MORE? ":" and "\n" and brackets without space...
                         result += '<span class="linktip">' + data[i] + '</span>' + "; "; //title="' + jason[key]?.filter(x => x[Object.keys(jason[key][0])[0]] == data[i]) + '"
                         i++
                     }
@@ -355,7 +359,6 @@ function makeDataTable(table, jsondata, sheet) {
                             });
 
                         let ARR = column.data().unique().toArray();
-                        const delims = /([:+\r\n]+)|((?<!\s)\()/g
                         let temp = ARR.join(delimiter).replace(delims, ";");
                         ARR = temp.split(delimiter);
                         ARR.forEach((o, i, a) => a[i] = a[i].trim());
@@ -430,9 +433,10 @@ function createNavFooter(sheets) {
 
                 dfixedtable = makeDataTable(fixedtable, jason[sheet], sheet);
             }, false);
-            if (MAINSHEET_keys.includes(sheet)) tab_a.innerText = MAINSHEET + ":" + sheet;
+            if (sheet == MAINSHEET || sheet == LINKSHEET) tab_a.innerText = sheet;
+            else if (MAINSHEET_keys.includes(sheet)) tab_a.innerText = MAINSHEET + ":" + sheet;
             else if (LINKSHEET_keys.includes(sheet)) tab_a.innerText = LINKSHEET + ":" + sheet;
-            else tab_a.innerText = sheet;
+        
             tab_li.append(tab_a);
         }
     });
