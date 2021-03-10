@@ -66,7 +66,7 @@ function makeDataTable(table, jsondata, sheet) {
     let DTcolumn;
     let columns = [], childRowsHeaders = [], mergecolumns = [];
     let linktable;
-    let linktable_types = new Set();
+
 
     //detect mode
     if (sheet == LINKSHEET) linktable = MAINSHEET;
@@ -76,6 +76,11 @@ function makeDataTable(table, jsondata, sheet) {
 
     //LOG    
     console.log("create new DataTable from table#id = '" + table.getAttribute("id") + "'");
+
+    let linktable_types = new Set();
+    jason[linktable].forEach(x => linktable_types.add(x[typeheader]));
+    linktable_types.delete(null);
+    linktable_types.delete(undefined);
 
     //prepare HTML
     const header_row = document.createElement("tr");
@@ -207,7 +212,7 @@ function makeDataTable(table, jsondata, sheet) {
         //2. HTML
         const th = document.createElement("th");
         th.append(document.createTextNode(key));
-        header_row.append(th);        
+        header_row.append(th);
     });
 
     let fixedHeader, dom, order;
@@ -277,7 +282,18 @@ function makeDataTable(table, jsondata, sheet) {
 
             if (childrowsVis > 0 || linkedItems.length > 0) {
                 $(row).children("td.IDcolumn").addClass('details-control');
-                if (linkedItems.length > 0) $(row).children("td.linkcolumn").text(linkedItems.length);
+                if (linkedItems.length > 0) {
+                    if (linktable_types.size > 0) {
+                        const cell = row.getElementsByClassName("linkcolumn")[0];
+                        let innerhtml = "";
+                        linktable_types.forEach(type => {
+                            const filteredtype = linkedItems.filter(l => l[typeheader] == type);
+                            if (filteredtype.length > 0) innerhtml += '<div class="nowrap typeicon '+type+'">' + type + ':<span class="cssnumbers">' + filteredtype.length + '</span></div>';
+                        });
+                        cell.innerHTML = innerhtml;
+                    }
+                    else $(row).children("td.linkcolumn").text(linkedItems.length);
+                }
                 $(row).children("td.IDcolumn").on('click', function () {
                     const jqtr = $(this).closest('tr');
                     const dRow = dTable.row(jqtr);
@@ -331,9 +347,7 @@ function makeDataTable(table, jsondata, sheet) {
                         //$("table.mainsheet thead tr:eq(1) th").eq(column.index()).empty();
                     }
                     else if (jqth.classList.contains("linkcolumn")) {
-                        jason[linktable].forEach(x => linktable_types.add(x[typeheader]));
-                        linktable_types.delete(null);
-                        linktable_types.delete(undefined);
+
                         if (linktable_types.size == 0) linktable_types.add("");
                         //console.log(linktable_types);
                         linktable_types.forEach(function (value, index, array) {
@@ -361,12 +375,12 @@ function makeDataTable(table, jsondata, sheet) {
                                 }
                             });
 
-                        const DTcolumnArray = column.data().unique().toArray();                        
+                        const DTcolumnArray = column.data().unique().toArray();
                         //console.log(DTcolumnArray);
                         let ARR;
                         if (Array.isArray(DTcolumnArray[0])) ARR = DTcolumnArray.flat().sort();
                         else ARR = DTcolumnArray.sort();
-                        
+
                         //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
                         ARR = ARR.join(delimiter).replace(delims, delimiter).split(delimiter);
                         let SET = new Set();
