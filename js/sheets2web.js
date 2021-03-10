@@ -5,9 +5,11 @@ let fixedfooter_row;
 
 let jason;
 let SHEETS, MAINSHEET, LINKSHEET;
-let MAINSHEET_keys = [], LINKSHEET_keys = [];
+let MAINSHEET_keys = [], LINKSHEET_keys = []
+let LINKSHEET_types = new Set();
 
-const delims = /([:+\r\n]+)|((?<!\s)\()/g
+const urldetect = ["www.", "://"];
+const delims = /([:\r\n]+)|((?<!\s)\()/g///([:+\r\n]+)|((?<!\s)\()/g
 
 document.addEventListener('DOMContentLoaded', function () {
     mockjax(datafile);
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
             //HEADING
             const heading = document.createElement("h1");
             const heading_a = document.createElement("a");
-            if (headerTitle) heading_a.innerText = headerTitle;
+            if (headertitle) heading_a.innerText = headertitle;
             else heading_a.innerText = datafile;
             heading_a.setAttribute("href", "");
             heading_a.setAttribute("class", "heading");
@@ -40,26 +42,18 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("heading").append(heading);
             //NAV
             navfooter = createNavFooter(SHEETS);
-            //document.getElementById("fixedtfooter").append(navfooter);
             //Table Footer
             fixedfooter_row = document.createElement("tr");
             fixedfooter_row.setAttribute('id', "fixedfooterrow");
             const th = document.createElement("th");
             th.setAttribute('id', "LOOKAHERE");
-            //th.setAttribute('colspan', columns.length);
-            //const thtext = document.createTextNode("filter");
-            //th.append(thtext);
             th.append(navfooter);
             fixedfooter_row.append(th);
             document.getElementById("fixedtfooter").append(fixedfooter_row);
 
             const url = window.location.href.substr(window.location.href.indexOf("#") + 1);
-            if (window.location.href.indexOf("#") > 0) {
-                dfixedtable = makeDataTable(fixedtable, jason[url], url);
-            }
-            else {
-                dfixedtable = makeDataTable(fixedtable, jason[MAINSHEET], MAINSHEET);
-            }
+            if (window.location.href.indexOf("#") > 0) dfixedtable = makeDataTable(fixedtable, jason[url], url);
+            else dfixedtable = makeDataTable(fixedtable, jason[MAINSHEET], MAINSHEET);
         }
     });
 });
@@ -68,12 +62,11 @@ function makeDataTable(table, jsondata, sheet) {
 
     const maintableKeys = Object.keys(jsondata[0]);
     const maintable = sheet;
-    //const childRowsIndexMap = new Array(maintableKeys.length);
-    //childRowsIndexMap.fill(0);
 
     let DTcolumn;
     let columns = [], childRowsHeaders = [], mergecolumns = [];
     let linktable;
+    let linktable_types = new Set();
 
     //detect mode
     if (sheet == LINKSHEET) linktable = MAINSHEET;
@@ -91,65 +84,75 @@ function makeDataTable(table, jsondata, sheet) {
     table.getElementsByTagName("tfoot")[0].prepend(footer_row);
 
     //FORMAT JSON DATA for use in DataTables
-    let startIndex = 0;
+    let startIndex = 0, visIndex = 0;;
     //EXTRA: linkcolumn
     if (linktable) {
         DTcolumn = {
             "title": linktable,
             "className": 'linkcolumn',
             "orderable": false,
-            "DTcolumn.data": null,
-            "defaultContent": ''
+            "defaultContent": '',
+            "data": null
         };
         header_row.prepend(document.createElement("th"));
         columns.push(DTcolumn);//columns.unshift(DTcolumn);
         startIndex += 1;
+        visIndex += 1;
     }
     maintableKeys.forEach(function (key, index, arr) {
         //1. datatables column element
-        const keyname = key.replace(/\./g, '\\\\.');
+        let keyname = key.replace(/\./g, '\\\\.');
+        //if (Array.isArray(jsondata[0][key])) keyname += "[; ]"; //BREAKS .render for arrays !!
         //BASIC TEMPLATE
         DTcolumn = {
             //"title": el,
-            "data": key, // still doesn't work, should work...
-            "visible": true,
+            "data": keyname,
+            "defaultContent": '',
             "createdCell": function (td, cellData, rowData, rowIndex, colIndex) {
                 $(td).find('.linktip').tooltipster({
                     functionBefore: function (instance, helper) {
                         const el = helper.origin;
                         const $origin = $(helper.origin);
-                        // we set a variable so the data is only loaded once via Ajax, not every time the tooltip opens
-                        if ($origin.data('loaded') !== true) {
-                            const query = jason[key]?.filter(x => x[Object.keys(jason[key][0])[0]] == el.textContent);
-                            if (query) {
-                                instance.content(formatTooltip(query[0]));
-                            }
-                            $origin.data('loaded', true); //maybe makes the tooltips not work after searching and ordering?
-                        }
+                        //if ($origin.data('loaded') !== true) {
+                        const query = jason[key]?.filter(x => x[Object.keys(jason[key][0])[0]] == el.textContent);
+                        if (query) instance.content(formatTooltip(query[0]));
+                        //$origin.data('loaded', true); //maybe makes the tooltips not work after searching and ordering?
+                        //}
                     },
                     interactive: true
                 });
             }
         };
-        if (Array.isArray(jsondata[0][key])) {
-            DTcolumn.render = function (data, type, row, meta) {
-                if (data) {
+        //create <span> only columns which have separte sheet
+        if (SHEETS.includes(key)) {
+            if (Array.isArray(jsondata[0][key])) {
+                DTcolumn.render = function (data, type, row, meta) {
                     let result = "";
                     let i = 0, len = data.length;
+                    //SPLIT UP MORE? ":" and "\n" and brackets without space...
                     while (i < len) {
-                        //SPLIT UP MORE? ":" and "\n" and brackets without space...
-                        result += '<span class="linktip">' + data[i] + '</span>' + "; "; //title="' + jason[key]?.filter(x => x[Object.keys(jason[key][0])[0]] == data[i]) + '"
-                        i++
+                        result += '<span class="linktip">' + data[i] + '</span>' + "; ";
+                        i++;
                     }
-                    return result;
+                    return result
                 }
-                else return "";
+            }
+            else DTcolumn.render = function (data, type, row, meta) {
+                if (data) return '<span class="linktip">' + data + '</span>';
             }
         }
-        else DTcolumn.render = function (data, type, row, meta) {
-            if (data) return '<span class="linktip">' + data + '</span>'; //title="' + jason[key]?.filter(x => x[Object.keys(jason[key][0])[0]] == data) + '"
-            else return "";
-        };
+        else if (jsondata.filter(x => typeof x[key] === 'string').filter(x => ["www.", "://"].some(v => x[key].includes(v))).length > 0) {
+            console.log("url in " + key);
+            DTcolumn.render = function (data, type, row, meta) {
+                if (data) {
+                    if (typeof data === 'string') {
+                        if (["www.", "://"].some(v => data.includes(v))) return createShortHyperlinks(data)
+                        else return data
+                    }
+                    else return data
+                }
+            }
+        }
         //1st element					
         if (Object.is(0, index)) { //remove linkcolumn
             if (maintable == LINKSHEET) {
@@ -170,6 +173,7 @@ function makeDataTable(table, jsondata, sheet) {
                     $(cell).tooltipster();
                 };
                 DTcolumn.cellIndex = startIndex + index;
+                visIndex += 1;
             }
         }
         //merger columns
@@ -177,15 +181,7 @@ function makeDataTable(table, jsondata, sheet) {
             DTcolumn.className = "merger";
             DTcolumn.visible = false;
             const maincolumn = columns[columns.length - 1];
-            // columns[columns.length - 1].data = null;
-            // columns[columns.length - 1].render = {
-            //     "_": prevkey,
-            //     "display": function (data, type, row) {
-            //         return data[prevkey] + ' (' + data[keyname] + ')';
-            //     },
-            //     "filter": prevkey
-            // };
-            const merger = { "indexVis": maincolumn.cellIndex, "con": maincolumn.data, "cat": key };
+            const merger = { "indexVis": maincolumn.cellIndex, "con": maincolumn.data, "cat": key, "type": key[0] };
             mergecolumns.push(merger);
         }
         //namespace column
@@ -193,7 +189,7 @@ function makeDataTable(table, jsondata, sheet) {
             const maincolumn = columns.find(x => x.data == key.substr(0, key.indexOf(":")));
             DTcolumn.className = "namespace";
             DTcolumn.visible = false;
-            const merger = { "indexVis": maincolumn.cellIndex, "con": maincolumn.data, "cat": key };
+            const merger = { "indexVis": maincolumn.cellIndex, "con": maincolumn.data, "cat": key, "type": "namespace" };
             mergecolumns.push(merger);
         }
         //child rows
@@ -202,13 +198,16 @@ function makeDataTable(table, jsondata, sheet) {
             DTcolumn.visible = false;
             childRowsHeaders.push(key);
         }
-        else DTcolumn.cellIndex = startIndex + index;
+        else {
+            DTcolumn.cellIndex = startIndex + index;
+            visIndex += 1;
+        }
         columns.push(DTcolumn);
 
         //2. HTML
         const th = document.createElement("th");
-        header_row.append(th);
         th.append(document.createTextNode(key));
+        header_row.append(th);        
     });
 
     let fixedHeader, dom, order;
@@ -232,7 +231,8 @@ function makeDataTable(table, jsondata, sheet) {
         dom = "lft";
     }
 
-    console.log(columns);
+    //console.log(columns);
+    if (visIndex > 8) fixedtable.classList.add("compact");
 
     //DATATABLE    
     const dTable = $(table).DataTable({
@@ -243,8 +243,6 @@ function makeDataTable(table, jsondata, sheet) {
         //"autoWidth": false,
         "order": order,
         "orderCellsTop": true,
-        //"order-column": true,
-        //"orderClasses": false,
         "deferRender": true,
         "columns": columns,
         "createdRow": function (row, data, dataIndex, cells) {
@@ -255,7 +253,8 @@ function makeDataTable(table, jsondata, sheet) {
                 if (data[mergecolumn.cat]) {
                     const mergeDOM = document.createElement("p");
                     mergeDOM.classList.add("subdetails");
-                    mergeDOM.innerText = data[mergecolumn.cat];
+                    if (["www.", "://"].some(v => data[mergecolumn.cat].toString().includes(v))) mergeDOM.innerHTML = createShortHyperlinks(data[mergecolumn.cat]);
+                    else mergeDOM.innerText = data[mergecolumn.cat];
                     cells[mergecolumn.indexVis].append(mergeDOM);
                 }
             });
@@ -332,20 +331,24 @@ function makeDataTable(table, jsondata, sheet) {
                         //$("table.mainsheet thead tr:eq(1) th").eq(column.index()).empty();
                     }
                     else if (jqth.classList.contains("linkcolumn")) {
-                        // linkedsheetTypes.forEach(function (value, index, array) {
-                        //     $('<div class="nowrap"><input type="checkbox" id="' + jqth.innerText + value + '" name="' + jqth.innerText + '" value="' + value + '" class="headercheckbox" />' +
-                        //         '<label for="' + jqth.innerText + value + '">' + value + '</label></div>')
-                        //         .appendTo(jqthisfilter);
-                        // });
-                        // $('input:checkbox').on('change', function (e) {
-                        //     //build a regex filter string with an or(|) condition
-                        //     let checkboxes = $('input:checkbox:checked').map(function () {
-                        //         return this.value;
-                        //     }).get().join('|');
-                        //     //filter in column 1, with an regex, no smart filtering, not case sensitive
-                        //     column.search(checkboxes, true, false, false).draw(false);
-                        // });
-                        // dropdowns.set(column.index(), linkedsheetTypes);
+                        jason[linktable].forEach(x => linktable_types.add(x[typeheader]));
+                        linktable_types.delete(null);
+                        linktable_types.delete(undefined);
+                        if (linktable_types.size == 0) linktable_types.add("");
+                        //console.log(linktable_types);
+                        linktable_types.forEach(function (value, index, array) {
+                            $('<div class="nowrap"><input type="checkbox" id="' + jqth.innerText + value + '" name="' + jqth.innerText + '" value="' + value + '" class="headercheckbox" />' +
+                                '<label for="' + jqth.innerText + value + '">' + value + '</label></div>')
+                                .appendTo(jqthisfilter);
+                        });
+                        jqthisfilter.find('input:checkbox').on('change', function (e) {
+                            //build a regex filter string with an or(|) condition
+                            let checkboxes = jqthisfilter.find('input:checkbox:checked').map(function () {
+                                return this.value;
+                            }).get().join('|');
+                            //filter in column 1, with an regex, no smart filtering, not case sensitive
+                            column.search(checkboxes, true, false, false).draw(false);
+                        });
                     }
                     else {
                         let input = $('<input type="search" size="10" autocomplete="off" list="' + jqth.innerText + '-list" id="' + jqth.innerText + '-input" name="' + jqth.innerText + '" class="headersearch" />'
@@ -358,20 +361,24 @@ function makeDataTable(table, jsondata, sheet) {
                                 }
                             });
 
-                        let ARR = column.data().unique().toArray();
-                        let temp = ARR.join(delimiter).replace(delims, ";");
-                        ARR = temp.split(delimiter);
-                        ARR.forEach((o, i, a) => a[i] = a[i].trim());
-                        let SET = new Set(ARR);
+                        const DTcolumnArray = column.data().unique().toArray();                        
+                        //console.log(DTcolumnArray);
+                        let ARR;
+                        if (Array.isArray(DTcolumnArray[0])) ARR = DTcolumnArray.flat().sort();
+                        else ARR = DTcolumnArray.sort();
+                        
+                        //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
+                        ARR = ARR.join(delimiter).replace(delims, delimiter).split(delimiter);
+                        let SET = new Set();
+                        ARR.forEach((o, i, a) => SET.add(a[i].trim()));
                         ARR = [...SET].sort();
+                        //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
 
                         //OPTION 1: HTML5 datalists
-                        //column.data().unique().sort().each(function (d, j) {
                         let datalist = $('<datalist id="' + jqth.innerText + '-list"></datalist>').insertAfter($(input));
                         ARR.forEach(function (val) {
                             datalist.append('<option value="' + val + '" />')
                         });
-                        //OPTION 2: jQuery UI autocomplete (see xml code)
                     }
                 });
             }
@@ -382,7 +389,6 @@ function makeDataTable(table, jsondata, sheet) {
 }
 
 function formatChildRows(h, d) {
-    // `d` is the original data object for the row
     if (d) {
         return '<tr class="detailsRow">' +
             '<td class="detailsHeader">' + h.substr(3) + ':</td>' +
@@ -436,7 +442,7 @@ function createNavFooter(sheets) {
             if (sheet == MAINSHEET || sheet == LINKSHEET) tab_a.innerText = sheet;
             else if (MAINSHEET_keys.includes(sheet)) tab_a.innerText = MAINSHEET + ":" + sheet;
             else if (LINKSHEET_keys.includes(sheet)) tab_a.innerText = LINKSHEET + ":" + sheet;
-        
+
             tab_li.append(tab_a);
         }
     });
@@ -446,15 +452,6 @@ function createNavFooter(sheets) {
 
 function formatTooltip(object) {
     let result = [];
-    // for (let entry of Object.entries(object)) {
-    //     if (entry[1]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + entry[0] + ": </span>" + createHyperlinks(entry[1]) + "</li>"));
-    // }
-    //option 1
-    // Object.getOwnPropertyNames(object).forEach(key => {
-    //     if (object[key]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + key + ": </span>" + createHyperlinks(object[key]) + "</li>"));
-    // });
-    // return result.slice(1);
-    //option 2
     const props = Object.getOwnPropertyNames(object);
     for (let i = 1; i < props.length; i++) {
         if (object[props[i]]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + props[i] + ": </span>" + createHyperlinks(object[props[i]].toString()) + "</li>"));
@@ -472,11 +469,9 @@ function createHyperlinks(content) {
 
 function createShortHyperlinks(content) {
     // OPTION 1
-    let secondslash, thirdslash, shortURL;
-    //cellval = $(this).text(); //MOET ENKEL TEKST TOT EINDE LIJN ZIJN
-    cellval = content;
-    secondslash = cellval.indexOf('/', cellval.indexOf('/') + 1);
-    thirdslash = cellval.indexOf('/', secondslash + 1);
+    const cellval = content;
+    const secondslash = cellval.indexOf('/', cellval.indexOf('/') + 1);
+    const thirdslash = cellval.indexOf('/', secondslash + 1);
     if (cellval.slice(secondslash + 1, secondslash + 4) == 'www') shortURL = cellval.slice(secondslash + 5, thirdslash);
     else shortURL = cellval.slice(secondslash + 1, thirdslash);
     return "<a title='" + cellval + "' class='tableLink' href='" + cellval + "' target='_blank'>" + shortURL + "</a>"

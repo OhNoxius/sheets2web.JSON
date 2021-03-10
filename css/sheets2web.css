@@ -11,6 +11,9 @@ body {
     position: absolute;
 	bottom: 0;
 }
+.nowrap {
+    white-space: nowrap;
+}
 
 /*GRID*/
 header {
@@ -69,11 +72,19 @@ a.tab{
 th, td {
     white-space: pre-wrap;
 }
+table.dataTable tbody td.linkcolumn, table.dataTable thead th.linkcolumn {
+    text-align: center;
+    padding: 0;
+}
 td.child {
     padding: 0px 2px 4px 20px;
     background-color: #ededed;
 }
-
+table.dataTable tr.columnfilters > th {
+    font-weight: normal;
+    /* padding: 0px 5px; */
+    text-align: left;
+}
 
 input.headersearch {
     display:table-cell;
@@ -92,4 +103,4 @@ tr.shown td.details-control {
 /* DataTables OVERRIDE */
 div.dataTables_wrapper div.dataTables_processing {
     top: 0;
- }
+}
