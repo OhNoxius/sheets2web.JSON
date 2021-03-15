@@ -67,7 +67,6 @@ function makeDataTable(table, jsondata, sheet) {
     let columns = [], childRowsHeaders = [], mergecolumns = [];
     let linktable;
 
-
     //detect mode
     if (sheet == LINKSHEET) linktable = MAINSHEET;
     else if (sheet == MAINSHEET) linktable = LINKSHEET;
@@ -112,24 +111,23 @@ function makeDataTable(table, jsondata, sheet) {
         DTcolumn = {
             //"title": el,
             "data": keyname,
-            "defaultContent": '',
-            "createdCell": function (td, cellData, rowData, rowIndex, colIndex) {
-                $(td).find('.linktip').tooltipster({
+            "defaultContent": ''
+        };
+        //create <span> only in columns which have separte sheet
+        if (SHEETS.includes(key)) {
+            //createdCell
+            DTcolumn.createdCell = function (td, cellData, rowData, rowIndex, colIndex) {
+                $(td).find('span.linktip').tooltipster({
                     functionBefore: function (instance, helper) {
-                        const el = helper.origin;
-                        const $origin = $(helper.origin);
-                        //if ($origin.data('loaded') !== true) {
-                        const query = jason[key]?.filter(x => x[Object.keys(jason[key][0])[0]] == el.textContent);
-                        if (query) instance.content(formatTooltip(query[0]));
-                        //$origin.data('loaded', true); //maybe makes the tooltips not work after searching and ordering?
-                        //}
+                        const textContent = helper.origin.textContent;
+                        const firstkey = Object.keys(jason[key][0])[0];
+                        const query = jason[key].filter(x => x[firstkey] == textContent);
+                        if (query.length > 0) instance.content(formatTooltip(query[0]));
                     },
                     interactive: true
                 });
-            }
-        };
-        //create <span> only columns which have separte sheet
-        if (SHEETS.includes(key)) {
+            };
+            //render
             if (Array.isArray(jsondata[0][key])) {
                 DTcolumn.render = function (data, type, row, meta) {
                     let result = "";
@@ -144,18 +142,6 @@ function makeDataTable(table, jsondata, sheet) {
             }
             else DTcolumn.render = function (data, type, row, meta) {
                 if (data) return '<span class="linktip">' + data + '</span>';
-            }
-        }
-        else if (jsondata.filter(x => typeof x[key] === 'string').filter(x => ["www.", "://"].some(v => x[key].includes(v))).length > 0) {
-            console.log("url in " + key);
-            DTcolumn.render = function (data, type, row, meta) {
-                if (data) {
-                    if (typeof data === 'string') {
-                        if (["www.", "://"].some(v => data.includes(v))) return createShortHyperlinks(data)
-                        else return data
-                    }
-                    else return data
-                }
             }
         }
         //1st element					
@@ -175,7 +161,7 @@ function makeDataTable(table, jsondata, sheet) {
                 };
                 DTcolumn.createdCell = function (cell, cellData, rowData, rowIndex, colIndex) {
                     cell.setAttribute("title", cellData);
-                    $(cell).tooltipster();
+                    //$(cell).tooltipster();
                 };
                 DTcolumn.cellIndex = startIndex + index;
                 visIndex += 1;
@@ -258,6 +244,7 @@ function makeDataTable(table, jsondata, sheet) {
                 if (data[mergecolumn.cat]) {
                     const mergeDOM = document.createElement("p");
                     mergeDOM.classList.add("subdetails");
+
                     if (["www.", "://"].some(v => data[mergecolumn.cat].toString().includes(v))) mergeDOM.innerHTML = createShortHyperlinks(data[mergecolumn.cat]);
                     else mergeDOM.innerText = data[mergecolumn.cat];
                     cells[mergecolumn.indexVis].append(mergeDOM);
@@ -288,7 +275,7 @@ function makeDataTable(table, jsondata, sheet) {
                         let innerhtml = "";
                         linktable_types.forEach(type => {
                             const filteredtype = linkedItems.filter(l => l[typeheader] == type);
-                            if (filteredtype.length > 0) innerhtml += '<div class="nowrap typeicon '+type+'">' + type + ':<span class="cssnumbers">' + filteredtype.length + '</span></div>';
+                            if (filteredtype.length > 0) innerhtml += '<div class="nowrap typeicon ' + type + '">' + type + ':<span class="cssnumbers">' + filteredtype.length + '</span></div>';
                         });
                         cell.innerHTML = innerhtml;
                     }
@@ -398,6 +385,16 @@ function makeDataTable(table, jsondata, sheet) {
             }
         }
     });
+
+    dTable.on('draw', function () {
+        console.log('redraw occurred at: ' + new Date().getTime());
+        $(table).find(".tooltipstered").tooltipster('enable');
+    });
+    // dTable.on('destroy', function () {
+    //     console.log('destroy occurred at: ' + new Date().getTime());
+    //     //table = document.getElementById(tableid);
+    //     //createTooltips(table);
+    // });
 
     return dTable;
 }
