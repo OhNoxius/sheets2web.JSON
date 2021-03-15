@@ -73,6 +73,8 @@ function makeDataTable(table, jsondata, sheet) {
     else if (MAINSHEET_keys.includes(sheet)) linktable = MAINSHEET;
     else if (LINKSHEET_keys.includes(sheet)) linktable = LINKSHEET;
 
+
+
     //LOG    
     console.log("create new DataTable from table#id = '" + table.getAttribute("id") + "'");
 
@@ -80,6 +82,45 @@ function makeDataTable(table, jsondata, sheet) {
     jason[linktable].forEach(x => linktable_types.add(x[typeheader]));
     linktable_types.delete(null);
     linktable_types.delete(undefined);
+    if (linktable_types.size == 0) linktable_types.add(linktable);
+    
+    //2. create Map() of mainsheet<->linksheet
+    //first create index from mainsheet
+    const linktableMap = new Map();
+    jsondata.forEach(function (mainEl, index, arr) {
+        linktableMap.set(mainEl[maintableKeys[0]], { index: index, LINKTABLE: {} });
+        mainEl["LINKTABLE"] = {};
+    });
+    //then loop through linkedsheet ONCE, and add info into above Map
+    jason[linktable].forEach(function (linkEl, index, arr) {
+        if (linkEl[maintable]) {
+            linkEl[maintable].split("\n").forEach(function (linkid) {
+                const linkid_trim = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
+                //!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
+                if (linktableMap.has(linkid_trim)) {
+                    const linkItem = linktableMap.get(linkid_trim);
+                    const mainEl = jsondata[linkItem.index];
+                    const linkType = linkEl[typeheader];
+                    if (linktable_types.size > 0) {
+                        if (linkItem["LINKTABLE"][linkType]) linkItem["LINKTABLE"][linkType] += 1;
+                        else linkItem["LINKTABLE"][linkType] = 1;
+                        if (mainEl["LINKTABLE"][linkType]) jsondata[linkItem.index]["LINKTABLE"][linkType] += 1;
+                        else jsondata[linkItem.index]["LINKTABLE"][linkType] = 1;
+                    }
+                    else {
+                        if (linkItem["LINKTABLE"]) linkItem["LINKTABLE"] += 1;
+                        else linkItem["LINKTABLE"] = 1;
+                    }
+                }
+                else {
+                    //linktableMap.set(linkid_trim, { index: index });
+                    console.log("unknown id " + linkid_trim);
+                }
+            });
+        }
+    });
+    console.log(linktableMap);
+    console.log(jsondata);
 
     //prepare HTML
     const header_row = document.createElement("tr");
@@ -96,8 +137,20 @@ function makeDataTable(table, jsondata, sheet) {
             "className": 'linkcolumn',
             "orderable": false,
             "defaultContent": '',
-            "data": null
+            "data": "LINKTABLE"
         };
+        if (linktable_types.size > 0) {
+            DTcolumn.render = function (data, type, rowData, meta) {
+                let innerhtml = "";
+                if (data) {
+                    linktable_types.forEach(type => {
+                        if (data[type]) innerhtml += '<div class="nowrap typeicon ' + type + '">' + type + ':<span class="cssnumbers">' + data[type] + '</span></div>';
+                    });
+                }
+                return innerhtml
+            };
+        }
+
         header_row.prepend(document.createElement("th"));
         columns.push(DTcolumn);//columns.unshift(DTcolumn);
         startIndex += 1;
@@ -269,18 +322,6 @@ function makeDataTable(table, jsondata, sheet) {
 
             if (childrowsVis > 0 || linkedItems.length > 0) {
                 $(row).children("td.IDcolumn").addClass('details-control');
-                if (linkedItems.length > 0) {
-                    if (linktable_types.size > 0) {
-                        const cell = row.getElementsByClassName("linkcolumn")[0];
-                        let innerhtml = "";
-                        linktable_types.forEach(type => {
-                            const filteredtype = linkedItems.filter(l => l[typeheader] == type);
-                            if (filteredtype.length > 0) innerhtml += '<div class="nowrap typeicon ' + type + '">' + type + ':<span class="cssnumbers">' + filteredtype.length + '</span></div>';
-                        });
-                        cell.innerHTML = innerhtml;
-                    }
-                    else $(row).children("td.linkcolumn").text(linkedItems.length);
-                }
                 $(row).children("td.IDcolumn").on('click', function () {
                     const jqtr = $(this).closest('tr');
                     const dRow = dTable.row(jqtr);
@@ -334,7 +375,6 @@ function makeDataTable(table, jsondata, sheet) {
                         //$("table.mainsheet thead tr:eq(1) th").eq(column.index()).empty();
                     }
                     else if (jqth.classList.contains("linkcolumn")) {
-
                         if (linktable_types.size == 0) linktable_types.add("");
                         //console.log(linktable_types);
                         linktable_types.forEach(function (value, index, array) {
@@ -348,7 +388,7 @@ function makeDataTable(table, jsondata, sheet) {
                                 return this.value;
                             }).get().join('|');
                             //filter in column 1, with an regex, no smart filtering, not case sensitive
-                            column.search(checkboxes, true, false, false).draw(false);
+                            column.search(checkboxes, true, false, true).draw(false);
                         });
                     }
                     else {
