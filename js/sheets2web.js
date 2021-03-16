@@ -73,8 +73,6 @@ function makeDataTable(table, jsondata, sheet) {
     else if (MAINSHEET_keys.includes(sheet)) linktable = MAINSHEET;
     else if (LINKSHEET_keys.includes(sheet)) linktable = LINKSHEET;
 
-
-
     //LOG    
     console.log("create new DataTable from table#id = '" + table.getAttribute("id") + "'");
 
@@ -82,45 +80,105 @@ function makeDataTable(table, jsondata, sheet) {
     jason[linktable].forEach(x => linktable_types.add(x[typeheader]));
     linktable_types.delete(null);
     linktable_types.delete(undefined);
-    if (linktable_types.size == 0) linktable_types.add(linktable);
-    
+    //if (linktable_types.size == 0) linktable_types.add(linktable);
+
+    console.log(linktable_types);
+
     //2. create Map() of mainsheet<->linksheet
-    //first create index from mainsheet
-    const linktableMap = new Map();
-    jsondata.forEach(function (mainEl, index, arr) {
-        linktableMap.set(mainEl[maintableKeys[0]], { index: index, LINKTABLE: {} });
-        mainEl["LINKTABLE"] = {};
-    });
-    //then loop through linkedsheet ONCE, and add info into above Map
-    jason[linktable].forEach(function (linkEl, index, arr) {
-        if (linkEl[maintable]) {
-            linkEl[maintable].split("\n").forEach(function (linkid) {
-                const linkid_trim = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
-                //!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
-                if (linktableMap.has(linkid_trim)) {
-                    const linkItem = linktableMap.get(linkid_trim);
-                    const mainEl = jsondata[linkItem.index];
-                    const linkType = linkEl[typeheader];
-                    if (linktable_types.size > 0) {
-                        if (linkItem["LINKTABLE"][linkType]) linkItem["LINKTABLE"][linkType] += 1;
-                        else linkItem["LINKTABLE"][linkType] = 1;
-                        if (mainEl["LINKTABLE"][linkType]) jsondata[linkItem.index]["LINKTABLE"][linkType] += 1;
-                        else jsondata[linkItem.index]["LINKTABLE"][linkType] = 1;
-                    }
-                    else {
-                        if (linkItem["LINKTABLE"]) linkItem["LINKTABLE"] += 1;
-                        else linkItem["LINKTABLE"] = 1;
-                    }
+    const linkKeyIdx = maintableKeys.indexOf("LINKIDXS");
+    if (linkKeyIdx > -1) maintableKeys.splice(linkKeyIdx, 1);
+    else {
+        if (maintable == LINKSHEET) {
+            const linktableMap = new Map();
+            jason[MAINSHEET].forEach(function (linkEl, idx, arr) {
+                linktableMap.set(linkEl[MAINSHEET_keys[0]], idx);
+            });
+            console.log(linktableMap);
+            jsondata.forEach(function (mainEl, linkIdx, arr) {
+                if (mainEl[linktable]) {
+                    mainEl[linktable].split("\n").forEach(function (linkid) {
+                        const linkid_trim = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
+                        //!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
+                        if (linktableMap.has(linkid_trim)) {
+                            const mainIdx = linktableMap.get(linkid_trim);
+                            if (linktable_types.size > 0) {
+                                let linkType = jason[MAINSHEET][mainIdx][typeheader];//mainEl[typeheader];
+                                if (linkType == null || linkType == '') linkType = linktable;
+                                if (jsondata[mainIdx]["LINKIDXS"]) {
+                                    if (jsondata[mainIdx]["LINKIDXS"][linkType]) jsondata[mainIdx]["LINKIDXS"][linkType].push(linkIdx);
+                                    else {
+                                        const obj = jsondata[mainIdx]["LINKIDXS"];
+                                        obj[linkType] = [linkIdx];
+                                        jsondata[mainIdx]["LINKIDXS"] = obj;
+                                    }
+                                }
+                                else {
+                                    const obj = {};
+                                    obj[linkType] = [linkIdx];
+                                    jsondata[mainIdx]["LINKIDXS"] = obj; //{[linkType] : [linkIdx]}
+                                }
+                            }
+                            else {
+                                if (jsondata[mainIdx]["LINKIDXS"]) jsondata[mainIdx]["LINKIDXS"].push(linkIdx);
+                                else jsondata[mainIdx]["LINKIDXS"] = [linkIdx];
+                            }
+                        }
+                        else {
+                            console.log("unknown id " + linkid_trim);
+                        }
+                    });
                 }
-                else {
-                    //linktableMap.set(linkid_trim, { index: index });
-                    console.log("unknown id " + linkid_trim);
+            });
+            console.log(jsondata);
+        }
+        else {
+            //first create index from mainsheet
+            const linktableMap = new Map();
+            jsondata.forEach(function (mainEl, idx, arr) {
+                linktableMap.set(mainEl[maintableKeys[0]], idx);
+                // if (linktable_types.size > 0) mainEl["LINKIDXS"] = {};
+                // else mainEl["LINKIDXS"] = [];
+            });
+            //then loop through linkedsheet ONCE, and add info into above Map
+            jason[linktable].forEach(function (linkEl, linkIdx, arr) {
+                if (linkEl[maintable]) {
+                    linkEl[maintable].split("\n").forEach(function (linkid) {
+                        const linkid_trim = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
+                        //!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
+                        if (linktableMap.has(linkid_trim)) {
+                            const mainIdx = linktableMap.get(linkid_trim);
+                            if (linktable_types.size > 0) {
+                                let linkType = linkEl[typeheader];
+                                if (linkType == null || linkType == '') linkType = linktable;
+                                if (jsondata[mainIdx]["LINKIDXS"]) {
+                                    if (jsondata[mainIdx]["LINKIDXS"][linkType]) jsondata[mainIdx]["LINKIDXS"][linkType].push(linkIdx);
+                                    else {
+                                        const obj = jsondata[mainIdx]["LINKIDXS"];
+                                        obj[linkType] = [linkIdx];
+                                        jsondata[mainIdx]["LINKIDXS"] = obj;
+                                    }
+                                }
+                                else {
+                                    const obj = {};
+                                    obj[linkType] = [linkIdx];
+                                    jsondata[mainIdx]["LINKIDXS"] = obj; //{[linkType] : [linkIdx]}
+                                }
+                            }
+                            else {
+                                if (jsondata[mainIdx]["LINKIDXS"]) jsondata[mainIdx]["LINKIDXS"].push(linkIdx);
+                                else jsondata[mainIdx]["LINKIDXS"] = [linkIdx];
+                            }
+                        }
+                        else {
+                            console.log("unknown id " + linkid_trim);
+                        }
+                    });
                 }
             });
         }
-    });
-    console.log(linktableMap);
-    console.log(jsondata);
+    }
+    //console.log(linktableMap);
+    //console.log(jsondata);
 
     //prepare HTML
     const header_row = document.createElement("tr");
@@ -137,26 +195,28 @@ function makeDataTable(table, jsondata, sheet) {
             "className": 'linkcolumn',
             "orderable": false,
             "defaultContent": '',
-            "data": "LINKTABLE"
+            "data": "LINKIDXS",
+            "render": function (data, type, rowData, meta) {
+                return data.length
+            }
         };
         if (linktable_types.size > 0) {
             DTcolumn.render = function (data, type, rowData, meta) {
                 let innerhtml = "";
                 if (data) {
                     linktable_types.forEach(type => {
-                        if (data[type]) innerhtml += '<div class="nowrap typeicon ' + type + '">' + type + ':<span class="cssnumbers">' + data[type] + '</span></div>';
+                        if (data[type]) innerhtml += '<div class="nowrap typeicon ' + type + '">' + type + ':<span class="cssnumbers">' + data[type].length + '</span></div>';
                     });
                 }
                 return innerhtml
             };
         }
-
         header_row.prepend(document.createElement("th"));
         columns.push(DTcolumn);//columns.unshift(DTcolumn);
         startIndex += 1;
         visIndex += 1;
     }
-    maintableKeys.forEach(function (key, index, arr) {
+    maintableKeys.forEach(function (key, keyIdx, arr) {
         //1. datatables column element
         let keyname = key.replace(/\./g, '\\\\.');
         //if (Array.isArray(jsondata[0][key])) keyname += "[; ]"; //BREAKS .render for arrays !!
@@ -198,27 +258,28 @@ function makeDataTable(table, jsondata, sheet) {
             }
         }
         //1st element					
-        if (Object.is(0, index)) { //remove linkcolumn
-            if (maintable == LINKSHEET) {
-                columns[columns.length - 1].title = "";
-                columns[columns.length - 1].className = "IDcolumn";
-                columns[columns.length - 1].data = null;
-                columns[columns.length - 1].orderable = false;
-            }
-            else { //separate ID column
-                DTcolumn.title = "";
-                DTcolumn.className = "IDcolumn";
-                DTcolumn.defaultContent = '';
-                DTcolumn.render = function (data, type, row, meta) {
-                    return null;
-                };
-                DTcolumn.createdCell = function (cell, cellData, rowData, rowIndex, colIndex) {
-                    cell.setAttribute("title", cellData);
-                    //$(cell).tooltipster();
-                };
-                DTcolumn.cellIndex = startIndex + index;
-                visIndex += 1;
-            }
+        if (Object.is(0, keyIdx)) { //remove linkcolumn
+            // if (maintable == LINKSHEET) {
+            //     columns[columns.length - 1].title = "";
+            //     columns[columns.length - 1].className = "IDcolumn";
+            //     columns[columns.length - 1].data = null;
+            //     columns[columns.length - 1].orderable = false;
+            // }
+            //else { //separate ID column
+            DTcolumn.title = "";
+            DTcolumn.className = "IDcolumn";
+            DTcolumn.defaultContent = '';
+            DTcolumn.orderable = false;
+            DTcolumn.render = function (data, type, row, meta) {
+                return null;
+            };
+            DTcolumn.createdCell = function (cell, cellData, rowData, rowIndex, colIndex) {
+                cell.setAttribute("title", cellData);
+                //$(cell).tooltipster();
+            };
+            DTcolumn.cellIndex = startIndex + keyIdx;
+            visIndex += 1;
+            //}
         }
         //merger columns
         else if (key.startsWith(".") || key.startsWith("-")) {
@@ -243,9 +304,10 @@ function makeDataTable(table, jsondata, sheet) {
             childRowsHeaders.push(key);
         }
         else {
-            DTcolumn.cellIndex = startIndex + index;
+            DTcolumn.cellIndex = startIndex + keyIdx;
             visIndex += 1;
         }
+        //ADD COLUMN to DATATABLE
         columns.push(DTcolumn);
 
         //2. HTML
@@ -281,18 +343,17 @@ function makeDataTable(table, jsondata, sheet) {
     //DATATABLE    
     const dTable = $(table).DataTable({
         "data": jsondata,
+        "processing": true, //only works with Ajax?
         "fixedHeader": fixedHeader,
-        "processing": true,
+        "deferRender": true,
         "paging": false,
         //"autoWidth": false,
         "order": order,
         "orderCellsTop": true,
-        "deferRender": true,
         "columns": columns,
         "createdRow": function (row, data, dataIndex, cells) {
-            let linkedItems = [];
-
-            //CONCAT COLUMNS
+            //CONCAT COLUMNS (concat data is not available for column search this way)
+            //OR ... do earlier in column.render (rowData is available there)
             mergecolumns.forEach(function (mergecolumn, i) {
                 if (data[mergecolumn.cat]) {
                     const mergeDOM = document.createElement("p");
@@ -311,17 +372,23 @@ function makeDataTable(table, jsondata, sheet) {
             //FILL IN SOME LINK VALUES
             if (maintable == LINKSHEET) {
                 row.setAttribute("summary", data[MAINSHEET] + LINKSHEET);
-                linkedItems = jason[MAINSHEET].filter(x => data[MAINSHEET]?.split("\n").includes(x[MAINSHEET_keys[0]]));
+                //linkedItems = jason[MAINSHEET].filter(x => data[MAINSHEET]?.split("\n").includes(x[MAINSHEET_keys[0]]));
             }
             else {
                 row.setAttribute("summary", data[maintableKeys[0]]);
-                linkedItems = jason[linktable].filter(x => x[maintable]?.includes(data[maintableKeys[0]]));
+                //linkedItems = jason[linktable].filter(x => x[maintable]?.includes(data[maintableKeys[0]]));
             }
 
             const childrowsVis = childRowsHeaders.reduce((acc, value, index, array) => acc + data[value]?.length, "");
+            let linkCount = 0;
+            if (data["LINKIDXS"]) {
+                if (linktable_types.size > 0) linkCount = Object.keys(data["LINKIDXS"]).length;
+                else linkCount = data["LINKIDXS"].length;
+            }
 
-            if (childrowsVis > 0 || linkedItems.length > 0) {
+            if (linkCount > 0 || childrowsVis > 0) {
                 $(row).children("td.IDcolumn").addClass('details-control');
+                //CLICK FUNCTION
                 $(row).children("td.IDcolumn").on('click', function () {
                     const jqtr = $(this).closest('tr');
                     const dRow = dTable.row(jqtr);
@@ -335,6 +402,7 @@ function makeDataTable(table, jsondata, sheet) {
                     else {
                         // Open this row
                         let linkTableDOM = "", childrowsDOM = "";
+                        let linkedItems = [];
                         if (childrowsVis > 0) {
                             let details = "", childrowTable = "";
                             childRowsHeaders.forEach(x => details += formatChildRows(x, data[x]));
@@ -342,7 +410,16 @@ function makeDataTable(table, jsondata, sheet) {
                             childrowsDOM = document.createElement('div');
                             childrowsDOM.innerHTML = childrowTable;
                         }
-                        if (linkedItems.length > 0) {
+                        if (linkCount > 0) {
+                            //filter linked elements                            
+                            if (linktable_types.size > 0) {
+                                linktable_types.forEach(type => {
+                                    const typeIdxArr = data["LINKIDXS"][type];
+                                    if (typeIdxArr) linkedItems.push(...typeIdxArr.map((item) => jason[linktable][item]));
+                                });
+                            }
+                            else linkedItems.push(...data["LINKIDXS"].map((item) => jason[linktable][item]));
+
                             linkTableDOM = document.createElement('div');
                             linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable">' +
                                 '<thead></thead>' +
@@ -351,7 +428,7 @@ function makeDataTable(table, jsondata, sheet) {
                                 '</table>';
                         }
                         dRow.child([linkTableDOM, childrowsDOM], "child").show();
-                        makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
+                        if (linkCount > 0) makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
                         jqtr.addClass('shown');
                     }
                 });
@@ -504,6 +581,8 @@ function createNavFooter(sheets) {
 function formatTooltip(object) {
     let result = [];
     const props = Object.getOwnPropertyNames(object);
+    const linkKeyIdx = props.indexOf("LINKIDXS");
+    if (linkKeyIdx > -1) props.splice(linkKeyIdx, 1);
     for (let i = 1; i < props.length; i++) {
         if (object[props[i]]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + props[i] + ": </span>" + createHyperlinks(object[props[i]].toString()) + "</li>"));
     }
