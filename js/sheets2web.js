@@ -95,7 +95,7 @@ function makeDataTable(table, jsondata, sheet) {
             jason[MAINSHEET].forEach(function (MAINel, idx, arr) {
                 linktableMap.set(MAINel[MAINSHEET_keys[0]], idx);
             });
-            console.log(linktableMap);
+            //console.log(linktableMap);
             jsondata.forEach(function (LINKel, LINKidx, LINKarr) {
                 if (LINKel[MAINSHEET]) {
                     LINKel[MAINSHEET].split("\n").forEach(function (MAINid) {
@@ -131,15 +131,13 @@ function makeDataTable(table, jsondata, sheet) {
                     });
                 }
             });
-            console.log(jsondata);
+            //console.log(jsondata);
         }
         else {
             //first create index from mainsheet
             const linktableMap = new Map();
             jsondata.forEach(function (mainEl, idx, arr) {
                 linktableMap.set(mainEl[maintableKeys[0]], idx);
-                // if (linktable_types.size > 0) mainEl["LINKIDXS"] = {};
-                // else mainEl["LINKIDXS"] = [];
             });
             //then loop through linkedsheet ONCE, and add info into above Map
             jason[linktable].forEach(function (linkEl, linkIdx, arr) {
@@ -224,7 +222,6 @@ function makeDataTable(table, jsondata, sheet) {
     maintableKeys.forEach(function (key, keyIdx, arr) {
         //1. datatables column element
         let keyname = key.replace(/\./g, '\\\\.');
-        //if (Array.isArray(jsondata[0][key])) keyname += "[; ]"; //BREAKS .render for arrays !!
         //BASIC TEMPLATE
         DTcolumn = {
             //"title": el,
@@ -262,7 +259,27 @@ function makeDataTable(table, jsondata, sheet) {
                 if (data) return '<span class="linktip">' + data + '</span>';
             }
         }
-        //1st element					
+        else {
+            DTcolumn.render = function (data, type, row, meta) {
+                if (data) {
+                    if (typeof (data) === "string") {
+                        return anchorme({
+                            input: data,
+                            options: {
+                                truncate: 25,
+                                middleTruncation: true,
+                                attributes: {
+                                    target: "_blank"
+                                }
+                            }
+                        })
+                    }
+                    else return data
+                }
+            }
+        }
+        //1st element
+        //CREATE EXTRA ID COLUMN WHEN maintable == LINKSHEET !!!!!!!!!!!!!!!!!!			
         if (Object.is(0, keyIdx)) { //remove linkcolumn
             // if (maintable == LINKSHEET) {
             //     columns[columns.length - 1].title = "";
@@ -362,6 +379,7 @@ function makeDataTable(table, jsondata, sheet) {
         "processing": true, //only works with Ajax?
         "fixedHeader": fixedHeader,
         "deferRender": true,
+        "dom": dom,
         "paging": false,
         //"autoWidth": false,
         "order": order,
@@ -371,12 +389,23 @@ function makeDataTable(table, jsondata, sheet) {
             //CONCAT COLUMNS (concat data is not available for column search this way)
             //OR ... do earlier in column.render (rowData is available there)
             mergecolumns.forEach(function (mergecolumn, i) {
-                if (data[mergecolumn.cat]) {
+                const catdata = data[mergecolumn.cat];
+                if (catdata) {
                     const mergeDOM = document.createElement("p");
                     mergeDOM.classList.add("subdetails");
-
-                    if (["www.", "://"].some(v => data[mergecolumn.cat].toString().includes(v))) mergeDOM.innerHTML = createShortHyperlinks(data[mergecolumn.cat]);
-                    else mergeDOM.innerText = data[mergecolumn.cat];
+                    if (typeof (catdata) === "string") {
+                        mergeDOM.innerHTML = anchorme({
+                            input: catdata,
+                            options: {
+                                truncate: 50,
+                                middleTruncation: true,
+                                attributes: {
+                                    target: "_blank"
+                                }
+                            }
+                        });
+                    }
+                    else mergeDOM.innerText = anchorme(catdata);
                     cells[mergecolumn.indexVis].append(mergeDOM);
                 }
             });
@@ -473,46 +502,44 @@ function makeDataTable(table, jsondata, sheet) {
         else {
             // Open this row
             let linkTableDOM = "", childrowsDOM = "";
-            const idcell = dTable.cells(dRow, ".IDcolumn")
-            const linkcell = dTable.cells(dRow, ".linkcolumn");
-            console.log(idcell.data()[0]);
-            console.log(linkcell.data()[0]);
+            const linkcellData = dTable.cells(dRow, ".linkcolumn").data()[0];
             //CE_ elems
             let details = "", childrowTable = "";
             const childcells = dTable.cells(dRow, ".childrow");//, idx);
             console.log(childcells.data());
-            for (let i = 0; i < childcells.length; i++) {
-                if (childcells.data()[i]) details += formatChildRows(childRowsHeaders[i], childcells.data()[i]);
+            for (let i = 0; i < childcells.data().length; i++) {
+                if (childcells.data()[i]) details += formatChildRows(childrowsHeaders[i], childcells.data()[i]);
             }
             if (details != "") {
-                childrowTable = '<table class="childrowtable">' + details + '</table>';
+                childrowTable = '<table class="childrowtable cell-border">' + details + '</table>';
                 childrowsDOM = document.createElement('div');
                 childrowsDOM.innerHTML = childrowTable;
             }
             //link elems
             let linkedItems = [];
-            if (linkcell.data()[0]) {
+            if (linkcellData) {
                 //filter linked elements                            
                 if (linktable_types.size > 0) {
-                    // linktable_types.forEach(type => {
-                    //     const typeIdxArr = linkcell.data()[type];
-                    //     if (typeIdxArr) linkedItems.push(...typeIdxArr.map((item) => jason[linktable][item]));
-                    // });
-                    for (const [type, typeIdxArr] of Object.entries(linkcell.data()[0])) {                    
+                    for (const [type, typeIdxArr] of Object.entries(linkcellData)) {
                         linkedItems.push(...typeIdxArr.map((item) => jason[linktable][item]));
                     }
                 }
-                else linkedItems.push(...linkcell.data()[0].map((item) => jason[linktable][item]));
+                else linkedItems.push(...linkcellData.map((item) => jason[linktable][item]));
 
                 linkTableDOM = document.createElement('div');
-                linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable">' +
+                linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable cell-border">' +
                     '<thead></thead>' +
                     '<tbody></tbody>' +
                     '<tfoot></tfoot>' +
                     '</table>';
             }
             dRow.child([linkTableDOM, childrowsDOM], "child").show();
-            if (linkcell.data()[0]) makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
+            [jqtr.next('tr.child'), jqtr.next('tr.child').next('tr.child')].forEach(childtr => {
+                childtr.children('td').attr("colspan", (i, val) => val--);
+                childtr[0].prepend(document.createElement("td"));
+            });
+            
+            if (linkcellData) makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
             jqtr.addClass('shown');
         }
     });
@@ -532,9 +559,19 @@ function makeDataTable(table, jsondata, sheet) {
 
 function formatChildRows(h, d) {
     if (d) {
+        const formated = anchorme({
+            input: d.toString(),
+            options: {
+                truncate: 50,
+                middleTruncation: true,
+                attributes: {
+                    target: "_blank"
+                }
+            }
+        });
         return '<tr class="detailsRow">' +
             '<td class="detailsHeader">' + h.substr(3) + ':</td>' +
-            '<td>' + d + '</td>' +
+            '<td>' + formated + '</td>' +
             '</tr>'
     }
     else return ''
@@ -598,25 +635,26 @@ function formatTooltip(object) {
     const linkKeyIdx = props.indexOf("LINKIDXS");
     if (linkKeyIdx > -1) props.splice(linkKeyIdx, 1);
     for (let i = 1; i < props.length; i++) {
-        if (object[props[i]]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + props[i] + ": </span>" + createHyperlinks(object[props[i]].toString()) + "</li>"));
+        if (object[props[i]]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + props[i] + ": </span>" + anchorme(object[props[i]].toString()) + "</li>"));
     }
     return result;
 }
-const exp_match = /(\b(https?|):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig; //find https?
-function createHyperlinks(content) {
-    // OPTION2: SLIM ALTERNATIEF, mr voorlopig nog volledig url weergave, en $ teken loopt mis    
-    let element_content = content.replace(exp_match, "<a class='url' target='_blank' title='$1' href='$1'>$1</a>");
-    let new_exp_match = /(^|[^\/])(www\.[\S]+(\b|$))/gim; //find www?
-    let new_content = element_content.replace(new_exp_match, '$1<a class="url" title="http://$2" target="_blank" href="http://$2">$2</a>');
-    return new_content;
-}
 
-function createShortHyperlinks(content) {
-    // OPTION 1
-    const cellval = content;
-    const secondslash = cellval.indexOf('/', cellval.indexOf('/') + 1);
-    const thirdslash = cellval.indexOf('/', secondslash + 1);
-    if (cellval.slice(secondslash + 1, secondslash + 4) == 'www') shortURL = cellval.slice(secondslash + 5, thirdslash);
-    else shortURL = cellval.slice(secondslash + 1, thirdslash);
-    return "<a title='" + cellval + "' class='tableLink' href='" + cellval + "' target='_blank'>" + shortURL + "</a>"
-}
+// const exp_match = /(\b(https?|):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig; //find https?
+// function createHyperlinks(content) {
+//     // OPTION2: SLIM ALTERNATIEF, mr voorlopig nog volledig url weergave, en $ teken loopt mis    
+//     let element_content = content.replace(exp_match, "<a class='url' target='_blank' title='$1' href='$1'>$1</a>");
+//     let new_exp_match = /(^|[^\/])(www\.[\S]+(\b|$))/gim; //find www?
+//     let new_content = element_content.replace(new_exp_match, '$1<a class="url" title="http://$2" target="_blank" href="http://$2">$2</a>');
+//     return new_content;
+// }
+
+// function createShortHyperlinks(content) {
+//     // OPTION 1
+//     const cellval = content;
+//     const secondslash = cellval.indexOf('/', cellval.indexOf('/') + 1);
+//     const thirdslash = cellval.indexOf('/', secondslash + 1);
+//     if (cellval.slice(secondslash + 1, secondslash + 4) == 'www') shortURL = cellval.slice(secondslash + 5, thirdslash);
+//     else shortURL = cellval.slice(secondslash + 1, thirdslash);
+//     return "<a title='" + cellval + "' class='tableLink' href='" + cellval + "' target='_blank'>" + shortURL + "</a>"
+// }

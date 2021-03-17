@@ -76,9 +76,10 @@ table.dataTable tbody td.linkcolumn, table.dataTable thead th.linkcolumn {
     text-align: center;
     padding: 0;
 }
-td.child {
+tr.child > td {
+    border-left: 1px solid lightgrey;
     padding: 0px 2px 4px 20px;
-    background-color: #ededed;
+    background-color:#e4eaed; /* #ededed; */
 }
 table.dataTable tr.columnfilters > th {
     font-weight: normal;
