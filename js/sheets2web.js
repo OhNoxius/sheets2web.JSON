@@ -64,8 +64,10 @@ function makeDataTable(table, jsondata, sheet) {
     const maintable = sheet;
 
     let DTcolumn;
-    let columns = [], childRowsHeaders = [], mergecolumns = [];
+    let columns = [], mergecolumns = [];
     let linktable;
+
+    const childrowsHeaders = maintableKeys.filter(x => x.startsWith("CE_"));
 
     //detect mode
     if (sheet == LINKSHEET) linktable = MAINSHEET;
@@ -90,41 +92,41 @@ function makeDataTable(table, jsondata, sheet) {
     else {
         if (maintable == LINKSHEET) {
             const linktableMap = new Map();
-            jason[MAINSHEET].forEach(function (linkEl, idx, arr) {
-                linktableMap.set(linkEl[MAINSHEET_keys[0]], idx);
+            jason[MAINSHEET].forEach(function (MAINel, idx, arr) {
+                linktableMap.set(MAINel[MAINSHEET_keys[0]], idx);
             });
             console.log(linktableMap);
-            jsondata.forEach(function (mainEl, linkIdx, arr) {
-                if (mainEl[linktable]) {
-                    mainEl[linktable].split("\n").forEach(function (linkid) {
-                        const linkid_trim = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
+            jsondata.forEach(function (LINKel, LINKidx, LINKarr) {
+                if (LINKel[MAINSHEET]) {
+                    LINKel[MAINSHEET].split("\n").forEach(function (MAINid) {
+                        const MAINid_trim = MAINid.trim(); //POEH! Google Sheet can have hidden &#xD;
                         //!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
-                        if (linktableMap.has(linkid_trim)) {
-                            const mainIdx = linktableMap.get(linkid_trim);
+                        if (linktableMap.has(MAINid_trim)) {
+                            const MAINidx = linktableMap.get(MAINid_trim);
                             if (linktable_types.size > 0) {
-                                let linkType = jason[MAINSHEET][mainIdx][typeheader];//mainEl[typeheader];
-                                if (linkType == null || linkType == '') linkType = linktable;
-                                if (jsondata[mainIdx]["LINKIDXS"]) {
-                                    if (jsondata[mainIdx]["LINKIDXS"][linkType]) jsondata[mainIdx]["LINKIDXS"][linkType].push(linkIdx);
+                                let MAINType = jason[MAINSHEET][MAINidx][typeheader];//mainEl[typeheader];
+                                if (MAINType == null || MAINType == '') MAINType = linktable;
+                                if (LINKarr[LINKidx]["LINKIDXS"]) {
+                                    if (LINKarr[LINKidx]["LINKIDXS"][MAINType]) LINKarr[LINKidx]["LINKIDXS"][MAINType].push(MAINidx);
                                     else {
-                                        const obj = jsondata[mainIdx]["LINKIDXS"];
-                                        obj[linkType] = [linkIdx];
-                                        jsondata[mainIdx]["LINKIDXS"] = obj;
+                                        const obj = LINKarr[LINKidx]["LINKIDXS"];
+                                        obj[MAINType] = [MAINidx];
+                                        LINKarr[LINKidx]["LINKIDXS"] = obj;
                                     }
                                 }
                                 else {
                                     const obj = {};
-                                    obj[linkType] = [linkIdx];
-                                    jsondata[mainIdx]["LINKIDXS"] = obj; //{[linkType] : [linkIdx]}
+                                    obj[MAINType] = [MAINidx];
+                                    LINKarr[LINKidx]["LINKIDXS"] = obj; //{[MAINType] : [MAINidx]}
                                 }
                             }
                             else {
-                                if (jsondata[mainIdx]["LINKIDXS"]) jsondata[mainIdx]["LINKIDXS"].push(linkIdx);
-                                else jsondata[mainIdx]["LINKIDXS"] = [linkIdx];
+                                if (LINKel["LINKIDXS"]) LINKarr[LINKidx]["LINKIDXS"].push(MAINidx);
+                                else LINKarr[LINKidx]["LINKIDXS"] = [MAINidx];
                             }
                         }
                         else {
-                            console.log("unknown id " + linkid_trim);
+                            console.log("unknown " + MAINSHEET + " id " + MAINid_trim);
                         }
                     });
                 }
@@ -170,7 +172,7 @@ function makeDataTable(table, jsondata, sheet) {
                             }
                         }
                         else {
-                            console.log("unknown id " + linkid_trim);
+                            console.log("unknown " + linktable + " id " + linkid_trim);
                         }
                     });
                 }
@@ -188,6 +190,7 @@ function makeDataTable(table, jsondata, sheet) {
 
     //FORMAT JSON DATA for use in DataTables
     let startIndex = 0, visIndex = 0;;
+
     //EXTRA: linkcolumn
     if (linktable) {
         DTcolumn = {
@@ -197,16 +200,18 @@ function makeDataTable(table, jsondata, sheet) {
             "defaultContent": '',
             "data": "LINKIDXS",
             "render": function (data, type, rowData, meta) {
-                return data.length
+                return data?.length
             }
         };
         if (linktable_types.size > 0) {
             DTcolumn.render = function (data, type, rowData, meta) {
                 let innerhtml = "";
                 if (data) {
-                    linktable_types.forEach(type => {
-                        if (data[type]) innerhtml += '<div class="nowrap typeicon ' + type + '">' + type + ':<span class="cssnumbers">' + data[type].length + '</span></div>';
-                    });
+                    const props = Object.getOwnPropertyNames(data);
+                    const propslength = props.length;
+                    for (let i = 0; i < propslength; i++) {
+                        innerhtml += '<div class="nowrap typeicon ' + props[i] + '">' + props[i] + ':<span class="cssnumbers">' + data[props[i]].length + '</span></div>';
+                    }
                 }
                 return innerhtml
             };
@@ -270,12 +275,24 @@ function makeDataTable(table, jsondata, sheet) {
             DTcolumn.className = "IDcolumn";
             DTcolumn.defaultContent = '';
             DTcolumn.orderable = false;
-            DTcolumn.render = function (data, type, row, meta) {
-                return null;
+            DTcolumn.render = function (data, type, rowData, meta) {
+                return null
             };
             DTcolumn.createdCell = function (cell, cellData, rowData, rowIndex, colIndex) {
                 cell.setAttribute("title", cellData);
                 //$(cell).tooltipster();
+                if (rowData["LINKIDXS"]) cell.classList.add('details-control');
+                else {
+                    let i = 0;
+                    const len = childrowsHeaders.length;
+                    while (i < len) {
+                        if (rowData[childrowsHeaders[i]]) {
+                            cell.classList.add('details-control');
+                            break;
+                        }
+                        i++;
+                    }
+                }
             };
             DTcolumn.cellIndex = startIndex + keyIdx;
             visIndex += 1;
@@ -301,7 +318,6 @@ function makeDataTable(table, jsondata, sheet) {
         else if (key.startsWith("CE_")) {
             DTcolumn.className = "childrow";
             DTcolumn.visible = false;
-            childRowsHeaders.push(key);
         }
         else {
             DTcolumn.cellIndex = startIndex + keyIdx;
@@ -370,69 +386,8 @@ function makeDataTable(table, jsondata, sheet) {
             const rowid = maintable.replace(/\s+/g, '') + ":" + dataIndex;
             row.setAttribute("id", rowid);
             //FILL IN SOME LINK VALUES
-            if (maintable == LINKSHEET) {
-                row.setAttribute("summary", data[MAINSHEET] + LINKSHEET);
-                //linkedItems = jason[MAINSHEET].filter(x => data[MAINSHEET]?.split("\n").includes(x[MAINSHEET_keys[0]]));
-            }
-            else {
-                row.setAttribute("summary", data[maintableKeys[0]]);
-                //linkedItems = jason[linktable].filter(x => x[maintable]?.includes(data[maintableKeys[0]]));
-            }
-
-            const childrowsVis = childRowsHeaders.reduce((acc, value, index, array) => acc + data[value]?.length, "");
-            let linkCount = 0;
-            if (data["LINKIDXS"]) {
-                if (linktable_types.size > 0) linkCount = Object.keys(data["LINKIDXS"]).length;
-                else linkCount = data["LINKIDXS"].length;
-            }
-
-            if (linkCount > 0 || childrowsVis > 0) {
-                $(row).children("td.IDcolumn").addClass('details-control');
-                //CLICK FUNCTION
-                $(row).children("td.IDcolumn").on('click', function () {
-                    const jqtr = $(this).closest('tr');
-                    const dRow = dTable.row(jqtr);
-                    console.log(" (+) --> CLICK DROPDOWN maintable: '" + maintable + "' / linktable: '" + linktable + "' / id: '" + jqtr.attr("id") + "'");
-
-                    if (dRow.child.isShown()) {
-                        // This row is already open - close it
-                        dRow.child.hide();
-                        jqtr.removeClass('shown');
-                    }
-                    else {
-                        // Open this row
-                        let linkTableDOM = "", childrowsDOM = "";
-                        let linkedItems = [];
-                        if (childrowsVis > 0) {
-                            let details = "", childrowTable = "";
-                            childRowsHeaders.forEach(x => details += formatChildRows(x, data[x]));
-                            if (details != "") childrowTable = '<table class="childrowtable">' + details + '</table>';
-                            childrowsDOM = document.createElement('div');
-                            childrowsDOM.innerHTML = childrowTable;
-                        }
-                        if (linkCount > 0) {
-                            //filter linked elements                            
-                            if (linktable_types.size > 0) {
-                                linktable_types.forEach(type => {
-                                    const typeIdxArr = data["LINKIDXS"][type];
-                                    if (typeIdxArr) linkedItems.push(...typeIdxArr.map((item) => jason[linktable][item]));
-                                });
-                            }
-                            else linkedItems.push(...data["LINKIDXS"].map((item) => jason[linktable][item]));
-
-                            linkTableDOM = document.createElement('div');
-                            linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable">' +
-                                '<thead></thead>' +
-                                '<tbody></tbody>' +
-                                '<tfoot></tfoot>' +
-                                '</table>';
-                        }
-                        dRow.child([linkTableDOM, childrowsDOM], "child").show();
-                        if (linkCount > 0) makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
-                        jqtr.addClass('shown');
-                    }
-                });
-            }
+            if (maintable == LINKSHEET) row.setAttribute("summary", data[MAINSHEET] + LINKSHEET);
+            else row.setAttribute("summary", data[maintableKeys[0]]);
         },
         "initComplete": function () {
             //FIXED TOOLTIPS on ID column            
@@ -500,6 +455,65 @@ function makeDataTable(table, jsondata, sheet) {
                     }
                 });
             }
+        }
+    });
+
+    $(table).children('tbody').on('click', 'td.details-control', function () {
+
+        const jqtr = $(this).closest('tr');
+        const rowid = jqtr.attr("id");
+        const dRow = dTable.row(jqtr);
+        console.log(" (+) --> CLICK DROPDOWN maintable: '" + maintable + "' / linktable: '" + linktable + "' / id: '" + jqtr.attr("id") + "'");
+
+        if (dRow.child.isShown()) {
+            // This row is already open - close it
+            dRow.child.hide();
+            jqtr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            let linkTableDOM = "", childrowsDOM = "";
+            const idcell = dTable.cells(dRow, ".IDcolumn")
+            const linkcell = dTable.cells(dRow, ".linkcolumn");
+            console.log(idcell.data()[0]);
+            console.log(linkcell.data()[0]);
+            //CE_ elems
+            let details = "", childrowTable = "";
+            const childcells = dTable.cells(dRow, ".childrow");//, idx);
+            console.log(childcells.data());
+            for (let i = 0; i < childcells.length; i++) {
+                if (childcells.data()[i]) details += formatChildRows(childRowsHeaders[i], childcells.data()[i]);
+            }
+            if (details != "") {
+                childrowTable = '<table class="childrowtable">' + details + '</table>';
+                childrowsDOM = document.createElement('div');
+                childrowsDOM.innerHTML = childrowTable;
+            }
+            //link elems
+            let linkedItems = [];
+            if (linkcell.data()[0]) {
+                //filter linked elements                            
+                if (linktable_types.size > 0) {
+                    // linktable_types.forEach(type => {
+                    //     const typeIdxArr = linkcell.data()[type];
+                    //     if (typeIdxArr) linkedItems.push(...typeIdxArr.map((item) => jason[linktable][item]));
+                    // });
+                    for (const [type, typeIdxArr] of Object.entries(linkcell.data()[0])) {                    
+                        linkedItems.push(...typeIdxArr.map((item) => jason[linktable][item]));
+                    }
+                }
+                else linkedItems.push(...linkcell.data()[0].map((item) => jason[linktable][item]));
+
+                linkTableDOM = document.createElement('div');
+                linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable">' +
+                    '<thead></thead>' +
+                    '<tbody></tbody>' +
+                    '<tfoot></tfoot>' +
+                    '</table>';
+            }
+            dRow.child([linkTableDOM, childrowsDOM], "child").show();
+            if (linkcell.data()[0]) makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
+            jqtr.addClass('shown');
         }
     });
 
