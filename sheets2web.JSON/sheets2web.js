@@ -62,10 +62,9 @@ function makeDataTable(table, jsondata, sheet) {
 
     const maintableKeys = Object.keys(jsondata[0]);
     const maintable = sheet;
-
-    let DTcolumn;
-    let columns = [], mergecolumns = [];
     let linktable;
+
+    let columns = [], mergecolumns = [];    
 
     const childrowsHeaders = maintableKeys.filter(x => x.startsWith("CE_"));
 
@@ -73,10 +72,7 @@ function makeDataTable(table, jsondata, sheet) {
     if (sheet == LINKSHEET) linktable = MAINSHEET;
     else if (sheet == MAINSHEET) linktable = LINKSHEET;
     else if (MAINSHEET_keys.includes(sheet)) linktable = MAINSHEET;
-    else if (LINKSHEET_keys.includes(sheet)) linktable = LINKSHEET;
-
-    //LOG    
-    console.log("create new DataTable from table#id = '" + table.getAttribute("id") + "'");
+    else if (LINKSHEET_keys.includes(sheet)) linktable = LINKSHEET;    
 
     let linktable_types = new Set();
     jason[linktable].forEach(x => linktable_types.add(x[typeheader]));
@@ -84,7 +80,9 @@ function makeDataTable(table, jsondata, sheet) {
     linktable_types.delete(undefined);
     //if (linktable_types.size == 0) linktable_types.add(linktable);
 
-    console.log(linktable_types);
+    //LOG    
+    console.log("create new DataTable from table#id = '" + table.getAttribute("id") + "'");
+    //console.log(linktable_types);
 
     //2. create Map() of mainsheet<->linksheet
     const linkKeyIdx = maintableKeys.indexOf("LINKIDXS");
@@ -191,7 +189,7 @@ function makeDataTable(table, jsondata, sheet) {
 
     //EXTRA: linkcolumn
     if (linktable) {
-        DTcolumn = {
+        let DTcolumn = {
             "title": linktable,
             "className": 'linkcolumn',
             "orderable": false,
