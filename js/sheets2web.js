@@ -140,9 +140,9 @@ function makeDataTable(table, jsondata, sheet) {
                 linktableMap.set(mainEl[maintableKeys[0]], idx);
             });
             //then loop through linkedsheet ONCE, and add info into above Map
-            jason[linktable].forEach(function (linkEl, linkIdx, arr) {
+            jason[linktable].forEach(function (linkEl, linkIdx, linkArr) {
                 if (linkEl[maintable]) {
-                    linkEl[maintable].split("\n").forEach(function (linkid) {
+                    linkEl[maintable].split("\n").forEach(function (linkid) { //ERRORS when id column contains delimiter (; for example) => exports as Array instead of string
                         const linkid_trim = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
                         //!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
                         if (linktableMap.has(linkid_trim)) {
@@ -170,7 +170,7 @@ function makeDataTable(table, jsondata, sheet) {
                             }
                         }
                         else {
-                            console.log("unknown " + linktable + " id " + linkid_trim);
+                            console.log("unknown " + maintable + " id in " + linktable + ": " + linkid_trim);
                         }
                     });
                 }
