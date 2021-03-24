@@ -250,7 +250,7 @@ function makeDataTable(table, jsondata, sheet) {
                         result += '<span class="linktip">' + data[i] + '</span>' + "; ";
                         i++;
                     }
-                    return result
+                    return result.substr(0, result.length - 2)
                 }
             }
             else DTcolumn.render = function (data, type, row, meta) {
@@ -365,7 +365,7 @@ function makeDataTable(table, jsondata, sheet) {
     }
     else {
         fixedHeader = false;
-        dom = "lft";
+        dom = "lfti";
     }
 
     //console.log(columns);
@@ -499,19 +499,21 @@ function makeDataTable(table, jsondata, sheet) {
         }
         else {
             // Open this row
-            let linkTableDOM = "", childrowsDOM = "";
+            const childrowsDOM = [];
+            let linkTableDOM = "", detailsTableDOM = "";
             const linkcellData = dTable.cells(dRow, ".linkcolumn").data()[0];
             //CE_ elems
-            let details = "", childrowTable = "";
+            let detailsTable = "";
             const childcells = dTable.cells(dRow, ".childrow");//, idx);
-            console.log(childcells.data());
+            //console.log(childcells.data());
             for (let i = 0; i < childcells.data().length; i++) {
-                if (childcells.data()[i]) details += formatChildRows(childrowsHeaders[i], childcells.data()[i]);
+                if (childcells.data()[i]) detailsTable += formatChildRows(childrowsHeaders[i], childcells.data()[i]);
             }
-            if (details != "") {
-                childrowTable = '<table class="childrowtable cell-border">' + details + '</table>';
-                childrowsDOM = document.createElement('div');
-                childrowsDOM.innerHTML = childrowTable;
+            if (detailsTable != "") {
+                detailsTable = '<table class="detailstable cell-border">' + detailsTable + '</table>';
+                detailsTableDOM = document.createElement('div');
+                detailsTableDOM.innerHTML = detailsTable;
+                childrowsDOM.push(detailsTableDOM);
             }
             //link elems
             let linkedItems = [];
@@ -530,14 +532,15 @@ function makeDataTable(table, jsondata, sheet) {
                     '<tbody></tbody>' +
                     '<tfoot></tfoot>' +
                     '</table>';
+                childrowsDOM.push(linkTableDOM);
             }
-            dRow.child([linkTableDOM, childrowsDOM], "child").show();
-            [jqtr.next('tr.child'), jqtr.next('tr.child').next('tr.child')].forEach(childtr => {
-                childtr.children('td').attr("colspan", (i, val) => val--);
-                childtr[0].prepend(document.createElement("td"));
-            });
+            dRow.child(childrowsDOM, "child").show();
+            // [jqtr.next('tr.child'), jqtr.next('tr.child').next('tr.child')].forEach(childtr => {
+            //     childtr.children('td').attr("colspan", (i, val) => val--);
+            //     childtr[0].prepend(document.createElement("td"));
+            // });
             
-            if (linkcellData) makeDataTable(jqtr.next('tr').find('table.linktable')[0], linkedItems, linktable);
+            if (linkcellData) makeDataTable(document.getElementById(rowid + "." + linktable), linkedItems, linktable);
             jqtr.addClass('shown');
         }
     });
