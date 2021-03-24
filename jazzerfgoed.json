@@ -2955,9 +2955,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "volledig concert Nasa Na @ De Kaai",
-      "actoren": "Nasa Na,De Kaai",
-      "in reeks": null
+      "CE_beschrijving": "volledig concert Nasa Na @ De Kaai",
+      "actoren": "Nasa Na,De Kaai"
     },
     {
       "type": "video",
@@ -2969,9 +2968,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "fragmenten ander concert Nasa Na @ De Kaai",
-      "actoren": "Nasa Na,De Kaai",
-      "in reeks": null
+      "CE_beschrijving": "fragmenten ander concert Nasa Na @ De Kaai",
+      "actoren": "Nasa Na,De Kaai"
     },
     {
       "type": "image",
@@ -2983,9 +2981,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Pierre Van Dormael recording sessie",
-      "actoren": "Pierre Van Dormael",
-      "in reeks": null
+      "CE_beschrijving": "Pierre Van Dormael recording sessie",
+      "actoren": "Pierre Van Dormael"
     },
     {
       "type": "video",
@@ -2997,9 +2994,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "JVC KCS20. concerten van Brosella?",
-      "actoren": "Brosella Folk & Jazz Festival",
-      "in reeks": null
+      "CE_beschrijving": "JVC KCS20. concerten van Brosella?",
+      "actoren": "Brosella Folk & Jazz Festival"
     },
     {
       "type": "video",
@@ -3011,9 +3007,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "concerten van Brosella?",
-      "actoren": "Brosella Folk & Jazz Festival",
-      "in reeks": null
+      "CE_beschrijving": "concerten van Brosella?",
+      "actoren": "Brosella Folk & Jazz Festival"
     },
     {
       "type": "image",
@@ -3025,9 +3020,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "festivals georganiseerd door Honky Tonk",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "festivals georganiseerd door Honky Tonk",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -3039,9 +3033,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -3053,9 +3046,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -3067,9 +3059,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -3081,9 +3072,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -3095,9 +3085,8 @@
       "reproductie": null,
       "begin": 1977,
       "eind": 2016,
-      "info": "opnames van 99% van alle concerten ooit op Brosella",
-      "actoren": "Brosella Folk & Jazz Festival",
-      "in reeks": null
+      "CE_beschrijving": "opnames van 99% van alle concerten ooit op Brosella",
+      "actoren": "Brosella Folk & Jazz Festival"
     },
     {
       "type": "audio",
@@ -3109,9 +3098,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Brosella Folk & Jazz Festival",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Brosella Folk & Jazz Festival"
     },
     {
       "type": "audio",
@@ -3123,9 +3111,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "4 schuiven",
-      "actoren": "Brosella Folk & Jazz Festival",
-      "in reeks": null
+      "CE_beschrijving": "4 schuiven",
+      "actoren": "Brosella Folk & Jazz Festival"
     },
     {
       "type": "audio",
@@ -3137,9 +3124,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Brosella Folk & Jazz Festival",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Brosella Folk & Jazz Festival"
     },
     {
       "type": "object",
@@ -3151,9 +3137,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "piano van Stan Brenders",
-      "actoren": "Stan Brenders",
-      "in reeks": null
+      "CE_beschrijving": "piano van Stan Brenders",
+      "actoren": "Stan Brenders"
     },
     {
       "type": "document",
@@ -3165,9 +3150,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -3179,9 +3163,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -3193,9 +3176,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -3207,9 +3189,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "10 brief/brieven van Albert Michiels\r\n37 brief/brieven aan Albert Michiels\r\n1 brief/brieven over Albert Michiels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "10 brief/brieven van Albert Michiels\r\n37 brief/brieven aan Albert Michiels\r\n1 brief/brieven over Albert Michiels",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3221,9 +3202,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "114 document(en) in verband met Albert Michiels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "114 document(en) in verband met Albert Michiels",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3235,9 +3215,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -3249,9 +3228,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "(jazzconcerten, artiesten, festival...)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "(jazzconcerten, artiesten, festival...)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3263,9 +3241,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "1 handschrift(en) met aantekeningen van Albert Michiels\r\n1 handschrift(en) ingebonden door Albert Michiels\r\n33 handschrift(en) van vertalingen van Albert Michiels\r\n8 handschrift(en) in verband met Albert Michiels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "1 handschrift(en) met aantekeningen van Albert Michiels\r\n1 handschrift(en) ingebonden door Albert Michiels\r\n33 handschrift(en) van vertalingen van Albert Michiels\r\n8 handschrift(en) in verband met Albert Michiels",
+      "actoren": null
     },
     {
       "type": "image",
@@ -3277,9 +3254,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "10 affiche(s) ontworpen door Albert Michiels\n14 affiche(s) met betrekking tot Albert Michiels\n892 affiche(s) in verband met Albert Michiels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "10 affiche(s) ontworpen door Albert Michiels\n14 affiche(s) met betrekking tot Albert Michiels\n892 affiche(s) in verband met Albert Michiels",
+      "actoren": null
     },
     {
       "type": "image",
@@ -3291,9 +3267,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "7 foto('s) van Albert Michiels\r\n135 foto('s) in verband met Albert Michiels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "7 foto('s) van Albert Michiels\r\n135 foto('s) in verband met Albert Michiels",
+      "actoren": null
     },
     {
       "type": "image",
@@ -3305,9 +3280,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "2 tekening(en) door Albert Michiels\n1 getekende portret(ten) van Albert Michiels\n21 tekening(en) in verband met Albert Michiels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "2 tekening(en) door Albert Michiels\n1 getekende portret(ten) van Albert Michiels\n21 tekening(en) in verband met Albert Michiels",
+      "actoren": null
     },
     {
       "type": "object",
@@ -3319,9 +3293,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "1 voorwerp(en) van Albert Michiels\r\n3 voorwerp(en) in verband met Albert Michiels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "1 voorwerp(en) van Albert Michiels\r\n3 voorwerp(en) in verband met Albert Michiels",
+      "actoren": null
     },
     {
       "type": "video",
@@ -3333,9 +3306,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "breedspoel",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "breedspoel",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3347,9 +3319,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -3361,9 +3332,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -3375,12 +3345,11 @@
       "reproductie": null,
       "begin": 1956,
       "eind": 1992,
-      "info": [
+      "CE_beschrijving": [
         "collectie programmabrochures van AJC van de concerten die ze ingericht hebben",
         1956
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3392,12 +3361,11 @@
       "reproductie": null,
       "begin": 1950,
       "eind": 1989,
-      "info": [
+      "CE_beschrijving": [
         "collectie kaartjes (73 diverse items, vaak meerdere exemplaren) met aankondiging van concerten door AJC georganiseerd",
         1950
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3409,9 +3377,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "collectie inkomtickets concerten AJC",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "collectie inkomtickets concerten AJC",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3423,15 +3390,14 @@
       "reproductie": null,
       "begin": 1957,
       "eind": 1994,
-      "info": [
+      "CE_beschrijving": [
         "map correspondentie musici: met brieven en (kerst)kaarten van en aan jazzmusici",
         "deelarchief persoonlijk archief LV en archief AJC zit door elkaar. I.p.v. originelen soms kopieën van de originelen. 1957-1994. Correspondenten: Oliver Jackson, Guy Lafitte, Brother John Sellers, Duke Ellington (gedrukte kerstkaart zonder signaturen), Milt Buckner, Panama Francis, Wallace Bishop, Jimmy Woode, Stuff Smith, Charles Thompson",
         "Ray Bryant, Margée Evons, Buddy Tate, Ben Webster, Helen Woechener, Harry ‘Sweeets’ Edison, Dickie Thompson",
         "J.C. Heard, George Kelly, Ray Nance, Big Bill Broonzy, Pamela Francis, Eddie Boyd",
         "Earle Warren, Buddy Tate, Milt Hinton, Jimmy Dawkins, Jay McShann, Bill Coleman, Louis Armstrong"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3443,9 +3409,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "folder AJC (diverse ex. aan elkaar geniet)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "folder AJC (diverse ex. aan elkaar geniet)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3457,13 +3422,12 @@
       "reproductie": null,
       "begin": 1954,
       "eind": 1985,
-      "info": [
+      "CE_beschrijving": [
         "Collectie programmabrochures en efemera van derden en knipsels",
         "1954-1985 (bijvoorbeeld Louis Armstrong, Ray Charles, Ella & Duke, Mercer Ellington)",
         "soms met signaturen van musici: brochures van festival Jazz à Montauban"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3475,9 +3439,8 @@
       "reproductie": null,
       "begin": 1970,
       "eind": 1973,
-      "info": "4 diverse thematijdschriften rond Louis Armstrong (1970-1973)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "4 diverse thematijdschriften rond Louis Armstrong (1970-1973)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3489,9 +3452,8 @@
       "reproductie": null,
       "begin": 1958,
       "eind": 1958,
-      "info": "tijdschriftje uit 1958",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "tijdschriftje uit 1958",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3503,9 +3465,8 @@
       "reproductie": null,
       "begin": 1969,
       "eind": 1986,
-      "info": "Le point du jazz (Brussels tijdschrift): volledig van nr. 1 (1969) tot nr. 20 (1986)",
-      "actoren": "Le Point Du Jazz",
-      "in reeks": null
+      "CE_beschrijving": "Le point du jazz (Brussels tijdschrift): volledig van nr. 1 (1969) tot nr. 20 (1986)",
+      "actoren": "Le Point Du Jazz"
     },
     {
       "type": "document",
@@ -3517,9 +3478,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Hot club de France (Le Jazz Hot ?) (bevindt zich in clublokaal in café Den Bengel)",
-      "actoren": "Jazz Hot",
-      "in reeks": null
+      "CE_beschrijving": "Hot club de France (Le Jazz Hot ?) (bevindt zich in clublokaal in café Den Bengel)",
+      "actoren": "Jazz Hot"
     },
     {
       "type": "document",
@@ -3531,9 +3491,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Swingtime: nr. 30, 41, 44, 46-51 (van 1978-1981)",
-      "actoren": "Swingtime",
-      "in reeks": null
+      "CE_beschrijving": "Swingtime: nr. 30, 41, 44, 46-51 (van 1978-1981)",
+      "actoren": "Swingtime"
     },
     {
       "type": "document",
@@ -3545,12 +3504,11 @@
       "reproductie": null,
       "begin": 1940,
       "eind": 1948,
-      "info": [
+      "CE_beschrijving": [
         "Jazz-riffs, orgaan der Antwerpse Jazz Club (ledenblad van de AJC), nr 1 (1940",
         "nr 19 (jg 4) - nr 29 (jg. 4) (1948)"
       ],
-      "actoren": "Jazz-riffs",
-      "in reeks": null
+      "actoren": "Jazz-riffs"
     },
     {
       "type": "document",
@@ -3562,9 +3520,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "collectie boeken, geschreven door Piet van de Craen, lid van AJC:\n- Jazz binnenstebuiten (2000)\n- De grondleggers (2002)\n- Stijlen en stromingen (2005)\n- Duke Ellington (2008)",
-      "actoren": "Piet van de Craen",
-      "in reeks": null
+      "CE_beschrijving": "collectie boeken, geschreven door Piet van de Craen, lid van AJC:\n- Jazz binnenstebuiten (2000)\n- De grondleggers (2002)\n- Stijlen en stromingen (2005)\n- Duke Ellington (2008)",
+      "actoren": "Piet van de Craen"
     },
     {
       "type": "document",
@@ -3576,7 +3533,7 @@
       "reproductie": null,
       "begin": 1962,
       "eind": 2014,
-      "info": [
+      "CE_beschrijving": [
         "-programmabladen AJC (dit is de informatie die wordt uitgereikt aan de aanwezigen bij de wekelijkse voordrachten). Deze bladen bevinden zich in mapjes en classeurs: 1962-63",
         1964,
         1965,
@@ -3591,8 +3548,7 @@
         1993,
         1994
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3604,13 +3560,12 @@
       "reproductie": null,
       "begin": null,
       "eind": 1995,
-      "info": [
+      "CE_beschrijving": [
         "mapje knipsels",
         "knipsel met interview GvA met LV (sd)",
         "knipsel uit Sud-Ouest over AJC (1995)"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "image",
@@ -3622,9 +3577,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Collectie foto’s\n- Foto met aankomst van muzikanten (o.a. Earle Warren, Dickie Wills, Buck Clayton, Buddy Tate\n- foto ?\n- foto bassist ?",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Collectie foto’s\n- Foto met aankomst van muzikanten (o.a. Earle Warren, Dickie Wills, Buck Clayton, Buddy Tate\n- foto ?\n- foto bassist ?",
+      "actoren": null
     },
     {
       "type": "image",
@@ -3636,12 +3590,11 @@
       "reproductie": null,
       "begin": 1952,
       "eind": 1989,
-      "info": [
+      "CE_beschrijving": [
         "collectie affiches AJC: 4 ex.",
         1952
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "image",
@@ -3653,12 +3606,11 @@
       "reproductie": null,
       "begin": 1953,
       "eind": 1984,
-      "info": [
+      "CE_beschrijving": [
         "Collectie affiches (derden) 13 ex.",
         1953
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3670,12 +3622,11 @@
       "reproductie": null,
       "begin": 1954,
       "eind": 1963,
-      "info": [
+      "CE_beschrijving": [
         "mapje busreizen: efemera rond de concerten die men met de bus bezocht + voorgedrukte correspondentie met de ledezen",
         1954
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3687,12 +3638,11 @@
       "reproductie": null,
       "begin": 1958,
       "eind": 1958,
-      "info": [
+      "CE_beschrijving": [
         "map met correspondentie (o.a. met Johan Anthierens)",
         "Humoradio (1958) en knipsels rond deelname van aantal leden van AJC aan kwis ‘100.000 of niets’ in 1958 (er waren betwistingen tijdens de uitzending en dit verscheen in de pers)"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3704,9 +3654,8 @@
       "reproductie": null,
       "begin": 1953,
       "eind": 1953,
-      "info": "correspondentie met andere jazzclubs 1953 (+ antwoorden)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "correspondentie met andere jazzclubs 1953 (+ antwoorden)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3718,12 +3667,11 @@
       "reproductie": null,
       "begin": 1968,
       "eind": 1969,
-      "info": [
+      "CE_beschrijving": [
         "correspondentie Sim Simons (2 items)",
         1968
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3735,9 +3683,8 @@
       "reproductie": null,
       "begin": 1954,
       "eind": 1954,
-      "info": "nota’s en correspondentie lezing Walter esselinck, 1954",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "nota’s en correspondentie lezing Walter esselinck, 1954",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3749,9 +3696,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "nota’s initiatieavonden van de AJC",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "nota’s initiatieavonden van de AJC",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3763,12 +3709,11 @@
       "reproductie": null,
       "begin": "195x",
       "eind": "199x",
-      "info": [
+      "CE_beschrijving": [
         "mappen met correspondentie, knipsels, foto’s, folders, brochure rond concerten (die de AJC zelf organiseerde). per decennium georganiseerd met per concert 1 mapje - 1950",
         "7 mapjes - 1960: 18 mapjes - 1970: 27 mapjes - 1980: 20 mapjes - 1990: 4 mapjes - begroting AJC 1958, 1959"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -3780,9 +3725,8 @@
       "reproductie": null,
       "begin": 1957,
       "eind": 1957,
-      "info": "mapje met statuten 1957",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "mapje met statuten 1957",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3794,9 +3738,8 @@
       "reproductie": null,
       "begin": 1946,
       "eind": 1946,
-      "info": "mapje met lijst bestuursleden 1946",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "mapje met lijst bestuursleden 1946",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3808,9 +3751,8 @@
       "reproductie": null,
       "begin": 1957,
       "eind": 1978,
-      "info": "mapje balansen AJC: 1957, 63, 65, 66, 67, 68, 69, 78",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "mapje balansen AJC: 1957, 63, 65, 66, 67, 68, 69, 78",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3822,9 +3764,8 @@
       "reproductie": null,
       "begin": "195x",
       "eind": null,
-      "info": "ledenlijsten (vanaf jaren 50) (niet geraadpleegd)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "ledenlijsten (vanaf jaren 50) (niet geraadpleegd)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3836,9 +3777,8 @@
       "reproductie": null,
       "begin": 1998,
       "eind": null,
-      "info": "bestuursvergaderingen (niet volledig, vanaf 1998) (niet geraadpleegd)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "bestuursvergaderingen (niet volledig, vanaf 1998) (niet geraadpleegd)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3850,9 +3790,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "verslagen algemene ledenvergadering (niet geraadpleegd)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "verslagen algemene ledenvergadering (niet geraadpleegd)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3864,9 +3803,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "financiën (bij huidig voorzitter Marc Vanistendael) (niet geraadpleegd)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "financiën (bij huidig voorzitter Marc Vanistendael) (niet geraadpleegd)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3878,9 +3816,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -3892,9 +3829,8 @@
       "reproductie": null,
       "begin": 2001,
       "eind": null,
-      "info": "Digitaal erfgoed (deels ook fysiek archief) (2001-- nu)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Digitaal erfgoed (deels ook fysiek archief) (2001-- nu)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3906,9 +3842,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "maandelijks rondschrijven met programma’s van de maan + nieuws (deels e-mail, deels fysiek)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "maandelijks rondschrijven met programma’s van de maan + nieuws (deels e-mail, deels fysiek)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3920,9 +3855,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "rondschrijven met filmprogrammatie i.s.m. Cinema Zuid (idem)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "rondschrijven met filmprogrammatie i.s.m. Cinema Zuid (idem)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3934,9 +3868,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "verslagen",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "verslagen",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3948,9 +3881,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "programmabladen die worden uitgereikt op de avonden",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "programmabladen die worden uitgereikt op de avonden",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3962,9 +3894,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "ledenlijsten",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "ledenlijsten",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3976,9 +3907,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "administratie",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "administratie",
+      "actoren": null
     },
     {
       "type": "document",
@@ -3990,9 +3920,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Er is door Josée Lissens een lijst gemaakt van alle concerten ingericht door de AJC met inbegrip van alle bezettingen en data.",
-      "actoren": "Antwerpse Jazzclub (AJC)",
-      "in reeks": null
+      "CE_beschrijving": "Er is door Josée Lissens een lijst gemaakt van alle concerten ingericht door de AJC met inbegrip van alle bezettingen en data.",
+      "actoren": "Antwerpse Jazzclub (AJC)"
     },
     {
       "type": "image",
@@ -4004,9 +3933,8 @@
       "reproductie": null,
       "begin": 2002,
       "eind": 2018,
-      "info": "backup Yves Gervais",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "backup Yves Gervais",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4018,9 +3946,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -4032,9 +3959,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -4046,9 +3972,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -4060,9 +3985,8 @@
       "reproductie": null,
       "begin": "?1942",
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -4074,9 +3998,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -4088,9 +4011,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -4102,9 +4024,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "een duizendtal 78-toerenplaten, nog andere formaten?",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "een duizendtal 78-toerenplaten, nog andere formaten?",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4116,9 +4037,8 @@
       "reproductie": null,
       "begin": "190x",
       "eind": "195x",
-      "info": "diverse repertoria (jazz, chanson, salonmuziek, accordeon enz.). De werken dateren voornamelijk van de jaren 1900 tot 1950 en zijn uitgegeven in België, in andere Europese landen (Duitsland, Engeland,  Frankrijk, Italië, Nederland, Spanje) en in Noord- en Zuid-Amerika.",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "diverse repertoria (jazz, chanson, salonmuziek, accordeon enz.). De werken dateren voornamelijk van de jaren 1900 tot 1950 en zijn uitgegeven in België, in andere Europese landen (Duitsland, Engeland,  Frankrijk, Italië, Nederland, Spanje) en in Noord- en Zuid-Amerika.",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4130,9 +4050,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Het fonds telt ook enkele duizenden geïllustreerde partituren die in België zijn verschenen (meer bepaald werk van de kunstenaars René Magritte en Peter De Greef)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Het fonds telt ook enkele duizenden geïllustreerde partituren die in België zijn verschenen (meer bepaald werk van de kunstenaars René Magritte en Peter De Greef)",
+      "actoren": null
     },
     {
       "type": "image",
@@ -4144,9 +4063,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -4158,9 +4076,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "catalogi van muziekuitgevers en platenlabels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "catalogi van muziekuitgevers en platenlabels",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4172,9 +4089,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -4186,9 +4102,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "opnamen concerten Gent Jazz",
-      "actoren": "Gent Jazz Festival",
-      "in reeks": null
+      "CE_beschrijving": "opnamen concerten Gent Jazz",
+      "actoren": "Gent Jazz Festival"
     },
     {
       "type": "audio",
@@ -4200,9 +4115,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "10,12\" 78rpm plaat",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "10,12\" 78rpm plaat",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -4214,9 +4128,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "6,7,10,EP\" plaat",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "6,7,10,EP\" plaat",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -4228,9 +4141,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "33rpm plaat",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "33rpm plaat",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -4242,9 +4154,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -4256,9 +4167,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "onuitgegeven ORTF, NOS, verzamelelaars",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "onuitgegeven ORTF, NOS, verzamelelaars",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -4270,9 +4180,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -4284,9 +4193,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -4298,9 +4206,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -4312,9 +4219,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "object",
@@ -4326,9 +4232,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "piano van John Ouverckx",
-      "actoren": "John Ouwerx",
-      "in reeks": null
+      "CE_beschrijving": "piano van John Ouverckx",
+      "actoren": "John Ouwerx"
     },
     {
       "type": "audio",
@@ -4340,9 +4245,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "10\",12\" 78rpm plaat/album: 17\n12\" 78rpm plaat: 1760",
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": "10\",12\" 78rpm plaat/album: 17\n12\" 78rpm plaat: 1760",
+      "actoren": "Duke Ellington"
     },
     {
       "type": "audio",
@@ -4354,9 +4258,8 @@
       "reproductie": null,
       "begin": 1924,
       "eind": 1974,
-      "info": "compleet, op 3 stuks na? Muzikaal is alles van Ellington aanwezig, het gaat gewoon over enkele specifieke uitgaves die ontbreken.",
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": "compleet, op 3 stuks na? Muzikaal is alles van Ellington aanwezig, het gaat gewoon over enkele specifieke uitgaves die ontbreken.",
+      "actoren": "Duke Ellington"
     },
     {
       "type": "audio",
@@ -4368,9 +4271,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "EP,6,7,10\" plaat: 205 albumtitels, op 243 discs",
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": "EP,6,7,10\" plaat: 205 albumtitels, op 243 discs",
+      "actoren": "Duke Ellington"
     },
     {
       "type": "audio",
@@ -4382,9 +4284,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "33rpm plaat: 850 albumtitels, op 1120 discs",
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": "33rpm plaat: 850 albumtitels, op 1120 discs",
+      "actoren": "Duke Ellington"
     },
     {
       "type": "audio",
@@ -4396,9 +4297,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "16\" 33rpm plaat: 45",
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": "16\" 33rpm plaat: 45",
+      "actoren": "Duke Ellington"
     },
     {
       "type": "audio",
@@ -4410,9 +4310,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "CD: 975 albumtitels, op 1580 discs",
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": "CD: 975 albumtitels, op 1580 discs",
+      "actoren": "Duke Ellington"
     },
     {
       "type": "audio",
@@ -4424,9 +4323,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "audio",
@@ -4438,9 +4336,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "video",
@@ -4452,9 +4349,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "video",
@@ -4466,9 +4362,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "video",
@@ -4480,9 +4375,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "document",
@@ -4494,9 +4388,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "totaal: >2m",
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": "totaal: >2m",
+      "actoren": "Duke Ellington"
     },
     {
       "type": "document",
@@ -4508,9 +4401,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "document",
@@ -4522,9 +4414,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "document",
@@ -4536,9 +4427,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "image",
@@ -4550,9 +4440,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "image",
@@ -4564,9 +4453,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "document",
@@ -4578,9 +4466,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Duke Ellington",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Duke Ellington"
     },
     {
       "type": "image",
@@ -4592,9 +4479,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Jazz Bilzen",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Jazz Bilzen"
     },
     {
       "type": "document",
@@ -4606,9 +4492,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "* tas met archief van Jacky Stassyns (van de HTJC): vergaderingverslagen, grijze literatuur",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "* tas met archief van Jacky Stassyns (van de HTJC): vergaderingverslagen, grijze literatuur",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4620,12 +4505,11 @@
       "reproductie": null,
       "begin": 1967,
       "eind": "199x",
-      "info": [
+      "CE_beschrijving": [
         "* archiefdoos (vanaf 1967 tot (vooral)jaren 90) met documenten van bands, demo’s, grijze literatuur mbt jazzconcerten",
         "archief van HTJC (mbt Jazzfestival Dendermonde 1976)"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -4637,12 +4521,11 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": [
+      "CE_beschrijving": [
         "* 1 bakje met archief HTJC met enquete (1971) (na eerste jazzfestival)",
         "met correspondentie (1977) met Eddie Boyd"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -4654,15 +4537,14 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": [
+      "CE_beschrijving": [
         "* 1 bakje map met archief van Jaggpap New Orlans Jazz Band (knipsels (vanaf 1971), grijze literatuur foto’s)",
         "map archief JNOJB (grijze literatuur, correspondentie met jazzfestivals (Comblain-la-Tour, Internationaal Jazz Festival (1964), Jazz Bilzen, efemera), promofoto’s muzikanten, knipsel, archief HTJC (verslag vergaderingen, sponsoring) (vanaf 1966)",
         "map New Orleans Jazzfestival Honky Tonk 1971 (correspondentie Sabam, grijze literatuur, efemera, correspondentie muzikanten, bookingskantoren, kranten, contracten)",
         "map Jazzfestival 1973 (correspondentie muzikanten)",
         "map jazzfestival 1972 (efemera, documentatie, promotie, boekingen, Sabam)"
       ],
-      "actoren": "jegg",
-      "in reeks": null
+      "actoren": "jegg"
     },
     {
       "type": "document",
@@ -4674,9 +4556,8 @@
       "reproductie": null,
       "begin": 1966,
       "eind": 2001,
-      "info": "* 1 bakje archief HTJC (1966-2001): grijze literatuur, knipsels, administratie en correspondentie",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "* 1 bakje archief HTJC (1966-2001): grijze literatuur, knipsels, administratie en correspondentie",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4688,9 +4569,8 @@
       "reproductie": null,
       "begin": 1967,
       "eind": 2005,
-      "info": "* archief HTJC: 105 cm, 1967-2005: financiën, contacten promotoren, verslagen, boekhouding, persknipsels, promotiemateriaal van jazzensembles",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "* archief HTJC: 105 cm, 1967-2005: financiën, contacten promotoren, verslagen, boekhouding, persknipsels, promotiemateriaal van jazzensembles",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4702,9 +4582,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "* archief HTJC: ca. 20 foto’s, efemera mbt HTCJ, grijze literatuur divers",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "* archief HTJC: ca. 20 foto’s, efemera mbt HTCJ, grijze literatuur divers",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4716,9 +4595,8 @@
       "reproductie": null,
       "begin": 1971,
       "eind": 2012,
-      "info": "* archief HTJC: ca. 280 cm archiefdozen en klasseurs, 1971-2012",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "* archief HTJC: ca. 280 cm archiefdozen en klasseurs, 1971-2012",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4730,9 +4608,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "* Kast 11: archief Honky Tonk",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "* Kast 11: archief Honky Tonk",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4744,9 +4621,8 @@
       "reproductie": null,
       "begin": 1973,
       "eind": 1973,
-      "info": "Archief Honky tonk ’73 correspondentie artiesten",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Archief Honky tonk ’73 correspondentie artiesten",
+      "actoren": null
     },
     {
       "type": null,
@@ -4758,9 +4634,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "45rpm plaat: 5? (BRT uitgave: Jack Sels)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "45rpm plaat: 5? (BRT uitgave: Jack Sels)",
+      "actoren": null
     },
     {
       "type": null,
@@ -4772,9 +4647,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "10\" plaat:  (Innovation en jazz)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "10\" plaat:  (Innovation en jazz)",
+      "actoren": null
     },
     {
       "type": null,
@@ -4786,9 +4660,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Comblain-la-Tour: RTBF interviews, ook muziek?",
-      "actoren": "Comblain-la-Tour",
-      "in reeks": null
+      "CE_beschrijving": "Comblain-la-Tour: RTBF interviews, ook muziek?",
+      "actoren": "Comblain-la-Tour"
     },
     {
       "type": null,
@@ -4800,9 +4673,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": null,
@@ -4814,9 +4686,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": ">200 (Fred Van Hove. >150 ontbreken?)",
-      "actoren": "Fred Van Hove",
-      "in reeks": null
+      "CE_beschrijving": ">200 (Fred Van Hove. >150 ontbreken?)",
+      "actoren": "Fred Van Hove"
     },
     {
       "type": null,
@@ -4828,9 +4699,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": null,
@@ -4842,9 +4712,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -4856,9 +4725,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "Letterenhuis\n        1 brief/brieven van Jack Sels\n        1 brief/brieven aan Jack Sels\nKoninklijk Conservatorium\n        1 brief/brieven van Jack Sels\n        22 brief/brieven aan Jack Sels\n        4 brief/brieven over Jack Sels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Letterenhuis\n        1 brief/brieven van Jack Sels\n        1 brief/brieven aan Jack Sels\nKoninklijk Conservatorium\n        1 brief/brieven van Jack Sels\n        22 brief/brieven aan Jack Sels\n        4 brief/brieven over Jack Sels",
+      "actoren": null
     },
     {
       "type": "image",
@@ -4870,9 +4738,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "Letterenhuis\n        46 foto('s) van Jack Sels\n        1 foto('s) in verband met Jack Sels\nKoninklijk Conservatorium\n        7 foto('s) van Jack Sels\n        2 foto('s) in verband met Jack Sels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Letterenhuis\n        46 foto('s) van Jack Sels\n        1 foto('s) in verband met Jack Sels\nKoninklijk Conservatorium\n        7 foto('s) van Jack Sels\n        2 foto('s) in verband met Jack Sels",
+      "actoren": null
     },
     {
       "type": "image",
@@ -4884,9 +4751,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "Letterenhuis\n        8 affiche(s) met betrekking tot Jack Sels\nKoninklijk Conservatorium\n        4 affiche(s) met betrekking tot Jack Sels\n        1 affiche(s) in verband met Jack Sels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Letterenhuis\n        8 affiche(s) met betrekking tot Jack Sels\nKoninklijk Conservatorium\n        4 affiche(s) met betrekking tot Jack Sels\n        1 affiche(s) in verband met Jack Sels",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4898,9 +4764,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "Koninklijk Conservatorium\n\t2 document(en) van Jack Sels\r\n\t24 document(en) in verband met Jack Sels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Koninklijk Conservatorium\n\t2 document(en) van Jack Sels\r\n\t24 document(en) in verband met Jack Sels",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4912,9 +4777,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "Handschriften\r\n\t23 handschrift(en) van Jack Sels\r\n\t1 handschrift(en) van vertalingen van Jack Sels\r\n\t18 handschrift(en) in verband met Jack Sels\r\n\t2 handschrift(en) over Jack Sels",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Handschriften\r\n\t23 handschrift(en) van Jack Sels\r\n\t1 handschrift(en) van vertalingen van Jack Sels\r\n\t18 handschrift(en) in verband met Jack Sels\r\n\t2 handschrift(en) over Jack Sels",
+      "actoren": null
     },
     {
       "type": "object",
@@ -4926,9 +4790,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -4940,9 +4803,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "brief:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "brief:",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4954,9 +4816,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "persknipsel:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "persknipsel:",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4968,9 +4829,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "vergaderverslag:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "vergaderverslag:",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4982,9 +4842,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "rekening:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "rekening:",
+      "actoren": null
     },
     {
       "type": "document",
@@ -4996,9 +4855,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "* archief JCV: facturen, boekhouding, financiële rapporten, verslagen: 11 classeurs en archiefdozen",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "* archief JCV: facturen, boekhouding, financiële rapporten, verslagen: 11 classeurs en archiefdozen",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5010,9 +4868,8 @@
       "reproductie": null,
       "begin": 2002,
       "eind": 2003,
-      "info": "* classeur JCV: archief ivm voorbereiding en start van JCV, 2002-2003",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "* classeur JCV: archief ivm voorbereiding en start van JCV, 2002-2003",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5024,12 +4881,11 @@
       "reproductie": null,
       "begin": 2002,
       "eind": null,
-      "info": [
+      "CE_beschrijving": [
         "Map JCV: archief en documentatie (correspondentie, administratie, VSDC, rekeningen verbouwingen)",
         "beginperiode, vanaf 2002"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -5041,9 +4897,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Map correspondentie JCV, planning van de werking, administratie, vergaderingsverslagen, diversen, allicht archief Alajos Van Peteghem",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Map correspondentie JCV, planning van de werking, administratie, vergaderingsverslagen, diversen, allicht archief Alajos Van Peteghem",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5055,12 +4910,11 @@
       "reproductie": null,
       "begin": 2007,
       "eind": 2012,
-      "info": [
+      "CE_beschrijving": [
         "Archief JCV: 2007-2012: RVB, pers, verslagen, ledenlijsten, access handleiding, documentatie, correspondentie, workshops en lessen Ilya De Neve",
         "Battaklang"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5072,9 +4926,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "COMMERCIEEL:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "COMMERCIEEL:",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5086,9 +4939,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "33rpm plaat: >12000",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "33rpm plaat: >12000",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5100,9 +4952,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "CD: 300?",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "CD: 300?",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5114,9 +4965,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "klein\" tape: 16",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "klein\" tape: 16",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5128,9 +4978,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "klein\" tape: 31",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "klein\" tape: 31",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5142,9 +4991,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "EIGEN-OPNAME:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "EIGEN-OPNAME:",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5156,9 +5004,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "541cm+137cm (o.a.opnames HTJC, demo's, ...)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "541cm+137cm (o.a.opnames HTJC, demo's, ...)",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5170,9 +5017,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "kast:210 (collectie Walt Windey)",
-      "actoren": "Walt Windey",
-      "in reeks": null
+      "CE_beschrijving": "kast:210 (collectie Walt Windey)",
+      "actoren": "Walt Windey"
     },
     {
       "type": "audio",
@@ -5184,9 +5030,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "CAC: 61cm (Freeland Radio, jazzfesival d'monde, ...)",
-      "actoren": "Jazzfestival van Dendermonde",
-      "in reeks": null
+      "CE_beschrijving": "CAC: 61cm (Freeland Radio, jazzfesival d'monde, ...)",
+      "actoren": "Jazzfestival van Dendermonde"
     },
     {
       "type": "audio",
@@ -5198,9 +5043,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "groot\" tape: 10 (o.a.opnames HTJC, festival dendermonde '82, ...)",
-      "actoren": "Jazzfestival van Dendermonde",
-      "in reeks": null
+      "CE_beschrijving": "groot\" tape: 10 (o.a.opnames HTJC, festival dendermonde '82, ...)",
+      "actoren": "Jazzfestival van Dendermonde"
     },
     {
       "type": "audio",
@@ -5212,9 +5056,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "medium\" tape: 89 (o.a. ’84 Night Blooming Jazz Festival)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "medium\" tape: 89 (o.a. ’84 Night Blooming Jazz Festival)",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5226,9 +5069,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "klein\" tape: 11+7 (o.a.opnames HTJC?)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "klein\" tape: 11+7 (o.a.opnames HTJC?)",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5240,9 +5082,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "o.a.opnames HTJC?",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "o.a.opnames HTJC?",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5254,9 +5095,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "290cm (promocd’s Muziekcentrum e.a)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "290cm (promocd’s Muziekcentrum e.a)",
+      "actoren": null
     },
     {
       "type": "video",
@@ -5268,9 +5108,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "videocasette: 6",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "videocasette: 6",
+      "actoren": null
     },
     {
       "type": "video",
@@ -5282,9 +5121,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "supervideo: 9 (films, oa Sarah Vaughan, maar vooral niet jazzgerelateerd)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "supervideo: 9 (films, oa Sarah Vaughan, maar vooral niet jazzgerelateerd)",
+      "actoren": null
     },
     {
       "type": "video",
@@ -5296,9 +5134,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "? + 2 (o.a. geschiedenis van de jazz)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "? + 2 (o.a. geschiedenis van de jazz)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5310,9 +5147,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "boek:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "boek:",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5324,9 +5160,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "tijdschrift:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "tijdschrift:",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5338,9 +5173,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "programmaboekje:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "programmaboekje:",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5352,9 +5186,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "partituur: 40cm ()",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "partituur: 40cm ()",
+      "actoren": null
     },
     {
       "type": "object",
@@ -5366,9 +5199,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "afspeelapparatuur:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "afspeelapparatuur:",
+      "actoren": null
     },
     {
       "type": "object",
@@ -5380,9 +5212,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "muziekinstrument:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "muziekinstrument:",
+      "actoren": null
     },
     {
       "type": "object",
@@ -5394,9 +5225,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "trompet:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "trompet:",
+      "actoren": null
     },
     {
       "type": "object",
@@ -5408,9 +5238,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "C-bas:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "C-bas:",
+      "actoren": null
     },
     {
       "type": "object",
@@ -5422,9 +5251,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "sax:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "sax:",
+      "actoren": null
     },
     {
       "type": "image",
@@ -5436,9 +5264,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5450,9 +5277,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -5464,9 +5290,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -5478,9 +5303,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -5492,9 +5316,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -5506,9 +5329,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -5520,9 +5342,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -5534,14 +5355,13 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "met uitzonderlijke stukken zoals unieke autografe partituren uit het privé-bezit van menig groot Belgisch componist of arrangeur uit het interbellum waaronder David Bee, Peter Packay, Gus Deloof en “Fud” Candrix",
+      "CE_beschrijving": "met uitzonderlijke stukken zoals unieke autografe partituren uit het privé-bezit van menig groot Belgisch componist of arrangeur uit het interbellum waaronder David Bee, Peter Packay, Gus Deloof en “Fud” Candrix",
       "actoren": [
         "David Bee",
         "Peter Packay",
         "Gus Deloof",
         "Fud Candrix"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "image",
@@ -5553,9 +5373,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -5567,9 +5386,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -5581,9 +5399,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -5595,9 +5412,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -5609,9 +5425,8 @@
       "reproductie": true,
       "begin": "Letterenhuis",
       "eind": null,
-      "info": "Letternhuis: 7 affiche(s) met betrekking tot Jazz Hoeilaart [Hoeilaart [BE]]\nKoninklijk Conservatorium:\n35 affiche(s) met betrekking tot Jazz Hoeilaart [Hoeilaart [BE]]\n2 affiche(s) in verband met Jazz Hoeilaart [Hoeilaart [BE]]",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Letternhuis: 7 affiche(s) met betrekking tot Jazz Hoeilaart [Hoeilaart [BE]]\nKoninklijk Conservatorium:\n35 affiche(s) met betrekking tot Jazz Hoeilaart [Hoeilaart [BE]]\n2 affiche(s) in verband met Jazz Hoeilaart [Hoeilaart [BE]]",
+      "actoren": null
     },
     {
       "type": "image",
@@ -5623,9 +5438,8 @@
       "reproductie": null,
       "begin": "Affiches",
       "eind": null,
-      "info": "3 affiche(s) ontworpen door Jazz Hoeilaart [Hoeilaart [BE]]",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "3 affiche(s) ontworpen door Jazz Hoeilaart [Hoeilaart [BE]]",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5637,9 +5451,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "2 brief/brieven over Jazz Hoeilaart [Hoeilaart [BE]]",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "2 brief/brieven over Jazz Hoeilaart [Hoeilaart [BE]]",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5651,9 +5464,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "1 document(en) van Jazz Hoeilaart [Hoeilaart [BE]]",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "1 document(en) van Jazz Hoeilaart [Hoeilaart [BE]]",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5665,9 +5477,8 @@
       "reproductie": true,
       "begin": "Koninklijk Conservatorium",
       "eind": null,
-      "info": "7 document(en) in verband met Jazz Hoeilaart [Hoeilaart [BE]]",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "7 document(en) in verband met Jazz Hoeilaart [Hoeilaart [BE]]",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5679,9 +5490,8 @@
       "reproductie": null,
       "begin": "Brieven",
       "eind": null,
-      "info": "4 handschrift(en) in verband met Jazz Hoeilaart [Hoeilaart [BE]]",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "4 handschrift(en) in verband met Jazz Hoeilaart [Hoeilaart [BE]]",
+      "actoren": null
     },
     {
       "type": "image",
@@ -5693,9 +5503,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "2 foto('s) van Jazz Hoeilaart [Hoeilaart [BE]]",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "2 foto('s) van Jazz Hoeilaart [Hoeilaart [BE]]",
+      "actoren": null
     },
     {
       "type": "image",
@@ -5707,9 +5516,8 @@
       "reproductie": null,
       "begin": "Documenten",
       "eind": null,
-      "info": "1 tekening(en) met aantekeningen van Jazz Hoeilaart [Hoeilaart [BE]]\r\n5 getekende portret(ten) van Jazz Hoeilaart [Hoeilaart [BE]]\r\n3 tekening(en) in verband met Jazz Hoeilaart [Hoeilaart [BE]]",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "1 tekening(en) met aantekeningen van Jazz Hoeilaart [Hoeilaart [BE]]\r\n5 getekende portret(ten) van Jazz Hoeilaart [Hoeilaart [BE]]\r\n3 tekening(en) in verband met Jazz Hoeilaart [Hoeilaart [BE]]",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5721,9 +5529,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -5735,9 +5542,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -5749,9 +5555,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "x aantal dozen?: getrokken door Mon Devoghelaere, Guy Stevens, ...",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "x aantal dozen?: getrokken door Mon Devoghelaere, Guy Stevens, ...",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5763,9 +5568,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Ongeveer de helft Europese jazz, een 100-tal Belgische jazzopnamen.",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Ongeveer de helft Europese jazz, een 100-tal Belgische jazzopnamen.",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5777,9 +5581,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5791,9 +5594,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5805,9 +5607,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -5819,9 +5620,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -5833,9 +5633,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "ongeveer 40-50 boeken over jazz",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "ongeveer 40-50 boeken over jazz",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5847,7 +5646,7 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "ongeveer 400-600 magazines:\n- Sweet & Hot (Belgium, French)\n- Le Point Du Jazz (Belgium, French)\n- Hot & Cool (Belgium, Dutch)\n- Jazzspiegel (Belgium, Dutch)\n- BRT-uitzendingen (Belgium, Dutch)\n- Hot Club Magazine (Belgium, French)\n- Jazz (Belgium, French)\n- Jazz (Belgium, Dutch)\n- Swingtime (Belgium, Dutch)\n- Jazz Hot (France, French)\n- Jazz Magazine (France, French)\n- Jazz Forum (Poland, English)\n- Jazz Journal (UK, English)\n- Down Beat (USA, English)\n- Le Jazz Hip (France, French)\n- Rhythme (The Netherlands, Dutch)\n- Jazz Hip (The Netherlands, Dutch)\n- Jazzwereld (The Netherlands, Dutch)\n- True Jazz\n- Jazz Monthly (UK, English)\n- Clubblad van de Haagse Jazzclub (The Netherlands, Dutch)",
+      "CE_beschrijving": "ongeveer 400-600 magazines:\n- Sweet & Hot (Belgium, French)\n- Le Point Du Jazz (Belgium, French)\n- Hot & Cool (Belgium, Dutch)\n- Jazzspiegel (Belgium, Dutch)\n- BRT-uitzendingen (Belgium, Dutch)\n- Hot Club Magazine (Belgium, French)\n- Jazz (Belgium, French)\n- Jazz (Belgium, Dutch)\n- Swingtime (Belgium, Dutch)\n- Jazz Hot (France, French)\n- Jazz Magazine (France, French)\n- Jazz Forum (Poland, English)\n- Jazz Journal (UK, English)\n- Down Beat (USA, English)\n- Le Jazz Hip (France, French)\n- Rhythme (The Netherlands, Dutch)\n- Jazz Hip (The Netherlands, Dutch)\n- Jazzwereld (The Netherlands, Dutch)\n- True Jazz\n- Jazz Monthly (UK, English)\n- Clubblad van de Haagse Jazzclub (The Netherlands, Dutch)",
       "actoren": [
         "Sweet & Hot",
         "Le Point du Jazz",
@@ -5858,8 +5657,7 @@
         "Swingtime",
         "Jazz",
         ""
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "image",
@@ -5871,9 +5669,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "- ongeveer 75-100 analoge foto's van muzikanten, hierbij een lijst van de Europese muzikanten:\r\n \r\nALLAN, Jan\r\nASSELBERGHS, Roger\r\nBUSNELLO, Eddie\r\nBROM, Gustav\r\nCATHERINE, Philip\r\nDAUNER, Wolfgang\r\nDI DONATO, Jacques\r\nDONNI, Willy\r\nGARROS, Christian\r\nGRUNTZ, George\r\nHAYES, Tubby\r\nHNILICKA, Jaromir\r\nHULTCRANTZ, Torbjorn\r\nHUMAIR, Daniel\r\nJASPAR, Bobby\r\nLALLEMAND, ‘Fats’ Sadi\r\nKAPSTAD, Egil\r\nKURYLEWICZ, Andrzej\r\nKROG, Karin \r\nLIGHTNING JAZZ TRIO\r\nMICHELOT, Pierre\r\nMOSEHOLM, Erik\r\nMUSSOLINI, Romano\r\nPEDERSEN, Guy\r\nPELZER, Jacques\r\nPERET, Johnny\r\nPERNET, Robert\r\nPONTY, Jean-Luc\r\nPORTAL, Michel\r\nPORTER, Bob\r\nQUERSIN, Benoît\r\nROKOVIC, Bora\r\nROSENGREN, Bernt\r\nSCHWEIZER, Irene\r\nSELS, Jack\r\nSUNDER, Freddy\r\nSTOOR, Bosse\r\nTHELIN, Eje\r\nTHOMAS, René\r\nURTREGER, René\r\nVANHAVERBEKE, Roger\r\nWARLAND, Jean\r\nWILEN, Barney\r\nZETTERLUND, Monica\r\n \r\nFestivals:\r\nComblain-La-Tour Festival, Belgium\r\nAntibes/Juan-Les-Pins Festival, France\r\nDjango Reinhardt Festival, Belgium\r\nSan Remo Festival, Italy\r\n \r\nAmerikanen in Europa:\r\nBENNET, Lou\r\nBAKER, Chet\r\nGOURLEY, Jimmy\r\nGORDON, Dexter\r\nLATEEF, Yusef\r\nMONK, Thelonious\r\nORE, John\r\nROUSE, Charlie\r\nEDISON, Harry\r\nHAWKINS, Coleman\r\nSIMS, Zoot\r\nBYRD, Charlie\r\nMCCANN, Les\r\nSMITH, Jimmy\r\nDUNLOP, Frankie\r\nNEMETH, Gus\r\nJONES, Al\r\nROACH, Max\r\nLINCOLN, Abbey",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "- ongeveer 75-100 analoge foto's van muzikanten, hierbij een lijst van de Europese muzikanten:\r\n \r\nALLAN, Jan\r\nASSELBERGHS, Roger\r\nBUSNELLO, Eddie\r\nBROM, Gustav\r\nCATHERINE, Philip\r\nDAUNER, Wolfgang\r\nDI DONATO, Jacques\r\nDONNI, Willy\r\nGARROS, Christian\r\nGRUNTZ, George\r\nHAYES, Tubby\r\nHNILICKA, Jaromir\r\nHULTCRANTZ, Torbjorn\r\nHUMAIR, Daniel\r\nJASPAR, Bobby\r\nLALLEMAND, ‘Fats’ Sadi\r\nKAPSTAD, Egil\r\nKURYLEWICZ, Andrzej\r\nKROG, Karin \r\nLIGHTNING JAZZ TRIO\r\nMICHELOT, Pierre\r\nMOSEHOLM, Erik\r\nMUSSOLINI, Romano\r\nPEDERSEN, Guy\r\nPELZER, Jacques\r\nPERET, Johnny\r\nPERNET, Robert\r\nPONTY, Jean-Luc\r\nPORTAL, Michel\r\nPORTER, Bob\r\nQUERSIN, Benoît\r\nROKOVIC, Bora\r\nROSENGREN, Bernt\r\nSCHWEIZER, Irene\r\nSELS, Jack\r\nSUNDER, Freddy\r\nSTOOR, Bosse\r\nTHELIN, Eje\r\nTHOMAS, René\r\nURTREGER, René\r\nVANHAVERBEKE, Roger\r\nWARLAND, Jean\r\nWILEN, Barney\r\nZETTERLUND, Monica\r\n \r\nFestivals:\r\nComblain-La-Tour Festival, Belgium\r\nAntibes/Juan-Les-Pins Festival, France\r\nDjango Reinhardt Festival, Belgium\r\nSan Remo Festival, Italy\r\n \r\nAmerikanen in Europa:\r\nBENNET, Lou\r\nBAKER, Chet\r\nGOURLEY, Jimmy\r\nGORDON, Dexter\r\nLATEEF, Yusef\r\nMONK, Thelonious\r\nORE, John\r\nROUSE, Charlie\r\nEDISON, Harry\r\nHAWKINS, Coleman\r\nSIMS, Zoot\r\nBYRD, Charlie\r\nMCCANN, Les\r\nSMITH, Jimmy\r\nDUNLOP, Frankie\r\nNEMETH, Gus\r\nJONES, Al\r\nROACH, Max\r\nLINCOLN, Abbey",
+      "actoren": null
     },
     {
       "type": "image",
@@ -5885,9 +5682,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "- Een duizendtal digitale foto's, gescand van de negatieven van Willy Faes, gemaakt op festivals in Frankrijk en België. Dit is een lijst van de Europese muzikanten die er bij zijn:\r\n \r\nALKE, Bjorn\r\nANDERSSON, Ulf\r\nBACSIK, Elek\r\nBECK, Gordon\r\nBELLONZI, Charles\r\nCARLSSON, Rune\r\nCERRI, Franco\r\nCOURT, Raymond\r\nCROISILLE, Nicole\r\nDENJEAN, Jacques\r\nDEUCHAR, Jimmy\r\nDOLDINGER, Klaus\r\nGRAPPELY, Stéphane\r\nHAYES, Tubby\r\nHOFFMANN, Ingfried\r\nHUMAIR, Daniel\r\nJONES, Al\r\nJOMINI, Pierre\r\nKANDELBERGER, Helmut\r\nLERUSSE, Jean\r\nLUTER,  Claude\r\nNAURA, Michael\r\nNAY, Joe\r\nPELZER, Jacques\r\nQUERSIN, Benoît\r\nREINKE, Peter\r\nROVERE, Gilbert\r\nSCHLUTER, Wolfgang\r\nSIMTAINE, Felix\r\nSJOSTEN, Lars\r\nSWISS ALL STARS\r\nTHELIN, Eje\r\nTHOMAS, René\r\nTOMMASI, Amedeo\r\nVANDROOGENBROECK, Joel\r\nVAN DIJK, Louis\r\nVANHAVERBEKE, Roger\r\nVAN POLL, Jack\r\nWEISS, Klaus\r\nWROBLEWSKI, Jan",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "- Een duizendtal digitale foto's, gescand van de negatieven van Willy Faes, gemaakt op festivals in Frankrijk en België. Dit is een lijst van de Europese muzikanten die er bij zijn:\r\n \r\nALKE, Bjorn\r\nANDERSSON, Ulf\r\nBACSIK, Elek\r\nBECK, Gordon\r\nBELLONZI, Charles\r\nCARLSSON, Rune\r\nCERRI, Franco\r\nCOURT, Raymond\r\nCROISILLE, Nicole\r\nDENJEAN, Jacques\r\nDEUCHAR, Jimmy\r\nDOLDINGER, Klaus\r\nGRAPPELY, Stéphane\r\nHAYES, Tubby\r\nHOFFMANN, Ingfried\r\nHUMAIR, Daniel\r\nJONES, Al\r\nJOMINI, Pierre\r\nKANDELBERGER, Helmut\r\nLERUSSE, Jean\r\nLUTER,  Claude\r\nNAURA, Michael\r\nNAY, Joe\r\nPELZER, Jacques\r\nQUERSIN, Benoît\r\nREINKE, Peter\r\nROVERE, Gilbert\r\nSCHLUTER, Wolfgang\r\nSIMTAINE, Felix\r\nSJOSTEN, Lars\r\nSWISS ALL STARS\r\nTHELIN, Eje\r\nTHOMAS, René\r\nTOMMASI, Amedeo\r\nVANDROOGENBROECK, Joel\r\nVAN DIJK, Louis\r\nVANHAVERBEKE, Roger\r\nVAN POLL, Jack\r\nWEISS, Klaus\r\nWROBLEWSKI, Jan",
+      "actoren": null
     },
     {
       "type": "image",
@@ -5899,9 +5695,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "- ongeveer 50 concertaffiches uit België en de rest van Europa",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "- ongeveer 50 concertaffiches uit België en de rest van Europa",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5913,9 +5708,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "- ongeveer 150-200 flyers en programmaboekjes van concerten en festivals uit België en Europa",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "- ongeveer 150-200 flyers en programmaboekjes van concerten en festivals uit België en Europa",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5927,9 +5721,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -5941,9 +5734,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "- correspondentie/nieuwsbrieven van jazzclubs",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "- correspondentie/nieuwsbrieven van jazzclubs",
+      "actoren": null
     },
     {
       "type": "document",
@@ -5955,9 +5747,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "De Spectator",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "De Spectator"
     },
     {
       "type": "document",
@@ -5969,12 +5760,11 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
+      "CE_beschrijving": null,
       "actoren": [
         "Jazzspiegel",
         "Hot & Cool"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "document",
@@ -5986,12 +5776,11 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
+      "CE_beschrijving": null,
       "actoren": [
         "Jazzspiegel",
         "Hot & Cool"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "document",
@@ -6003,12 +5792,11 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
+      "CE_beschrijving": null,
       "actoren": [
         "Jazzspiegel",
         "Hot & Cool"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "document",
@@ -6020,12 +5808,11 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
+      "CE_beschrijving": null,
       "actoren": [
         "Jazzspiegel",
         "Hot & Cool"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "document",
@@ -6037,9 +5824,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Jazz Sounds",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Jazz Sounds"
     },
     {
       "type": "document",
@@ -6051,9 +5837,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Jazz Sounds",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Jazz Sounds"
     },
     {
       "type": "document",
@@ -6065,9 +5850,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Jazz Sounds",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Jazz Sounds"
     },
     {
       "type": "image",
@@ -6079,9 +5863,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -6093,9 +5876,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Le Jazz C'est La Vie",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Le Jazz C'est La Vie"
     },
     {
       "type": "document",
@@ -6107,9 +5889,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -6121,9 +5902,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "persoonlijk archief ivm de festivals waarvoor hij werkte",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "persoonlijk archief ivm de festivals waarvoor hij werkte",
+      "actoren": null
     },
     {
       "type": "document",
@@ -6135,9 +5915,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "lidkaarten van clubs",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "lidkaarten van clubs",
+      "actoren": null
     },
     {
       "type": "image",
@@ -6149,9 +5928,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6163,9 +5941,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6177,9 +5954,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6191,9 +5967,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6205,9 +5980,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6219,9 +5993,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6233,9 +6006,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "eigen opname",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "eigen opname",
+      "actoren": null
     },
     {
       "type": "video",
@@ -6247,9 +6019,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -6261,9 +6032,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -6275,9 +6045,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -6289,9 +6058,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -6303,9 +6071,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -6317,9 +6084,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "dia",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "dia",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6331,9 +6097,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "contrabas: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "contrabas: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6345,9 +6110,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "cello: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "cello: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6359,9 +6123,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "accordeon: 1 (Farfisa Transicord TD/50)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "accordeon: 1 (Farfisa Transicord TD/50)",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6373,9 +6136,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "accordina: 1 (Seimatone, A. Borel, Paris)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "accordina: 1 (Seimatone, A. Borel, Paris)",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6387,9 +6149,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "taishogoto: 1 (1962)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "taishogoto: 1 (1962)",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6401,9 +6162,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "blokfluit: 1 (chinees)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "blokfluit: 1 (chinees)",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6415,9 +6175,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "cymbaal: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "cymbaal: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6429,9 +6188,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "schelring: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "schelring: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6443,9 +6201,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "clochette: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "clochette: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6457,9 +6214,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "darabukka: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "darabukka: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6471,9 +6227,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "castagnette: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "castagnette: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6485,9 +6240,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "synthesizer: 1 (Casio Casiotone MT-140)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "synthesizer: 1 (Casio Casiotone MT-140)",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6499,9 +6253,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "stemvork: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "stemvork: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6513,9 +6266,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "stembakje: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "stembakje: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6527,9 +6279,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "metronoom: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "metronoom: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6541,9 +6292,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "mute: 1 (voor contrabas)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "mute: 1 (voor contrabas)",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6555,9 +6305,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "microfoon: 3",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "microfoon: 3",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6569,9 +6318,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "versterker: 3",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "versterker: 3",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6583,9 +6331,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "bandopnemer: 4",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "bandopnemer: 4",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6597,9 +6344,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "platenspeler: 4",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "platenspeler: 4",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6611,9 +6357,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "luidspreker: 5",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "luidspreker: 5",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6625,9 +6370,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "mengtafel: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "mengtafel: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6639,9 +6383,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "effectpedaal: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "effectpedaal: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6653,9 +6396,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "DAT-speler: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "DAT-speler: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6667,9 +6409,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "MiniDisc-speler: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "MiniDisc-speler: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6681,9 +6422,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Hifi-versterker: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Hifi-versterker: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6695,9 +6435,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Hifi-tuner: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Hifi-tuner: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6709,9 +6448,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Hifi-receiver: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Hifi-receiver: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6723,9 +6461,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Cassettedeck: 6",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Cassettedeck: 6",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6737,9 +6474,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "walkman: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "walkman: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6751,9 +6487,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "CD-walkman: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "CD-walkman: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6765,9 +6500,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Hifiketen: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Hifiketen: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6779,9 +6513,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "CD-speler: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "CD-speler: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6793,9 +6526,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "voorversteker: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "voorversteker: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6807,9 +6539,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "CD-DVD-speler: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "CD-DVD-speler: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6821,9 +6552,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "VHS-DVD-speler: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "VHS-DVD-speler: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6835,9 +6565,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "VCR: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "VCR: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6849,9 +6578,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "converter: 1 (Polestar telescreen video PV-50PL)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "converter: 1 (Polestar telescreen video PV-50PL)",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6863,9 +6591,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "8mm\" projector: 3",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "8mm\" projector: 3",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6877,9 +6604,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "16mm\" projector: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "16mm\" projector: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6891,9 +6617,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "desktop-computer: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "desktop-computer: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6905,9 +6630,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "bobineuse: 1",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "bobineuse: 1",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6919,9 +6643,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "kruk: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "kruk: 2",
+      "actoren": null
     },
     {
       "type": "object",
@@ -6933,9 +6656,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "pupiter: 2",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "pupiter: 2",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6947,9 +6669,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "proefpersen van Chas Remue",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "proefpersen van Chas Remue",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6961,9 +6682,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6975,9 +6695,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -6989,9 +6708,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7003,9 +6721,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7017,9 +6734,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7031,9 +6747,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7045,9 +6760,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -7059,9 +6773,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -7073,9 +6786,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -7087,9 +6799,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -7101,9 +6812,8 @@
       "reproductie": null,
       "begin": 1981,
       "eind": 1996,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -7115,9 +6825,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -7129,9 +6838,8 @@
       "reproductie": null,
       "begin": 1982,
       "eind": 2000,
-      "info": "1 doos",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "1 doos",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7143,9 +6851,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "16 dozen",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "16 dozen",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7157,9 +6864,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "76 dozen",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "76 dozen",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7171,9 +6877,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "27 dozen",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "27 dozen",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7185,9 +6890,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "100 dozen",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "100 dozen",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7199,9 +6903,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "115 dozen",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "115 dozen",
+      "actoren": null
     },
     {
       "type": "image",
@@ -7213,9 +6916,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -7227,9 +6929,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -7241,9 +6942,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -7255,9 +6955,8 @@
       "reproductie": null,
       "begin": 1905,
       "eind": 2003,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7269,9 +6968,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "John Ouwerx",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "John Ouwerx"
     },
     {
       "type": "audio",
@@ -7283,9 +6981,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -7297,9 +6994,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7311,9 +7007,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "1114cm + 2 draagtassen met lp’s",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "1114cm + 2 draagtassen met lp’s",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7325,9 +7020,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "62cm",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "62cm",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7339,9 +7033,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "692cm. 90% van de boeken komt uit de collectie Suykerbuyck. Ca. 692 cm boeken",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "692cm. 90% van de boeken komt uit de collectie Suykerbuyck. Ca. 692 cm boeken",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7353,9 +7046,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "1 doos boeken van de ‘jazz book club’ reeks.",
-      "actoren": "Jazz Book Club",
-      "in reeks": null
+      "CE_beschrijving": "1 doos boeken van de ‘jazz book club’ reeks.",
+      "actoren": "Jazz Book Club"
     },
     {
       "type": "image",
@@ -7367,12 +7059,11 @@
       "reproductie": null,
       "begin": 1966,
       "eind": "198x",
-      "info": [
+      "CE_beschrijving": [
         "1 doos affiches (uit collectie Wondelgem) + magazines m.b.t. jazzclubs in Gent en Dendermonde",
         "vanaf 66 tot jaren 80."
       ],
-      "actoren": "Hot Club de Belgique (HCDB)",
-      "in reeks": null
+      "actoren": "Hot Club de Belgique (HCDB)"
     },
     {
       "type": "document",
@@ -7384,9 +7075,8 @@
       "reproductie": null,
       "begin": 1946,
       "eind": "196x",
-      "info": "2 poëziealbums met uitgeknipte foto’s en zelfgemaakte tekeningen met bijhorende signaturen afkomstig van Marie-Thérèse (Mimi) Faelens, vanaf 46 tot jaren 60",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "2 poëziealbums met uitgeknipte foto’s en zelfgemaakte tekeningen met bijhorende signaturen afkomstig van Marie-Thérèse (Mimi) Faelens, vanaf 46 tot jaren 60",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7398,15 +7088,14 @@
       "reproductie": null,
       "begin": 1931,
       "eind": "195x",
-      "info": "Efemera rond jazz in België en Belgische jazz (m.b.t.: Albert Sykes, concerten in Bozar, Hot Club Belgique, Jean Omer, Robert Goffin, club Boeuf sur le Toit, brochure met volledig overzicht van namen die concerten gaven georganiseerd door Hot Club de Belgique (1939-1954) – vanaf 1931 - jaren 50)",
+      "CE_beschrijving": "Efemera rond jazz in België en Belgische jazz (m.b.t.: Albert Sykes, concerten in Bozar, Hot Club Belgique, Jean Omer, Robert Goffin, club Boeuf sur le Toit, brochure met volledig overzicht van namen die concerten gaven georganiseerd door Hot Club de Belgique (1939-1954) – vanaf 1931 - jaren 50)",
       "actoren": [
         "Albert Sykes",
         "Jean Omer",
         "Hot Club de Belgique",
         "Robert Goffin",
         "Boeuf sur le Toit"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "document",
@@ -7418,9 +7107,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "mappen (30 à 40) waarin per thema (jazzartiest, jazzensemble, regio, ...) efemera (promotiefoto’s, foto’s, brochures, programma’s, ...) met signaturen zijn geordend. O.m.: map ‘Jazz in België en Europa’ (jaren 30-40), map ‘Louis Armstrong’, map ‘Ellington’, map ‘Newport Jazz Festival Antwerpen’ ...",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "mappen (30 à 40) waarin per thema (jazzartiest, jazzensemble, regio, ...) efemera (promotiefoto’s, foto’s, brochures, programma’s, ...) met signaturen zijn geordend. O.m.: map ‘Jazz in België en Europa’ (jaren 30-40), map ‘Louis Armstrong’, map ‘Ellington’, map ‘Newport Jazz Festival Antwerpen’ ...",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7432,9 +7120,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "2 mappen correspondentie: o Met ‘Blue Roseland Orchestra’ o Correspondentie van luisteraars van het BRT-jazzprogramma op de radio waarvan Suykerbuyck samensteller was.",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "2 mappen correspondentie: o Met ‘Blue Roseland Orchestra’ o Correspondentie van luisteraars van het BRT-jazzprogramma op de radio waarvan Suykerbuyck samensteller was.",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7446,12 +7133,11 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": [
+      "CE_beschrijving": [
         "2 mappen knipsels (1958-1977) &amp",
         "(1960-1965) mbt jazz"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -7463,9 +7149,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Losse correspondentie met jazzliefhebbers",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Losse correspondentie met jazzliefhebbers",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7477,9 +7162,8 @@
       "reproductie": null,
       "begin": 1911,
       "eind": 2019,
-      "info": "releases van Vlaamse of Brusselse muzikanten en componisten. jazzaandeel: <10%",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "releases van Vlaamse of Brusselse muzikanten en componisten. jazzaandeel: <10%",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7491,9 +7175,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7505,9 +7188,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7519,9 +7201,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7533,9 +7214,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "box-set",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "box-set",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7547,9 +7227,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7561,9 +7240,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7575,9 +7253,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7589,9 +7266,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7603,9 +7279,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7617,9 +7292,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "10\"",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "10\"",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7631,9 +7305,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "12\"",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "12\"",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7645,9 +7318,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "7\"",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "7\"",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7659,9 +7331,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -7673,9 +7344,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -7687,9 +7357,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7701,9 +7370,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -7715,9 +7383,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -7729,9 +7396,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -7743,9 +7409,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Manuscrits de copies d'enregistrements célèbres",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Manuscrits de copies d'enregistrements célèbres",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7757,9 +7422,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -7771,9 +7435,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7785,9 +7448,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7799,9 +7461,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7813,9 +7474,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -7827,9 +7487,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "video",
@@ -7841,9 +7500,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -7855,9 +7513,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -7869,9 +7526,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Comblain-la-Tour",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Comblain-la-Tour"
     },
     {
       "type": "document",
@@ -7883,9 +7539,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -7897,9 +7552,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -7911,9 +7565,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -7925,9 +7578,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Djez-nieuws",
-      "actoren": "Actual Cristal",
-      "in reeks": null
+      "CE_beschrijving": "Djez-nieuws",
+      "actoren": "Actual Cristal"
     },
     {
       "type": "document",
@@ -7939,9 +7591,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -7953,9 +7604,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Knipsels ivm de hulde op begraafplaats Schoonselhof in 1998: een hulde voor recent overledenen o.w. L.V.",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Knipsels ivm de hulde op begraafplaats Schoonselhof in 1998: een hulde voor recent overledenen o.w. L.V.",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7967,12 +7617,11 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": [
+      "CE_beschrijving": [
         "documenten i.v.m. het radioprogramma ‘Halfuur van de jazz’, verzorgd door L.V. (1961-1966)",
         "tiental uitzendingen"
       ],
-      "actoren": null,
-      "in reeks": null
+      "actoren": null
     },
     {
       "type": "document",
@@ -7984,9 +7633,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "documenten en nota’s van lezing over Louis Armstrong door L.V.",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "documenten en nota’s van lezing over Louis Armstrong door L.V.",
+      "actoren": null
     },
     {
       "type": "document",
@@ -7998,9 +7646,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -8012,9 +7659,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "archief:  Jazz, C'est la vie (radio programma) (198x)",
-      "actoren": "Jazz, C’est La Vie",
-      "in reeks": null
+      "CE_beschrijving": "archief:  Jazz, C'est la vie (radio programma) (198x)",
+      "actoren": "Jazz, C’est La Vie"
     },
     {
       "type": "document",
@@ -8026,9 +7672,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "archief:  Jazz Sounds (concertreeks)",
-      "actoren": "Jazz Sounds",
-      "in reeks": null
+      "CE_beschrijving": "archief:  Jazz Sounds (concertreeks)",
+      "actoren": "Jazz Sounds"
     },
     {
       "type": "document",
@@ -8040,9 +7685,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "concertprogramma",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "concertprogramma",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8054,9 +7698,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "flyer",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "flyer",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8068,9 +7711,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "ephemera:  (papier)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "ephemera:  (papier)",
+      "actoren": null
     },
     {
       "type": "image",
@@ -8082,9 +7724,8 @@
       "reproductie": null,
       "begin": "196x",
       "eind": "196x",
-      "info": "photos that Dupire made during various Belgian jazz concerts in the 1960s",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "photos that Dupire made during various Belgian jazz concerts in the 1960s",
+      "actoren": null
     },
     {
       "type": "video",
@@ -8096,14 +7737,13 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
+      "CE_beschrijving": null,
       "actoren": [
         "Aka Moon",
         "Michel Hatzigeourgiou",
         "Philip Catherine",
         "Jacques Pelzer"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "audio",
@@ -8115,14 +7755,13 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": null,
+      "CE_beschrijving": null,
       "actoren": [
         "Aka Moon",
         "Michel Hatzigeourgiou",
         "Philip Catherine",
         "Jacques Pelzer"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "video",
@@ -8134,14 +7773,13 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
+      "CE_beschrijving": null,
       "actoren": [
         "Aka Moon",
         "Michel Hatzigeourgiou",
         "Philip Catherine",
         "Jacques Pelzer"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "audio",
@@ -8153,14 +7791,13 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
+      "CE_beschrijving": null,
       "actoren": [
         "Aka Moon",
         "Michel Hatzigeourgiou",
         "Philip Catherine",
         "Jacques Pelzer"
-      ],
-      "in reeks": null
+      ]
     },
     {
       "type": "audio",
@@ -8172,9 +7809,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8186,9 +7822,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8200,9 +7835,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8214,9 +7848,8 @@
       "reproductie": null,
       "begin": null,
       "eind": "197x",
-      "info": "Is divers en rijk. 12.000 platen (78, 45 en 33), met zeldzame exemplaren. Merendeel (6.000) zijn jazzplaten van het begin tot aan de jaren 70. Internationale namen maar ook Belgische. Ook frans chanson, engels. Of liedjes in Brussels dialect. Ook militaire muziek. Ook literaire opnames",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Is divers en rijk. 12.000 platen (78, 45 en 33), met zeldzame exemplaren. Merendeel (6.000) zijn jazzplaten van het begin tot aan de jaren 70. Internationale namen maar ook Belgische. Ook frans chanson, engels. Of liedjes in Brussels dialect. Ook militaire muziek. Ook literaire opnames",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8228,9 +7861,8 @@
       "reproductie": null,
       "begin": 1880,
       "eind": 1950,
-      "info": "ca. 2.000 geïllustreerde partituren. Vooral uitgegeven in Brussel. L’Art Belge was een uitgeverij opgericht in 1915 en werd de uitgeverij voor de avant garde van belgië. In 1933 overgenomen door firma Bosworth. Ze gaven de hedendaagse muziek van die tijd uit. Maar ook lichter werk. Dat werd geïllustreerd door kunstenaars (o.a. Magritte, Peter De Greef, Marcel-Louis Baugniet). Peter De Greef was ook muzikant, jazzliefhebber een van de eerste leden van de Hot Club de Belgique. Ook van uitgeverij International Music Company, van Faecq. Dit wordt een grote uitgeverij van bladmuziek in Europa.",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "ca. 2.000 geïllustreerde partituren. Vooral uitgegeven in Brussel. L’Art Belge was een uitgeverij opgericht in 1915 en werd de uitgeverij voor de avant garde van belgië. In 1933 overgenomen door firma Bosworth. Ze gaven de hedendaagse muziek van die tijd uit. Maar ook lichter werk. Dat werd geïllustreerd door kunstenaars (o.a. Magritte, Peter De Greef, Marcel-Louis Baugniet). Peter De Greef was ook muzikant, jazzliefhebber een van de eerste leden van de Hot Club de Belgique. Ook van uitgeverij International Music Company, van Faecq. Dit wordt een grote uitgeverij van bladmuziek in Europa.",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8242,9 +7874,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -8256,9 +7887,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "jazzmagazine",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "jazzmagazine",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8270,9 +7900,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -8284,9 +7913,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -8298,9 +7926,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -8312,12 +7939,11 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": [
+      "CE_beschrijving": [
         "archieven: onder andere over theater Alhambra",
         "programma’s, affiches, catalogi van platenmaatschappijen, ..."
       ],
-      "actoren": "Théatre l'Alhambra",
-      "in reeks": null
+      "actoren": "Théatre l'Alhambra"
     },
     {
       "type": "audio",
@@ -8329,9 +7955,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8343,9 +7968,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8357,9 +7981,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8371,9 +7994,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -8385,9 +8007,8 @@
       "reproductie": null,
       "begin": 1900,
       "eind": null,
-      "info": "vooral symfonische muziek, kamermuziek, educatieve muziek, pianomuziek en jazz",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "vooral symfonische muziek, kamermuziek, educatieve muziek, pianomuziek en jazz",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8399,9 +8020,8 @@
       "reproductie": null,
       "begin": 1900,
       "eind": null,
-      "info": "vooral symfonische muziek, kamermuziek, educatieve muziek, pianomuziek en jazz",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "vooral symfonische muziek, kamermuziek, educatieve muziek, pianomuziek en jazz",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8413,9 +8033,8 @@
       "reproductie": null,
       "begin": 1900,
       "eind": null,
-      "info": "vooral symfonische muziek, kamermuziek, educatieve muziek, pianomuziek en jazz",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "vooral symfonische muziek, kamermuziek, educatieve muziek, pianomuziek en jazz",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8427,9 +8046,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "document: ca. 10 classeurs + ca. 40 mappen",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "document: ca. 10 classeurs + ca. 40 mappen",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8441,9 +8059,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "artikel: 2 mappen (originele drafts)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "artikel: 2 mappen (originele drafts)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8455,9 +8072,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "correspondentie: 1 map",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "correspondentie: 1 map",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8469,9 +8085,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "document: 3 mappen",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "document: 3 mappen",
+      "actoren": null
     },
     {
       "type": "image",
@@ -8483,12 +8098,11 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": [
+      "CE_beschrijving": [
         "ca.50 (met muzikanten",
         "in Pol's Jazz Club op place Ferdinand Coq...)"
       ],
-      "actoren": "Pol's Jazz Club",
-      "in reeks": null
+      "actoren": "Pol's Jazz Club"
     },
     {
       "type": "audio",
@@ -8500,9 +8114,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "33rpm + 78rpm plaat: 870 (nauwelijks jazz)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "33rpm + 78rpm plaat: 870 (nauwelijks jazz)",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8514,9 +8127,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "tape: 60 (geen jazz)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "tape: 60 (geen jazz)",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8528,9 +8140,8 @@
       "reproductie": null,
       "begin": 1928,
       "eind": 2002,
-      "info": "periode: 1928-2002",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "periode: 1928-2002",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8542,9 +8153,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "activiteitenkalender:",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "activiteitenkalender:",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8556,9 +8166,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "concertprogramma:  (ADAC en andere hulporganisaties)",
-      "actoren": "Association pour la Diffusion Artistique et Culturelle (ADAC)",
-      "in reeks": null
+      "CE_beschrijving": "concertprogramma:  (ADAC en andere hulporganisaties)",
+      "actoren": "Association pour la Diffusion Artistique et Culturelle (ADAC)"
     },
     {
       "type": "document",
@@ -8570,9 +8179,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "productiemateriaal: 2 archiefdozen (van platenlabels en impresario's. jazz/variété)",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "productiemateriaal: 2 archiefdozen (van platenlabels en impresario's. jazz/variété)",
+      "actoren": null
     },
     {
       "type": "image",
@@ -8584,9 +8192,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": "Association pour la Diffusion Artistique et Culturelle (ADAC)",
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": "Association pour la Diffusion Artistique et Culturelle (ADAC)"
     },
     {
       "type": "image",
@@ -8598,9 +8205,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "50à100",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "50à100",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8612,9 +8218,8 @@
       "reproductie": null,
       "begin": 1927,
       "eind": 2002,
-      "info": "periode: 1927-2002",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "periode: 1927-2002",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8626,9 +8231,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -8640,9 +8244,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -8654,9 +8257,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -8668,9 +8270,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -8682,9 +8283,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "document",
@@ -8696,9 +8296,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "productiemateriaal",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "productiemateriaal",
+      "actoren": null
     },
     {
       "type": "document",
@@ -8710,9 +8309,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "publieksmateriaal",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "publieksmateriaal",
+      "actoren": null
     },
     {
       "type": "image",
@@ -8724,9 +8322,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "image",
@@ -8738,9 +8335,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8752,9 +8348,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "33rpm...?",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "33rpm...?",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8766,9 +8361,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8780,9 +8374,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "van Sim Simons, kopie van VRT opnames?",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "van Sim Simons, kopie van VRT opnames?",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8794,9 +8387,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "onuitgegeven materiaal afkomstig van verzamelaars (dermatoloog Xavier Van Latem?), ORTF, NOS",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "onuitgegeven materiaal afkomstig van verzamelaars (dermatoloog Xavier Van Latem?), ORTF, NOS",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8808,9 +8400,8 @@
       "reproductie": true,
       "begin": null,
       "eind": null,
-      "info": "opnames De Warande",
-      "actoren": "De Warande [Turnhout]",
-      "in reeks": null
+      "CE_beschrijving": "opnames De Warande",
+      "actoren": "De Warande [Turnhout]"
     },
     {
       "type": "audio",
@@ -8822,9 +8413,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": "Georges Debroe zegt geen weet te hebben van wat er gebeurd is met deze collectie",
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": "Georges Debroe zegt geen weet te hebben van wat er gebeurd is met deze collectie",
+      "actoren": null
     },
     {
       "type": "audio",
@@ -8836,9 +8426,8 @@
       "reproductie": null,
       "begin": null,
       "eind": null,
-      "info": null,
-      "actoren": null,
-      "in reeks": null
+      "CE_beschrijving": null,
+      "actoren": null
     }
   ],
   "vormers": [
