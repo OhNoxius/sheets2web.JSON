@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 });
 
-function makeDataTable(table, jsondata, sheet) {   
+function makeDataTable(table, jsondata, sheet) {
 
     const maintableKeys = Object.keys(jsondata[0]);
     //OPTIONAL: remove rows with empty 1st column
@@ -436,8 +436,10 @@ function makeDataTable(table, jsondata, sheet) {
             else row.setAttribute("summary", data[maintableKeys[0]]);
         },
         "initComplete": function () {
-            //FIXED TOOLTIPS on ID column            
+            $(table).show(); //do here, otherwise dropdown <input> aren't generated...
+            $('div#dt_loader').hide();
 
+            //FIXED TOOLTIPS on ID column
             //create tooltips
             //createTooltips(table);
 
@@ -503,6 +505,8 @@ function makeDataTable(table, jsondata, sheet) {
             }
         }
     });
+
+
 
     $(table).children('tbody').on('click', 'td.details-control', function () {
 
