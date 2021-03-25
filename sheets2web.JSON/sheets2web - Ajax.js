@@ -12,14 +12,15 @@ const urldetect = ["www.", "://"];
 const delims = /([:\r\n]+)|((?<!\s)\()/g///([:+\r\n]+)|((?<!\s)\()/g
 
 document.addEventListener('DOMContentLoaded', function () {
-    //mockjax(datafile);
+    mockjax(datafile);
     fixedtable = document.getElementById("fixedtable");
     jqfixedtable = $(fixedtable);
-    fetch(datafile)
-        .then(res => res.json())
-        .then(json => {
-            jason = json;
-            //console.log(jason);
+    $.ajax({
+        dataType: "json",
+        url: "/json/data",
+        success: function (data) {
+            console.log("asynchronous HTTP (mockjax) request DONE");
+            jason = data;
 
             //PROCESS JSON
             //1. identify important nodes
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
             //HEADING
             const heading = document.createElement("h1");
             const heading_a = document.createElement("a");
-            if ("headertitle" in window) heading_a.innerText = headertitle;
+            if (headertitle) heading_a.innerText = headertitle;
             else heading_a.innerText = datafile;
             heading_a.setAttribute("href", "");
             heading_a.setAttribute("class", "heading");
@@ -53,48 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const url = window.location.href.substr(window.location.href.indexOf("#") + 1);
             if (window.location.href.indexOf("#") > 0) dfixedtable = makeDataTable(fixedtable, jason[url], url);
             else dfixedtable = makeDataTable(fixedtable, jason[MAINSHEET], MAINSHEET);
-        })
-    // $.ajax({
-    //     dataType: "json",
-    //     url: "/json/data",
-    //     success: function (data) {
-    //         console.log("asynchronous HTTP (mockjax) request DONE");
-    //         jason = data;
-
-    //         //PROCESS JSON
-    //         //1. identify important nodes
-    //         SHEETS = Object.keys(jason);
-    //         MAINSHEET = SHEETS[0];
-    //         LINKSHEET = SHEETS.find(e => e.startsWith("+"));
-    //         MAINSHEET_keys = Object.keys(jason[MAINSHEET][0]);
-    //         LINKSHEET_keys = Object.keys(jason[LINKSHEET][0]);
-
-    //         //3. main webpage layout
-    //         //HEADING
-    //         const heading = document.createElement("h1");
-    //         const heading_a = document.createElement("a");
-    //         if (headertitle) heading_a.innerText = headertitle;
-    //         else heading_a.innerText = datafile;
-    //         heading_a.setAttribute("href", "");
-    //         heading_a.setAttribute("class", "heading");
-    //         heading.append(heading_a);
-    //         document.getElementById("heading").append(heading);
-    //         //NAV
-    //         navfooter = createNavFooter(SHEETS);
-    //         //Table Footer
-    //         fixedfooter_row = document.createElement("tr");
-    //         fixedfooter_row.setAttribute('id', "fixedfooterrow");
-    //         const th = document.createElement("th");
-    //         th.setAttribute('id', "LOOKAHERE");
-    //         th.append(navfooter);
-    //         fixedfooter_row.append(th);
-    //         document.getElementById("fixedtfooter").append(fixedfooter_row);
-
-    //         const url = window.location.href.substr(window.location.href.indexOf("#") + 1);
-    //         if (window.location.href.indexOf("#") > 0) dfixedtable = makeDataTable(fixedtable, jason[url], url);
-    //         else dfixedtable = makeDataTable(fixedtable, jason[MAINSHEET], MAINSHEET);
-    //     }
-    // });
+        }
+    });
 });
 
 function makeDataTable(table, jsondata, sheet) {
@@ -373,7 +334,7 @@ function makeDataTable(table, jsondata, sheet) {
             DTcolumn.className = "merger";
             DTcolumn.visible = false;
             const maincolumn = columns[columns.length - 1];
-            const merger = { "cellIndex": columns.length - 1, "con": maincolumn.data, "cat": key, "type": key[0] };
+            const merger = { "cellIndex": columns.length-1, "con": maincolumn.data, "cat": key, "type": key[0] };
             mergecolumns.push(merger);
         }
         //namespace column
@@ -635,16 +596,16 @@ function formatChildRows(h, d) {
     else return ''
 }
 
-// function mockjax(datafile) {
-//     $.mockjax({
-//         url: "/json/data",
-//         dataType: "json",
-//         contentType: "application/json",
-//         proxy: "/" + datafile,
-//         onAfterSuccess: function (data) { console.log("mock success"); },
-//         onAfterError: function (error) { console.log("mock error"); }
-//     })
-// }
+function mockjax(datafile) {
+    $.mockjax({
+        url: "/json/data",
+        dataType: "json",
+        contentType: "application/json",
+        proxy: "/" + datafile,
+        onAfterSuccess: function (data) { console.log("mock success"); },
+        onAfterError: function (error) { console.log("mock error"); }
+    })
+}
 
 function createNavFooter(sheets) {
     //NAV
