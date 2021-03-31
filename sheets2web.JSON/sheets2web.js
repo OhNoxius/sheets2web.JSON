@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
     //HEADING
     const heading = document.createElement("h1");
     const heading_a = document.createElement("a");
-    if ("headertitle" in window) heading_a.innerText = headertitle;
-    else heading_a.innerText = datafile;
+    try { heading_a.innerText = headertitle; }
+    catch(e) { heading_a.innerText = datafile; }
     heading_a.setAttribute("href", "");
     heading_a.setAttribute("class", "heading");
     heading.append(heading_a);
