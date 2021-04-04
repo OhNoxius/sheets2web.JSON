@@ -10,7 +10,8 @@ let MAINSHEET_keys = [], LINKSHEET_keys = []
 let LINKSHEET_types = new Set();
 
 //const delims = /([:\r\n]+)|((?<!\s)\()/g ///([:+\r\n]+)|((?<!\s)\()/g
-const delims = /([:\r\n]+)|((?<=[^\s\\])\()/g
+const delims = /([:\r\n]+)/g
+const nospacebrack = /((?<=[^\s\\])\()/g
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -495,11 +496,14 @@ function makeDataTable(table, jsondata, sheet) {
                         else ARR = DTcolumnArray.sort();
 
                         //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
-                        ARR = ARR.join(delimiter).replace(delims, delimiter).split(delimiter);
+                        let ARRstring1delim = ARR.join(delimiter).replace(delims, delimiter);
+                        ARRstring1delim = ARRstring1delim.replace(nospacebrack, delimiter +"(");
+                        ARR = ARRstring1delim.split(delimiter);
                         let SET = new Set();
                         ARR.forEach((o, i, a) => {
                             const trima = a[i].trim();
-                            if (trima[trima.length-1] != ")") SET.add(trima);
+                            SET.add(trima);
+                            //if (trima[trima.length-1] != ")") ;
                         });
                         ARR = [...SET].sort();
                         //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
