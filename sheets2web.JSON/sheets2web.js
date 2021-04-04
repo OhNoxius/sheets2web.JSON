@@ -158,7 +158,7 @@ function makeDataTable(table, jsondata, sheet) {
                     if (linkElArr) {
                         //console.log(linkElArr);
                         linkElArr.forEach(function (linkid) { //ERRORS when id column contains delimiter (; for example) => exports as Array instead of string
-                            const linkid_trim = linkid.trim(); //POEH! Google Sheet can have hidden &#xD;
+                            const linkid_trim = linkid.toString().trim(); //POEH! Google Sheet can have hidden &#xD;
                             //!!! MAYBE ALSO MAKE UPPERCASE? f.e. Return to Forever vs. Return To Forever ...
                             if (linktableMap.has(linkid_trim)) {
                                 const mainIdx = linktableMap.get(linkid_trim);
