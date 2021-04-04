@@ -9,7 +9,9 @@ let SHEETS, MAINSHEET, LINKSHEET;
 let MAINSHEET_keys = [], LINKSHEET_keys = []
 let LINKSHEET_types = new Set();
 
-const delims = /([:\r\n]+)|((?<!\s)\()/g///([:+\r\n]+)|((?<!\s)\()/g
+//const delims = /([:\r\n]+)|((?<!\s)\()/g ///([:+\r\n]+)|((?<!\s)\()/g
+const delims = /([:\r\n]+)|((?<=[^\s\\])\()/g
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -495,7 +497,10 @@ function makeDataTable(table, jsondata, sheet) {
                         //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
                         ARR = ARR.join(delimiter).replace(delims, delimiter).split(delimiter);
                         let SET = new Set();
-                        ARR.forEach((o, i, a) => SET.add(a[i].trim()));
+                        ARR.forEach((o, i, a) => {
+                            const trima = a[i].trim();
+                            if (trima[trima.length-1] != ")") SET.add(trima);
+                        });
                         ARR = [...SET].sort();
                         //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
 
