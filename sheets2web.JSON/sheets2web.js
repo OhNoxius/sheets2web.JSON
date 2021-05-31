@@ -571,7 +571,7 @@ function makeDataTable(table, jsondata, sheet) {
                 else linkedItems.push(...linkcellData.map((item) => jason[linktable][item]));
 
                 linkTableDOM = document.createElement('div');
-                linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable cell-border">' +
+                linkTableDOM.innerHTML = '<table id="' + rowid + "." + linktable + '" class="linktable cell-border compact">' +
                     '<thead></thead>' +
                     '<tbody></tbody>' +
                     '<tfoot></tfoot>' +
