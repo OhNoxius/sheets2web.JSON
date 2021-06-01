@@ -219,6 +219,13 @@ function makeDataTable(table, jsondata, sheet) {
         "createdCell": function (cell, cellData, rowData, rowIndex, colIndex) {
             cell.setAttribute("title", cellData);
             //$(cell).tooltipster();
+            // $(cell)
+            //     .attr('data-toggle', 'tooltip')
+            //     .attr('data-placement', 'bottom')
+            //     .tooltip({
+            //         trigger: 'manual',
+            //     })
+            //     .tooltip('show');
             if (rowData["LINKIDXS"]) cell.classList.add('details-control');
             else {
                 let i = 0;
