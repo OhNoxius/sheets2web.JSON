@@ -60,8 +60,9 @@ a.heading, a.heading:visited, a.heading:hover, a.heading:active {
     font-size: 0.85em;
     font-style: italic;
     color: grey;
-    margin-top: 0.6em;
-    margin-bottom: 0;
+    /* margin-top: 0.6em;
+    margin-bottom: 0; */
+    margin: 0;
 }
 .inlinedetails {
     font-weight: normal;
@@ -101,7 +102,7 @@ th, td {
 }
 table.dataTable tbody td.linkcolumn, table.dataTable thead th.linkcolumn {
     text-align: right;
-    padding: 2px;
+    /* padding: 2px; */
     font-size: 0.9em;
     color: forestgreen;
     white-space: normal;
@@ -188,14 +189,27 @@ td.IDcolumn {
     position: relative !important;
 }
 table.dataTable tbody th, table.dataTable tbody td {
-    padding-top: 35px;
-    padding-bottom: 15px;
+    padding-top: 25px;
+    /* padding-bottom: 10px; */
 }
 .tipdiv {
     position: absolute !important;
-    top: 34px;
-    left: 7px;
-    --balloon-color: rgb(154, 191, 216, 1.0);
-    --balloon-font-size: 1.01em;
+    top: 28px;
+    left: 5px;
+    --balloon-color: rgb(191, 214, 230, 0.7);
+    --balloon-font-size: 1.0em;
+    --balloon-text-color: black;
 }
+
+
+    
+    [aria-label][data-balloon-pos]:after {
+        font-weight: bold !important;        
+        padding: 0px !important;
+    }
+
+    [aria-label][data-balloon-pos]:before {
+        border: none !important;
+        font-weight: bold !important;
+    }
 
