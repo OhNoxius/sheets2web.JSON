@@ -95,6 +95,10 @@ a.tab{
 	border: solid 1px #bbb;
 }
 
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 30px 10px;
+}
+
 /*FIXEDTABLE*/
 th, td {
     white-space: pre-wrap;
@@ -152,7 +156,7 @@ input.headersearch {
 
 td.details-control {
     background: url('../css/details_open.png') no-repeat center center;
-    cursor: pointer;
+    cursor: pointer;    
 }
 tr.shown td.details-control {
     background: url('../css/details_close.png') no-repeat center center;
@@ -165,9 +169,9 @@ div.dataTables_wrapper div.dataTables_processing {
 
 @keyframes spinner {
     to {transform: rotate(360deg);}
-  }
-   
-  .spinner:before {
+}   
+
+.spinner:before {
     content: '';
     box-sizing: border-box;
     position: absolute;
@@ -181,4 +185,17 @@ div.dataTables_wrapper div.dataTables_processing {
     border: 2px solid #ccc;
     border-top-color: #333;
     animation: spinner .6s linear infinite;
-  }
+}
+
+/*static ID tooltip*/
+td.IDcolumn {
+    position: relative !important;
+}
+.tipdiv {
+    position: absolute !important;
+    top: 32px;
+    left: 7px;
+    --balloon-color: rgb(121, 153, 174, 1.0);
+    --balloon-font-size: 1.0em;
+}
+
