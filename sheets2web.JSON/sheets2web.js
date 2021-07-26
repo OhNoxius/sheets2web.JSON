@@ -207,10 +207,9 @@ function makeDataTable(table, jsondata, sheet) {
     let startIndex = 0, visIndex = 0;;
 
     //1stcolumn: (+)(-) buttons
-
     const DTcolumn = {
         "className": 'IDcolumn',
-        "orderable": false,
+        "orderable": true,
         "defaultContent": '',
         "data": maintableKeys[0],
         "render": function (data, type, rowData, meta) {

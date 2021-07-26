@@ -95,10 +95,6 @@ a.tab{
 	border: solid 1px #bbb;
 }
 
-table.dataTable tbody th, table.dataTable tbody td {
-    padding: 30px 10px;
-}
-
 /*FIXEDTABLE*/
 th, td {
     white-space: pre-wrap;
@@ -191,11 +187,15 @@ div.dataTables_wrapper div.dataTables_processing {
 td.IDcolumn {
     position: relative !important;
 }
+table.dataTable tbody th, table.dataTable tbody td {
+    padding-top: 35px;
+    padding-bottom: 15px;
+}
 .tipdiv {
     position: absolute !important;
-    top: 32px;
+    top: 34px;
     left: 7px;
-    --balloon-color: rgb(121, 153, 174, 1.0);
-    --balloon-font-size: 1.0em;
+    --balloon-color: rgb(154, 191, 216, 1.0);
+    --balloon-font-size: 1.01em;
 }
 
