@@ -213,8 +213,13 @@ function makeDataTable(table, jsondata, sheet) {
         "defaultContent": '',
         "data": maintableKeys[0],
         "render": function (data, type, rowData, meta) {
-            return null
+            if (type === 'display') return null
+            else return data
         },
+        // "render": {
+        //     "order": data,
+        //     "display": null
+        // },
         "createdCell": function (cell, cellData, rowData, rowIndex, colIndex) {
             //balloon.css
             let tipdiv = document.createElement('div');
