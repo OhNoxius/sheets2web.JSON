@@ -222,12 +222,14 @@ function makeDataTable(table, jsondata, sheet) {
         // },
         "createdCell": function (cell, cellData, rowData, rowIndex, colIndex) {
             //balloon.css
-            let tipdiv = document.createElement('div');
-            tipdiv.classList.add('tipdiv');
-            tipdiv.setAttribute('data-balloon-visible', true);
-            tipdiv.setAttribute('aria-label', cellData);
-            tipdiv.setAttribute('data-balloon-pos', 'up-left');
-            cell.appendChild(tipdiv);
+            if (maintable != LINKSHEET) {
+                let tipdiv = document.createElement('div');
+                tipdiv.classList.add('tipdiv');
+                tipdiv.setAttribute('data-balloon-visible', true);
+                tipdiv.setAttribute('aria-label', cellData);
+                tipdiv.setAttribute('data-balloon-pos', 'up-left');
+                cell.appendChild(tipdiv);
+            }
             // cell.setAttribute('data-balloon-visible', true);
             // cell.setAttribute('aria-label', cellData);
             // cell.setAttribute('data-balloon-pos', 'up-left');
