@@ -195,19 +195,19 @@ table.dataTable tbody th, table.dataTable tbody td {
 .tipdiv {
     position: absolute !important;
     top: 28px;
-    left: 5px;
-    --balloon-color: rgb(191, 214, 230, 0.7);
+    left: 0px;
+    --balloon-color: rgba(197, 197, 197, 0.5);
     --balloon-font-size: 1.0em;
     --balloon-text-color: black;
 }
 
-
     
     [aria-label][data-balloon-pos]:after {
-        font-weight: bold !important;        
-        padding: 0px !important;
+        font-weight: bold !important;
+        font-family: Roboto, Helvetica, -apple-system, Sans-Serif !important;    
+        padding: 0px 5px !important;
+        width: 100vw !important
     }
-
     [aria-label][data-balloon-pos]:before {
         border: none !important;
         font-weight: bold !important;
