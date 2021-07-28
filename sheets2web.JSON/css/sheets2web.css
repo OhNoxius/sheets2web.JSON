@@ -211,11 +211,11 @@ table.rowheaders tbody td {
     [aria-label][data-balloon-pos]:after {
         font-weight: bold !important;
         font-family: Roboto, Helvetica, -apple-system, Sans-Serif !important;    
-        padding: 0px 0px 0px 1em !important;
+        padding: 0px 0px 0px 0.5em !important;
         letter-spacing: 0.05rem;
         z-index: 0 !important;
         margin: -18px 0px !important;
-        width: calc(100vw - 20px - 1em);
+        width: calc(100vw - 20px - 0.5em);
         /* width: -moz-available;
         width: -webkit-fill-available;
         width: fill-available; */
