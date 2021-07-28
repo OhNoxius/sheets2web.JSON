@@ -155,11 +155,13 @@ input.headersearch {
 }
 
 td.details-control {
-    background: url('../css/details_open.png') no-repeat center center;
+    background: url('../css/details_open.png') no-repeat center;
+    background-position-y: calc(50% + 8px);
     cursor: pointer;    
 }
 tr.shown td.details-control {
-    background: url('../css/details_close.png') no-repeat center center;
+    background: url('../css/details_close.png') no-repeat center;
+    background-position-y: calc(50% + 8px);
 }
 
 /* DataTables OVERRIDE */
@@ -188,32 +190,37 @@ div.dataTables_wrapper div.dataTables_processing {
 }
 
 /*static ID tooltip*/
-td.IDcolumn {
+/* td.IDcolumn {
     position: relative !important;
-}
-table.dataTable tbody th, table.dataTable tbody td {
-    padding-top: 25px;
-    /* padding-bottom: 10px; */
+} */
+table.rowheaders tbody td {
+    padding-top: 24px;
+    padding-bottom: 8x;
 }
 .tipdiv {
-    position: absolute !important;
-    top: 28px;
-    left: 0px;
+    /*position: absolute !important;*/
+    /* top: 28px; */
+    /* left: 2px; */
     --balloon-color: rgba(197, 197, 197, 0.5);
     --balloon-font-size: 1.0em;
     --balloon-text-color: black;
+    /* width: 0; */
 }
 
     
     [aria-label][data-balloon-pos]:after {
         font-weight: bold !important;
         font-family: Roboto, Helvetica, -apple-system, Sans-Serif !important;    
-        padding: 0px 5px !important;
-        width: 100vw !important;
+        padding: 0px 0px 0px 1em !important;
         letter-spacing: 0.05rem;
         z-index: 0 !important;
+        margin: -18px 0px !important;
+        width: calc(100vw - 20px - 1em);
+        /* width: -moz-available;
+        width: -webkit-fill-available;
+        width: fill-available; */
     }
     [aria-label][data-balloon-pos]:before {
-        border: none !important;
+        display:none;
     }
 

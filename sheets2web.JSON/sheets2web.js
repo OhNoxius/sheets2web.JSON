@@ -202,12 +202,14 @@ function makeDataTable(table, jsondata, sheet) {
     table.getElementsByTagName("thead")[0].append(header_row);
     const footer_row = document.createElement("tr");
     table.getElementsByTagName("tfoot")[0].prepend(footer_row);
+    if (maintable != LINKSHEET) table.classList.add('rowheaders');
 
     //FORMAT JSON DATA for use in DataTables
     let startIndex = 0, visIndex = 0;;
 
     //1stcolumn: (+)(-) buttons
     const DTcolumn = {
+        "width": '20px',
         "className": 'IDcolumn',
         "orderable": true,
         "defaultContent": '',
@@ -221,29 +223,19 @@ function makeDataTable(table, jsondata, sheet) {
         //     "display": null
         // },
         "createdCell": function (cell, cellData, rowData, rowIndex, colIndex) {
+            //title attribute
+            //cell.setAttribute("title", cellData);
+
             //balloon.css
             if (maintable != LINKSHEET) {
-                let tipdiv = document.createElement('div');
-                tipdiv.classList.add('tipdiv');
-                tipdiv.setAttribute('data-balloon-visible', true);
-                tipdiv.setAttribute('aria-label', cellData);
-                tipdiv.setAttribute('data-balloon-pos', 'up-left');
-                cell.appendChild(tipdiv);
+                //let tipdiv = document.createElement('div');
+                cell.classList.add('tipdiv');
+                cell.setAttribute('data-balloon-visible', true);
+                cell.setAttribute('aria-label', cellData);
+                cell.setAttribute('data-balloon-pos', 'up-left');
+                //cell.appendChild(tipdiv);
             }
-            // cell.setAttribute('data-balloon-visible', true);
-            // cell.setAttribute('aria-label', cellData);
-            // cell.setAttribute('data-balloon-pos', 'up-left');
 
-            //TOOLTIPSTER?
-            cell.setAttribute("title", cellData);
-            //$(cell).tooltipster();
-            // $(cell)
-            //     .attr('data-toggle', 'tooltip')
-            //     .attr('data-placement', 'bottom')
-            //     .tooltip({
-            //         trigger: 'manual',
-            //     })
-            //     .tooltip('show');
             if (rowData["LINKIDXS"]) cell.classList.add('details-control');
             else {
                 let i = 0;
@@ -431,7 +423,7 @@ function makeDataTable(table, jsondata, sheet) {
     }
 
     //console.log(columns);
-    if (visIndex > 8) fixedtable.classList.add("compact");
+    //if (visIndex > 8) fixedtable.classList.add("compact");
 
     //DATATABLE    
     const dTable = $(table).DataTable({
@@ -441,11 +433,19 @@ function makeDataTable(table, jsondata, sheet) {
         "deferRender": true,
         "dom": dom,
         "paging": false,
-        //"autoWidth": false,
+        "autoWidth": false,
         "order": order,
         "orderCellsTop": true,
         "columns": columns,
         "createdRow": function (row, data, dataIndex, cells) {
+            //balloon.css MESSES UP TABLE LAYOUT!!!??
+            // if (maintable != LINKSHEET) {
+            //     row.classList.add('tipdiv');
+            //     row.setAttribute('data-balloon-visible', true);
+            //     row.setAttribute('aria-label', data[maintableKeys[0]]);
+            //     row.setAttribute('data-balloon-pos', 'up-left');
+            // }
+
             //CONCAT COLUMNS (concat data is not available for column search this way)
             //OR ... do earlier in column.render (rowData is available there)
             mergecolumns.forEach(function (mergecolumn, i) {
