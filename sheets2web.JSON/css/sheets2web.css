@@ -56,6 +56,8 @@ h1{
 }
 a.heading {
     text-decoration: none;
+    border: 2px solid black;
+    border-radius: 8px;
 }
 a.heading, a.heading:visited, a.heading:hover, a.heading:active {
     color: inherit;
@@ -218,7 +220,7 @@ table.rowheaders > tbody > tr > td {
     /*position: absolute !important;*/
     /* top: 28px; */
     /* left: 2px; */
-    --balloon-color: rgba(197, 197, 197, 0.3);
+    --balloon-color: rgba(197, 197, 197, 0);
     --balloon-font-size: 1.0rem;
     --balloon-text-color: black;
     /* width: 0; */
