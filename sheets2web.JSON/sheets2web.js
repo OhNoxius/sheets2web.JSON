@@ -613,7 +613,7 @@ function makeDataTable(table, jsondata, sheet) {
             if (linkcellData) {
                 //filter linked elements                            
                 if (linktable_types.size > 0) {
-                    for (const [type, typeIdxArr] of Object.entries(linkcellData)) {
+                    for (const [type, typeIdxArr] of Object.entries(linkcellData)) { // for ... of ... is slow? short loop, but occurs many times
                         linkedItems.push(...typeIdxArr.map((item) => jason[linktable][item]));
                     }
                 }
