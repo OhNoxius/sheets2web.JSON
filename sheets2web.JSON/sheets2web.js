@@ -671,17 +671,6 @@ function formatChildRows(h, d) {
     else return ''
 }
 
-// function mockjax(datafile) {
-//     $.mockjax({
-//         url: "/json/data",
-//         dataType: "json",
-//         contentType: "application/json",
-//         proxy: "/" + datafile,
-//         onAfterSuccess: function (data) { console.log("mock success"); },
-//         onAfterError: function (error) { console.log("mock error"); }
-//     })
-// }
-
 function createNavFooter(sheets) {
     //NAV
     const navfooter = document.createElement("div");
