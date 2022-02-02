@@ -733,22 +733,3 @@ function formatTooltip(object) {
     }
     return result;
 }
-
-// const exp_match = /(\b(https?|):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig; //find https?
-// function createHyperlinks(content) {
-//     // OPTION2: SLIM ALTERNATIEF, mr voorlopig nog volledig url weergave, en $ teken loopt mis
-//     let element_content = content.replace(exp_match, "<a class='url' target='_blank' title='$1' href='$1'>$1</a>");
-//     let new_exp_match = /(^|[^\/])(www\.[\S]+(\b|$))/gim; //find www?
-//     let new_content = element_content.replace(new_exp_match, '$1<a class="url" title="http://$2" target="_blank" href="http://$2">$2</a>');
-//     return new_content;
-// }
-
-// function createShortHyperlinks(content) {
-//     // OPTION 1
-//     const cellval = content;
-//     const secondslash = cellval.indexOf('/', cellval.indexOf('/') + 1);
-//     const thirdslash = cellval.indexOf('/', secondslash + 1);
-//     if (cellval.slice(secondslash + 1, secondslash + 4) == 'www') shortURL = cellval.slice(secondslash + 5, thirdslash);
-//     else shortURL = cellval.slice(secondslash + 1, thirdslash);
-//     return "<a title='" + cellval + "' class='tableLink' href='" + cellval + "' target='_blank'>" + shortURL + "</a>"
-// }
