@@ -13,6 +13,7 @@ let LINKSHEET_types = new Set();
 //const delims = /([:\r\n]+)|((?<!\s)\()/g ///([:+\r\n]+)|((?<!\s)\()/g //BREAKS SAFARI!!!!!!!!
 const delims = /([:\r\n]+)/g
 const nospacebrack = /((?<=[^\s\\])\()/g
+const charBeforeBrack = /[^\s\\](?=\()/g
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -378,16 +379,16 @@ function makeDataTable(table, jsondata, sheet) {
         else if (key.startsWith(".") || key.startsWith("-")) {
             DTcolumn.className = "merger";
             DTcolumn.visible = false;
-            const maincolumn = columns[columns.length - 1];
-            const merger = { "cellIndex": columns.length - 1, "con": maincolumn.data, "cat": key, "type": key[0] };
+            //const maincolumn = columns[columns.length - 1];
+            const merger = { "cellIndex": columns.length - 1, "cat": key, "type": key[0] }; //"con": maincolumn.data, 
             mergecolumns.push(merger);
         }
         //namespace column
-        else if (maintableKeys.includes(key.substr(0, key.indexOf(":")))) {
-            const maincolumn = columns.find(x => x.data == key.substr(0, key.indexOf(":")));
+        else if (maintableKeys.includes(key.substring(0, key.indexOf(":")))) {
             DTcolumn.className = "namespace";
             DTcolumn.visible = false;
-            const merger = { "cellIndex": columns.findIndex(x => x.data == key.substr(0, key.indexOf(":"))), "con": maincolumn.data, "cat": key, "type": "namespace" };
+            //const maincolumn = columns.find(x => x.data == key.substring(0, key.indexOf(":")));
+            const merger = { "cellIndex": columns.findIndex(x => x.data == key.substring(0, key.indexOf(":"))), "cat": key, "type": ':' }; //"con": maincolumn.data, 
             mergecolumns.push(merger);
         }
         //child rows
@@ -464,13 +465,24 @@ function makeDataTable(table, jsondata, sheet) {
 
             //CONCAT COLUMNS (concat data is not available for column search this way)
             //OR ... do earlier in column.render (rowData is available there)
+
+            //oor make formatting function based on 1st row, see how many mergers there are, where they should go and do for each row
             mergecolumns.forEach(function (mergecolumn, i) {
                 const catdata = data[mergecolumn.cat];
                 if (catdata) {
-                    const mergeDOM = document.createElement("p");
-                    mergeDOM.classList.add("subdetails");
+                    let mergeDOM;
+                    if (mergecolumn.type === "-") {
+                        mergeDOM = document.createElement("span");
+                        mergeDOM.classList.add("inlinedetails");
+                        mergeDOM.innerText = "-";
+                    }
+                    else {
+                        mergeDOM = document.createElement("p");
+                        mergeDOM.classList.add("subdetails");
+                        if (mergecolumn.type === ":") mergeDOM.innerHTML = "<span class='inlinedetails'>" + mergecolumn.cat.substring(mergecolumn.cat.indexOf(":") + 1) + ": " + "</span>";
+                    }                    
                     if (typeof (catdata) === "string") {
-                        mergeDOM.innerHTML = anchorme({
+                        mergeDOM.innerHTML += anchorme({
                             input: catdata,
                             options: {
                                 truncate: 50,
@@ -481,7 +493,8 @@ function makeDataTable(table, jsondata, sheet) {
                             }
                         });
                     }
-                    else mergeDOM.innerText = catdata;
+                    else mergeDOM.innerHTML += catdata;
+
                     cells[mergecolumn.cellIndex].append(mergeDOM);
                 }
             });
@@ -494,11 +507,10 @@ function makeDataTable(table, jsondata, sheet) {
             if (maintable == LINKSHEET) row.setAttribute("summary", data[MAINSHEET] + LINKSHEET);
             else row.setAttribute("summary", data[maintableKeys[0]]);
         },
+        //TAKES ALMOST 10 seconds!! ===>
         "initComplete": function () {
             $(table).show(); //do here, otherwise dropdown <input> aren't generated...
             $('div#dt_loader').hide();
-
-
 
             //FIXED TOOLTIPS on ID column
             //create tooltips
@@ -554,11 +566,12 @@ function makeDataTable(table, jsondata, sheet) {
 
                         //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
                         let ARRstring1delim = ARR.join(delimiter).replace(delims, delimiter);
-                        ARRstring1delim = ARRstring1delim.replace(nospacebrack, delimiter + "(");
+                        //ARRstring1delim = ARRstring1delim.replace(nospacebrack, delimiter + "("); //uses lookbehind
+                        ARRstring1delim = ARRstring1delim.replace(nospacebrack, "$&" + delimiter); //no lookbehind, just include matched character again                     
                         ARR = ARRstring1delim.split(delimiter);
                         let SET = new Set();
                         const ARRlen = ARR.length;
-                        console.log(jqth.innerText + ": " + ARRlen); //up to 40.000 artists!
+                        //console.log(jqth.innerText + ": " + ARRlen); //up to 40.000 musicians!
                         for (let i = 0; i < ARRlen; i++) {
                             SET.add(ARR[i].trim()); //exclude items that start with "(" ??
                         }
@@ -566,7 +579,7 @@ function makeDataTable(table, jsondata, sheet) {
                         //     SET.add(a[i].trim()); //exclude items that start with "(" ??
                         //     //if (trima[trima.length-1] != ")") ;
                         // });
-                        ARR = [...SET].sort();
+                        ARR = [...SET].sort(); //or use map, which is automatically sorted?
                         //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
 
                         //OPTION 1: HTML5 datalists
