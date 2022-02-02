@@ -557,11 +557,15 @@ function makeDataTable(table, jsondata, sheet) {
                         ARRstring1delim = ARRstring1delim.replace(nospacebrack, delimiter + "(");
                         ARR = ARRstring1delim.split(delimiter);
                         let SET = new Set();
-                        ARR.forEach((o, i, a) => {
-                            const trima = a[i].trim();
-                            SET.add(trima);
-                            //if (trima[trima.length-1] != ")") ;
-                        });
+                        const ARRlen = ARR.length;
+                        console.log(jqth.innerText + ": " + ARRlen); //up to 40.000 artists!
+                        for (let i = 0; i < ARRlen; i++) {
+                            SET.add(ARR[i].trim()); //exclude items that start with "(" ??
+                        }
+                        // ARR.forEach((o, i, a) => {
+                        //     SET.add(a[i].trim()); //exclude items that start with "(" ??
+                        //     //if (trima[trima.length-1] != ")") ;
+                        // });
                         ARR = [...SET].sort();
                         //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
 
