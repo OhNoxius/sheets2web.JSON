@@ -123,11 +123,6 @@ td {
     white-space: pre-wrap;
 }
 
-td.IDcolumn,
-th.IDcolumn {
-    width: 20px;
-}
-
 table.dataTable tbody td.linkcolumn,
 table.dataTable thead th.linkcolumn {
     text-align: left;
@@ -207,7 +202,6 @@ td.details-control {
 
 tr.shown td.details-control {
     background: url('../css/details_close.png') no-repeat center center;
-
 }
 
 table.rowheaders tbody tr td.details-control {
@@ -245,8 +239,6 @@ div.dataTables_wrapper div.dataTables_processing {
 /* td.IDcolumn {
     position: relative !important;
 } */
-
-
 
 table.rowheaders>tbody>tr>td {
     padding-top: 40px;
