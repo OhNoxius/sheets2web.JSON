@@ -11,8 +11,8 @@ let MAINSHEET_keys = [], LINKSHEET_keys = []
 let LINKSHEET_types = new Set();
 
 const delims = /([;:\r\n]+)/g
-const trimdelim = /[;:\r\n]+|((?<!\s)\()/ //not global => to trim
-const trimdelimg = /[;:\r\n]+|((?<!\s)\()/g //not global => to trim
+const trimdelim = /((?<!\s)\()|$/ //not global => to trim
+const delimsNC = /(?:[;:?\r\n]+)|(?:(?<!\s)\()/g //includes "?" as delimiter (non capturing)
 const nospacebrack = /((?<=[^\s\\])\()/g
 const charBeforeBrack = /[^\s\\](?=\()/g
 //const delims = /([:\r\n]+)|((?<=[^\s\\])\()/g
@@ -327,11 +327,11 @@ function makeDataTable(table, jsondata, sheet) {
                     //FOR NOW, until all the data is already split in json/xml, I join the Array to a string again, and split it up with the extra delimiters
                     data = data.join(";").split(delims);
                     let i = 0, len = data.length, result = "";
-                    while (i < len) {
-                        result += '<span class="linktip">' + data[i].trim().replace(trimdelim,"</span>$&"); //trimdelim for cutting of instrument brackets
-                        i++;
+                    while (i < len-2) {
+                        result += '<span class="linktip">' + data[i].trim().replace(trimdelim, "</span>$&") + '<span class="padright">' + data[i + 1] + '</span>'; //trimdelim for cutting of instrument brackets
+                        i += 2;
                     }
-                    return result + '</span>'
+                    return result += '<span class="linktip">' + data[i].trim().replace(trimdelim, "</span>$&") + '<span class="padright">' //last one without delimiter span
                 }
             }
             else DTcolumn.render = function (data, type, row, meta) {
@@ -584,12 +584,13 @@ function makeDataTable(table, jsondata, sheet) {
                         else ARR = DTcolumnArray;//.sort();
 
                         //* ONLY WHEN DATA IS NOT FULLY SPLIT inside json *//
-                        let ARRstring1delim = ARR.join(delimiter).replace(delims, delimiter);
-                        ARR = ARRstring1delim.split(delimiter);
+                        //let ARRstring1delim = ARR.join(delimiter).replace(delims, delimiter);
+                        //ARR = ARRstring1delim.split(delimiter);
                         //old school
                         //ARRstring1delim = ARRstring1delim.replace(nospacebrack, delimiter + "("); //uses lookbehind
                         //ARRstring1delim = ARRstring1delim.replace(nospacebrack, delimiter + "$&"); //no lookbehind, just include matched character again 
                         
+                        ARR = ARR.join(";").split(delimsNC);
                         let SET = new Set();
                         const ARRlen = ARR.length;
                         //console.log(jqth.innerText + ": " + ARRlen); //up to 40.000 musicians!
