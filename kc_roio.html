@@ -7,10 +7,6 @@
 	<meta name="KC ROIO" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="sheets2web.JSON/css/favicon.ico" type="image/x-icon" />
 
-	<!-- Inter FONT -->
-	<!-- <link rel="preconnect" href="https://rsms.me/">
-	<link rel="stylesheet" href="https://rsms.me/inter/inter.css"> -->
-
 	<!-- JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
 	<!-- DataTables nightly -->
@@ -34,8 +30,6 @@
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<!-- Balloon.css -->
 	<link rel="stylesheet" href="https://unpkg.com/balloon-css/balloon.min.css">
-	<!-- ClipboardJS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 
 	<!-- sheets2web.JSON HELPER FUNCTIONS -->
 	<script src="sheets2web.JSON/helper functions/lastUpdated.js"></script>
@@ -48,26 +42,15 @@
 	<script>
 		//set source .xml filename
 		const s2w_datafile = getFilename("json");
+		
 		//set header title to display above table
 		const s2w_heading = "KC ROIO";
 		//set drive link to display next to header title
 		//let editlink = "https://docs.google.com/spreadsheets/d/1gTCRmbPqV-EL3g4KG7JdGnbVH5xIQvu0xcCTb7-JzKE/edit?usp=sharing";
 		//choose character that will be used to separate content inside cells
-		//const s2w_delimiter = ";";
+		const s2w_delimiter = ";";
 		const s2w_typeheader = "type";
 	</script>
 </head>
-
-<body>
-	<header>
-		<div id="heading"></div>
-		<div id="status"></div>
-		<div id="activity"></div>
-	</header>
-	<section id="database">
-		<table id="fixedtable" class="hover row-border" width="100%" style="display:none"></table>
-		<div id="dt_loader" class="spinner"></div>
-	</section>
-</body>
 
 </html>

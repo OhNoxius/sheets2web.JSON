@@ -1,9 +1,24 @@
-//DON'T TOUCH
+//HTML
+document.body = document.createElement("body");
+const HEADER = document.body.appendChild(document.createElement("header"));
+const SECTION = document.body.appendChild(document.createElement("section"));
+const FOOTER = document.body.appendChild(document.createElement("footer"));
+HEADER.appendChild(document.createElement("div")).id = "heading";
+HEADER.appendChild(document.createElement("div")).id = "status";
+HEADER.appendChild(document.createElement("div")).id = "activity";
+SECTION.innerHTML = '<table id="fixedtable" class="hover row-border" width="100%" style="display:none"></table><div id="dt_loader" class="spinner"></div>';
+FOOTER.id = "navigation";
+
+//document.body.innerHTML = '<header>    < div id = "heading" ></div >		<div id="status"></div>		<div id="activity"></div>	</header >	<section id="database">		<table id="fixedtable" class="hover row-border" width="100%" style="display:none"></table>	<div id="dt_loader" class="spinner"></div>	</section>	<footer id="navigation"></footer>';
+
+// DON'T TOUCH
 let linkMap = new Map();
 let fixedtable, dfixedtable;
 let fixedthead, fixedtbody, fixedtfoot;
 let fixedfooter_row;
 let linktype;
+
+// DON'T TOUCH
 
 let jason;
 let SHEETS, MAINSHEET, LINKSHEET;
@@ -41,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fixedtable = document.getElementById("fixedtable");
     // fixedthead = fixedtable.appendChild(document.createElement("thead"));
     // fixedtbody = fixedtable.appendChild(document.createElement("tbody"));
-    fixedtfoot = fixedtable.appendChild(document.createElement("tfoot"));
+    // fixedtfoot = fixedtable.appendChild(document.createElement("tfoot"));
 
     fetch(s2w_datafile)
         .then(res => res.json())
@@ -132,14 +147,15 @@ document.addEventListener('DOMContentLoaded', function () {
             else LINKSHEET_keys = [];
 
             //CREATE NAVIGATION FOOTER
-            navfooter = createNavFooter(SHEETS);
-            fixedfooter_row = document.createElement("tr");
-            fixedfooter_row.setAttribute('id', "fixedfooterrow");
-            const th = document.createElement("th");
-            th.setAttribute('id', "LOOKAHERE");
-            th.append(navfooter);
-            fixedfooter_row.append(th);
-            fixedtfoot.append(fixedfooter_row);
+            const navfooter = createNavFooter(SHEETS);
+            // fixedfooter_row = document.createElement("tr");
+            // fixedfooter_row.setAttribute('id', "fixedfooterrow");
+            // const th = document.createElement("th");
+            // th.setAttribute('id', "LOOKAHERE");
+            // th.append(navfooter);
+            // fixedfooter_row.append(th);
+            // fixedtfoot.append(fixedfooter_row);            
+            document.getElementById("navigation").append(navfooter);
 
             //FINAL CALL:
             //detect '#...' in url to choose initial sheet
@@ -257,10 +273,17 @@ function makeDataTable(table, jsondata, sheet) {
                 let linkElArr;
                 jason[linktable].forEach(function (linkEl, linkIdx, linkArr) {
                     if (linkEl[maintable]) {
+                        //column exported as JSON array => CONCERTS ARE PROBABLY NOT IN SEPARATE CELLS, split again for every \n
                         if (Array.isArray(linkEl[maintable])) {
-                            if (linkEl[maintable].length > 0) linkElArr = linkEl[maintable];
+                            linkElArr = [];
+                            for (var i = 0; i < linkEl[maintable].length; i++) {
+                                linkElArr = linkElArr.concat(linkEl[maintable][i].split("\n"));
+                            }
+                            // linkElArr = linkEl[maintable];
                         }
+                        //column exported as normal string
                         else linkElArr = linkEl[maintable].split("\n");
+
                         if (linkElArr) {
                             let linkid_trim, mainIdx, obj;
                             linkElArr.forEach(function (linkid) { //ERRORS when id column contains delimiter (; for example) => exports as Array instead of string
@@ -311,8 +334,8 @@ function makeDataTable(table, jsondata, sheet) {
     //prepare HTML
     const header_row = document.createElement("tr");
     table.getElementsByTagName("thead")[0].append(header_row);
-    const footer_row = document.createElement("tr");
-    table.getElementsByTagName("tfoot")[0].prepend(footer_row);
+    // const footer_row = document.createElement("tr");
+    // table.getElementsByTagName("tfoot")[0].prepend(footer_row);
     if (maintable != LINKSHEET) table.classList.add('rowheaders');
     else table.classList.remove('rowheaders');
 
@@ -341,7 +364,8 @@ function makeDataTable(table, jsondata, sheet) {
                 //dropdown +/- 'button'
                 //if (rowData["LINKIDXS"]) cell.classList.add('plus-ctrl');
 
-                //copy ID <btn>
+                cell.innerHTML = `<button class="btn"></button>`;
+                //copy ID <btn> for ClipboardJS (not necessary anymore!!!!!)
                 cell.innerHTML = `<button class="btn" data-clipboard-text="` + cellData + `"></button>`;
             }
         },
@@ -385,7 +409,7 @@ function makeDataTable(table, jsondata, sheet) {
                             // if (props[i].startsWith("?")) propstrim = props[i].substring(1);
                             // else propstrim = props[i];
                             propstrim = props[i];
-                            innerhtml += '<div class="nowrap typeicon ' + props[i] + '" title="' + props[i] + '"> ' + propstrim + ':<span class="typenum">' + data[props[i]].length + '</span></div > ';
+                            innerhtml += '<div class="nowrap typeicon ' + props[i] + '" title="' + props[i] + '">' + propstrim + ':<span class="padleft typenum ">' + data[props[i]].length + '</span></div > ';
                         }
                     }
                     return innerhtml
@@ -653,13 +677,16 @@ function makeDataTable(table, jsondata, sheet) {
             //create tooltips
             //createTooltips(table);
 
-            new ClipboardJS('.btn');
+            //new ClipboardJS('.btn');
+            $(table).find(".btn").each(function () {
+                this.addEventListener("click", () => writeClipboardText(this.parentElement.getAttribute("aria-label")));
+            });
 
             if (table.getAttribute("id") == "fixedtable") {
                 const headerfilters_row = header_row.cloneNode(true);
                 headerfilters_row.setAttribute("class", "columnfilters");
                 table.getElementsByTagName("thead")[0].append(headerfilters_row);
-                document.getElementById("LOOKAHERE").setAttribute("colspan", columns.length);
+                //document.getElementById("LOOKAHERE").setAttribute("colspan", columns.length);
 
                 //COLUMN FILTERS
                 this.api().columns(':visible').every(function () {
@@ -894,14 +921,18 @@ function createNavFooter(sheets) {
                 fixedtbody.innerHTML = "";
                 fixedtable.removeChild(fixedthead);
                 fixedtable.removeChild(fixedtbody);
-                fixedtfoot.querySelectorAll("tr:not(#fixedfooterrow)").forEach(tr => tr.remove());
+                // fixedtfoot.querySelectorAll("tr:not(#fixedfooterrow)").forEach(tr => tr.remove());
 
                 dfixedtable = makeDataTable(fixedtable, jason[sheet], sheet);
             }, false);
-            if (sheet == MAINSHEET) $(tab_li).addClass('active');
-            if (sheet == MAINSHEET || sheet == LINKSHEET) tab_a.innerText = sheet;
-            else if (MAINSHEET_keys.includes(sheet)) tab_a.innerText = MAINSHEET + ":" + sheet;
-            else if (LINKSHEET_keys.includes(sheet)) tab_a.innerText = LINKSHEET + ":" + sheet;
+            // if (sheet == MAINSHEET) $(tab_li).addClass('active');
+            //set names
+            tab_a.innerText = sheet;
+            //set colors
+            if (sheet == MAINSHEET || MAINSHEET_keys.includes(sheet)) $(tab_a).addClass("MAINclr");
+            else $(tab_a).addClass("LINKclr");
+            //set outline
+            if (sheet == MAINSHEET || sheet == LINKSHEET) $(tab_a).addClass("MAINLINK");
 
             tab_li.append(tab_a);
         }
@@ -919,4 +950,12 @@ function formatTooltip(object) {
         if (object[props[i]]) result.push($("<li style='list-style-type:none;'><span class='inlinedetails'>" + props[i] + ": </span>" + anchorme({ input: object[props[i]].toString(), options: { attributes: { target: "_blank" } } }) + "</li>"));
     }
     return result;
+}
+
+async function writeClipboardText(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch (error) {
+        console.error(error.message);
+    }
 }
