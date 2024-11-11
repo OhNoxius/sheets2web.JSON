@@ -596,7 +596,7 @@ function makeDataTable(table, jsondata, sheet) {
             top: {
                 search: {
                     text: '',
-                    placeholder: "Type to start search in '" + MAINSHEET + "' tab..."
+                    placeholder: "Type to start search in '" + sheet + "' tab..."
                 }
             },
             topStart: null,
