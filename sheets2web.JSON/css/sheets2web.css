@@ -281,19 +281,25 @@ table.dataTable>thead>tr>th.LINKcol {
     /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     text-align: right;
     /* width: 0%; */
-    /* padding-left: 0px !important; */
+    padding-left: 0px !important;
     /* font-size: 0.95em; */
     font-style: italic;
     font-weight: bold;
     color: forestgreen;
     white-space: normal;
     vertical-align: middle !important;
-    border-right: 1px lightgray dotted;
+    /* box-sizing: border-box; */
+    border-right: 1px rgb(211, 211, 211,50%) dashed;
+}
+
+table.dataTable>thead>tr>th.LINKcol {
+    border-right: 1px lightgray solid;
 }
 
 table.dataTable>tbody>tr>td.LINKcol {
     padding-top: 25px !important;
     padding-bottom: 5px !important;
+    /* padding-left: 0px !important; */
 }
 
 table.dataTable>thead tr.columnfilters th {
