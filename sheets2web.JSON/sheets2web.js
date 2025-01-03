@@ -3,9 +3,9 @@ document.body = document.createElement("body");
 const HEADER = document.body.appendChild(document.createElement("header"));
 const SECTION = document.body.appendChild(document.createElement("section"));
 const FOOTER = document.body.appendChild(document.createElement("footer"));
-HEADER.appendChild(document.createElement("div")).id = "heading";
-HEADER.appendChild(document.createElement("div")).id = "status";
-HEADER.appendChild(document.createElement("div")).id = "activity";
+HEADER.appendChild(document.createElement("div")).id = "s2w_heading";
+HEADER.appendChild(document.createElement("div")).id = "s2w_status";
+HEADER.appendChild(document.createElement("div")).id = "s2w_activity";
 SECTION.innerHTML = '<table id="fixedtable" class="hover row-border" width="100%" style="display:none"></table><div id="dt_loader" class="spinner"></div>';
 FOOTER.id = "navigation";
 
@@ -50,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
     heading_a.setAttribute("href", "");
     heading_a.setAttribute("class", "heading");
     heading.append(heading_a);
-    document.getElementById("heading").append(heading);
+    document.getElementById("s2w_heading").append(heading);
     //FILE UPDATED
-    lastUpdated(s2w_datafile, "activity");
+    lastUpdated(s2w_datafile, "s2w_activity");
 
     fixedtable = document.getElementById("fixedtable");
     // fixedthead = fixedtable.appendChild(document.createElement("thead"));
