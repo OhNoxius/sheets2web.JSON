@@ -475,6 +475,7 @@ function makeDataTable(table, jsondata, sheet) {
                 DTcolumn.render = function (data, type, row, meta) {
                     //FOR NOW, until all the data is already split in json/xml, I join the Array to a string again, and split it up with the extra delimiters
                     if (data) {
+                        // console.log(data);
                         data = data.join(";").split(delims);
                         let i = 0, len = data.length, result = "", span = "";
                         while (i < len - 2) {
@@ -639,6 +640,7 @@ function makeDataTable(table, jsondata, sheet) {
         "orderCellsTop": true,
         "columns": columns,
         "createdRow": function (row, data, dataIndex, cells) {
+            if (maintable != LINKSHEET) row.classList.add('IDheader');
             //balloon.css MESSES UP TABLE LAYOUT!!!??
             // if (maintable != LINKSHEET) {
             //     row.classList.add('tipdiv');
@@ -740,14 +742,21 @@ function makeDataTable(table, jsondata, sheet) {
                     else if (jqth.classList.contains("LINKcol")) {
                         jqthisfilter.get(0).setAttribute("class", "LINKcol")
                         //if (linktable_types.size == 0) linktable_types.add(""); //=> do it another way...breaks code further on
-                        linktable_types.forEach(function (value, index, array) {
-                            $('<div class="nowrap"><input type="checkbox" id="' + value + '" name="linkcheckbox" value="' + value + '" class="headercheckbox" />' +
-                                '<label for="' + value + '">' + value + '</label></div>')
+                        if (linktable_types.size == 0) {
+                            $('<div class="nowrap"><input type="checkbox" id="" name="linkcheckbox" value=".+" class="headercheckbox" />' +
+                                '<label for=""></label></div>')
                                 .appendTo(jqthisfilter);
-                        });
+                        }
+                        else {
+                            linktable_types.forEach(function (value, index, array) {
+                                $('<div class="nowrap"><input type="checkbox" id="' + value + '" name="linkcheckbox" value="' + value + '" class="headercheckbox" />' +
+                                    '<label for="' + value + '">' + value + '</label></div>')
+                                    .appendTo(jqthisfilter);
+                            });
+                        }
                         jqthisfilter.find('input:checkbox').on('change', function (e) {
                             //build a regex filter string with an or(|) condition
-                            let checkboxes = jqthisfilter.find('input:checkbox:checked').map(function () {
+                            const checkboxes = jqthisfilter.find('input:checkbox:checked').map(function () {
                                 return this.value;
                             }).get().join('|');
                             //filter in column 1, with an regex, no smart filtering, not case sensitive
