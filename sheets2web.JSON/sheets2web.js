@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //DELIMS
     if (typeof s2w_delimiter === "undefined") {
         console.log("s2w_delimiter is undefined. Using default delimiter regex /([;\r\n]+)/g");
-        delims = new RegExp(/([;\r\n]+)/,"g");
+        delims = new RegExp(/([;\r\n]+)/, "g");
     }
     else {
         try {
@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         } catch (e) {
             console.log("s2w_delimiter='" + s2w_delimiter + "' is an INVALID REGEX");
-            delims = new RegExp(/([;\r\n]+)/,"g");
+            delims = new RegExp(/([;\r\n]+)/, "g");
         }
     }
-    console.log("delimiter regex used: "+ delims);
+    console.log("delimiter regex used: " + delims);
     delimsNC = new RegExp("(?:" + delims.source + ")", "g");
     // trimdelim = /((?<!\s)\()|$/ //not global => to trim
     // delimsNCold = /(?:[;:?\r\n]+)|(?:(?<!\s)\()/g //includes "?" as delimiter (non capturing)
@@ -478,11 +478,11 @@ function makeDataTable(table, jsondata, sheet) {
         if (SHEETS.includes(key)) {
             //render
             DTcolumn.render = function (data, type, row, meta) {
-
-                if (Array.isArray(data)) data = data.join(";");
-               //how can I be sure that ";" is a valid delimiter???????,
-                return '<span class="match">' + data.replaceAll(delims, "</span>$&<span class='match delim$&'>") + '</span>';
-
+                if (data) { //data can be =null
+                    if (Array.isArray(data)) data = data.join(";");
+                    //how can I be sure that ";" is a valid delimiter???????
+                    return '<span class="match">' + data.replaceAll(delims, "</span>$&<span class='match delim$&'>") + '</span>';
+                }
             }
             // if (Array.isArray(jsondata[jidx][key]){ //checks first value in column, but can be the case that values later on are different!
             //     DTcolumn.render = function (data, type, row, meta) {
