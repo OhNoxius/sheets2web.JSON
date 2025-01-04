@@ -144,10 +144,19 @@ a.heading:active {
 .padleft {
     margin-left: 0.4em;
 }
+
 .padbottom {
     margin-bottom: 0.6em;
     content: " ";
     display: block;
+}
+
+[class*='delim;']{
+    margin-left: 0.4em;
+}
+.delim {
+    margin-top: 0.6em;
+    display: inline-block
 }
 
 /* NAVIGATION */
@@ -214,7 +223,7 @@ li.tab.active a.tab {
     -ms-filter: brightness(110%);
     filter: brightness(110%);
     filter: saturate(3);
-    text-decoration:underline;
+    text-decoration: underline;
     font-size: 1.1rem;
 }
 
@@ -230,7 +239,7 @@ td {
     white-space: pre-wrap;
 }
 
-table.dataTable>tbody>tr>td {    
+table.dataTable>tbody>tr>td {
     /*28px 8px 22px 8px;*/
     vertical-align: text-top;
     /* keeps copy button stuck on top! */
@@ -241,7 +250,7 @@ table.dataTable>tbody>tr.IDheader>td {
 }
 
 table.dataTable>tbody>tr>td.IDcol,
-table.dataTable>thead>tr>th.IDcol{
+table.dataTable>thead>tr>th.IDcol {
     /* width: 0 !important; */
     padding: 0.3em 0 0 0 !important;
     /* padding-left: 20px; */
@@ -249,9 +258,10 @@ table.dataTable>thead>tr>th.IDcol{
     /* padding-right: 0px;
     padding-left: 4ex;
     /* !important; really removes the column! */
-    vertical-align: top;
+    vertical-align: top !important;
     text-align: left;
 }
+
 table.dataTable>tbody>tr>td.IDcol {
     /* padding-right: 20px !important; */
     width: 20px !important;
@@ -289,7 +299,7 @@ table.dataTable>thead>tr>th.LINKcol {
     white-space: normal;
     vertical-align: middle !important;
     /* box-sizing: border-box; */
-    border-right: 1px rgb(211, 211, 211,50%) dashed;
+    border-right: 1px rgb(211, 211, 211, 50%) dashed;
 }
 
 table.dataTable>thead>tr>th.LINKcol {
@@ -308,7 +318,8 @@ table.dataTable>thead tr.columnfilters th {
     position: relative;
     z-index: 1;
     font-weight: normal;
-    padding: 2px 5px; /*!important;*/
+    padding: 2px 5px;
+    /*!important;*/
     text-align: left;
     font-size: 0.9em;
 }
@@ -326,6 +337,7 @@ th.LINKcol div {
 div.typeicon {
     text-align: center;
 }
+
 div.typeicon span.typenum {
     font-weight: normal;
     font-style: normal;
@@ -413,11 +425,19 @@ td.arrow-ctrl {
     cursor: pointer;
     /* width: 0px; */
     padding: 0px;
-    background: linear-gradient(to bottom, rgba(211, 211, 211, 0.5), rgba(255, 255, 255, 0.5)), url('../css/sort-arrow-down.svg') no-repeat top center;
+    /* background-image: linear-gradient(to bottom, rgba(211, 211, 211, 0.5), rgba(255, 255, 255, 0.5)), url('../css/sort-arrow-down.svg'); */
+    background-image: url('../css/sort-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top;
 }
 
 tr.LASTshown td.arrow-ctrl {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(211, 211, 211, 0.5)), url('../css/sort-arrow-up.svg') no-repeat bottom center;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(211, 211, 211, 0.5)), url('../css/sort-arrow-up.svg');
+    background-image: url('../css/sort-arrow-up.svg');
+    /* background-color:  rgba(211, 211, 211, 0.5) ; */
+    background-repeat: space repeat-y;
+    /* background-position-y: bottom; */
 }
 
 /* DataTables OVERRIDE */
@@ -433,7 +453,8 @@ table.dataTable.display>tbody>tr>* {
 
 div.dt-container .dt-search input {
     width: 40vw;
-  }
+}
+
 /* div.dt-container div.dt-layout-row { CHANGES ALL CELL BACKGROUNDS????
     background: rgb(226, 231, 235);
 } */

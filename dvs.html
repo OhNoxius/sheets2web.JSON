@@ -37,9 +37,6 @@
 	<link rel="stylesheet" href="sheets2web.JSON/css/sheets2web.css" />
 	<script src="sheets2web.JSON/sheets2web.js"></script>
 
-	<!-- CUSTOM -->
-	<link rel="stylesheet" href="css/dvs.css" />
-
 	<!-- Inter FONT -->
 	<link rel="preconnect" href="https://rsms.me/">
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -61,7 +58,7 @@
 		//set drive link to display next to header title
 		const s2w_editlink = "https://docs.google.com/spreadsheets/d/1j-J_5MJ_jmekZ55awqn9OBTQzg3lG8Mx1KSCr9hKSt8/edit?usp=sharing";
 		//choose additional character that will be used to separate content inside cells
-		//const s2w_delimiter = ",";
+		const s2w_delimiter = /[;\r\n]+|\?(?=\S)/g
 
 		const s2w_typeheader = "format";
 	</script>

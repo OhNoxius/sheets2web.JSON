@@ -26,19 +26,38 @@ let SHEETS, MAINSHEET, LINKSHEET;
 let MAINSHEET_keys = [], LINKSHEET_keys = []
 let LINKSHEET_types = new Set();
 
-const delims = /([;:\r\n]+)/g
-const trimdelim = /((?<!\s)\()|$/ //not global => to trim
-const delimsNC = /(?:[;:?\r\n]+)|(?:(?<!\s)\()/g //includes "?" as delimiter (non capturing)
-const nospacebrack = /((?<=[^\s\\])\()/g
-const charBeforeBrack = /[^\s\\](?=\()/g
-//const delims = /([:\r\n]+)|((?<=[^\s\\])\()/g
-//const delims = /([:\r\n]+)|((?<!\s)\()/g ///([:+\r\n]+)|((?<!\s)\()/g //BROKE SAFARI!!!!!!!!
+let delims, delimsNC, trimdelim;
+let delimsNCold;
+
 //old school
 let jidx = 0, lidx = 0;
 let keyIdx = new Map();
 let keyPrev = new Map();
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    //DELIMS
+    if (typeof s2w_delimiter === "undefined") {
+        console.log("s2w_delimiter is undefined. Using default delimiter regex /([;\r\n]+)/g");
+        delims = new RegExp(/([;\r\n]+)/,"g");
+    }
+    else {
+        try {
+            delims = new RegExp(s2w_delimiter, "g");
+
+        } catch (e) {
+            console.log("s2w_delimiter='" + s2w_delimiter + "' is an INVALID REGEX");
+            delims = new RegExp(/([;\r\n]+)/,"g");
+        }
+    }
+    console.log("delimiter regex used: "+ delims);
+    delimsNC = new RegExp("(?:" + delims.source + ")", "g");
+    // trimdelim = /((?<!\s)\()|$/ //not global => to trim
+    // delimsNCold = /(?:[;:?\r\n]+)|(?:(?<!\s)\()/g //includes "?" as delimiter (non capturing)
+    // const nospacebrack = /((?<=[^\s\\])\()/g
+    // const charBeforeBrack = /[^\s\\](?=\()/g
+    //const delims = /([:\r\n]+)|((?<=[^\s\\])\()/g
+    //const delims = /([:\r\n]+)|((?<!\s)\()/g ///([:+\r\n]+)|((?<!\s)\()/g //BROKE SAFARI!!!!!!!!
 
     //HEADING
     const heading = document.createElement("h1");
@@ -455,12 +474,40 @@ function makeDataTable(table, jsondata, sheet) {
             "data": key,
             "defaultContent": '',
         };
-        //create <span> only in columns which have separte sheet
+        //create <span> only in columns which have separate sheet
         if (SHEETS.includes(key)) {
+            //render
+            DTcolumn.render = function (data, type, row, meta) {
+
+                if (Array.isArray(data)) data = data.join(";");
+               //how can I be sure that ";" is a valid delimiter???????,
+                return '<span class="match">' + data.replaceAll(delims, "</span>$&<span class='match delim$&'>") + '</span>';
+
+            }
+            // if (Array.isArray(jsondata[jidx][key]){ //checks first value in column, but can be the case that values later on are different!
+            //     DTcolumn.render = function (data, type, row, meta) {
+            //         //FOR NOW, until all the data is already split in json/xml, I join the Array to a string again, and split it up with the extra delimiters
+            //         if (data) {
+            //             // console.log(data);
+            //             data = data.join(";").split(delims);
+            //             let i = 0, len = data.length, result = "", span = "";
+            //             while (i < len - 2) {
+            //                 if (data[i + 1].indexOf("\n") == -1) span = '<span class="padright">' + data[i + 1] + '</span>'
+            //                 else span = '<br class="padbottom">'
+            //                 result += '<span class="match">' + data[i].trim().replace(trimdelim, "</span>$&") + span; //trimdelim for cutting of instrument brackets
+            //                 i += 2;
+            //             }
+            //             return result += '<span class="match">' + data[i].trim().replace(trimdelim, "</span>$&");// + '<span class="padright">' //last one without delimiter span
+            //         }
+            //     }
+            // }
+            // else DTcolumn.render = function (data, type, row, meta) {
+            //     if (data) return '<span class="match">' + data + '</span>';
+            // }
             //createdCell
             DTcolumn.createdCell = function (td, cellData, rowData, rowIndex, colIndex) {
                 //OR USE BALLOON.CSS instead of Tooltipster?? for performance
-                $(td).find('span.linktip').tooltipster({
+                $(td).find('span.match').tooltipster({
                     functionBefore: function (instance, helper) {
                         const textContent = helper.origin.textContent;
                         const firstkey = Object.keys(jason[key][0])[0];
@@ -470,27 +517,6 @@ function makeDataTable(table, jsondata, sheet) {
                     interactive: true
                 });
             };
-            //render
-            if (Array.isArray(jsondata[jidx][key])) {
-                DTcolumn.render = function (data, type, row, meta) {
-                    //FOR NOW, until all the data is already split in json/xml, I join the Array to a string again, and split it up with the extra delimiters
-                    if (data) {
-                        // console.log(data);
-                        data = data.join(";").split(delims);
-                        let i = 0, len = data.length, result = "", span = "";
-                        while (i < len - 2) {
-                            if (data[i + 1].indexOf("\n") == -1) span = '<span class="padright">' + data[i + 1] + '</span>'
-                            else span = '<br class="padbottom">'
-                            result += '<span class="linktip">' + data[i].trim().replace(trimdelim, "</span>$&") + span; //trimdelim for cutting of instrument brackets
-                            i += 2;
-                        }
-                        return result += '<span class="linktip">' + data[i].trim().replace(trimdelim, "</span>$&");// + '<span class="padright">' //last one without delimiter span
-                    }
-                }
-            }
-            else DTcolumn.render = function (data, type, row, meta) {
-                if (data) return '<span class="linktip">' + data + '</span>';
-            }
         }
         else {
             DTcolumn.render = function (data, type, row, meta) {
