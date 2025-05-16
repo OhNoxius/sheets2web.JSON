@@ -39,17 +39,24 @@
 	<script src="sheets2web.JSON/sheets2web.js"></script>
 
 	<!-- CUSTOM -->
+	<!-- use xlsx.mini.min.js from version 0.20.3 -->
+	<script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.mini.min.js"></script>
 
 	<script>
 		//set source .xml filename
-		const s2w_datafile = getFilename("json");
+		const s2w_datafile = getFilename("xlsx");
 
 		//set header title to display above table
-		const s2w_heading = "YOU THINK YOU WANT TO HAS JAZZ";
+		const s2w_title = "YOU THINK YOU WANT TO HAS JAZZ";
+
 		//set drive link to display next to header title
 		//let s2w_editlink = "https://docs.google.com/spreadsheets/d/1gTCRmbPqV-EL3g4KG7JdGnbVH5xIQvu0xcCTb7-JzKE/edit?usp=sharing";
+
 		//choose character that will be used to separate content inside cells
-		const s2w_delimiter = ";";
+		const s2w_delimiter = /([;\r\n]+|(?<=[^\s\\])\(|\?(?=\S)|(?<!\s)\:)\s?/g
+		// explanation: newline and ";" sign | "(" that is not followed by whitespace / "?" that is not followed by whitespace | ": " sign that is not preceded by whitespace
+		// further explanation: "\s?" include OPTIONALE whitespace after delimiters above
+
 		const s2w_typeheader = "type";
 	</script>
 </head>

@@ -15,6 +15,9 @@
 	<!-- DataTables (fixedHeader) -->
 	<link href="https://nightly.datatables.net/fixedheader/css/fixedHeader.dataTables.min.css" rel="stylesheet">
 	<script src="https://nightly.datatables.net/fixedheader/js/dataTables.fixedHeader.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/plug-ins/2.2.2/features/scrollResize/dataTables.scrollResize.min.js"></script>
+	<script src="https://cdn.datatables.net/plug-ins/2.2.2/features/pageResize/dataTables.pageResize.min.js"></script>
 
 	<!-- TOOLTIPSTER -->
 	<link rel="stylesheet"
@@ -54,7 +57,7 @@
 
 		//OPTIONAL
 		//set header title to display above table
-		const s2w_heading = "Vladimir Sofronickij : Discographie";
+		// const s2w_title = "Vladimir Sofronickij : Discographie";
 		//set drive link to display next to header title
 		const s2w_editlink = "https://docs.google.com/spreadsheets/d/1j-J_5MJ_jmekZ55awqn9OBTQzg3lG8Mx1KSCr9hKSt8/edit?usp=sharing";
 		//choose additional character that will be used to separate content inside cells
@@ -63,5 +66,12 @@
 		const s2w_typeheader = "format";
 	</script>
 </head>
+
+<body>
+	<header id="s2w_HEADER"></header>
+	<section id="s2w_TABLE"></section>
+	<section id="s2w_SIDEPANEL"></section>
+	<footer id="s2w_FOOTER"></footer>
+</body>
 
 </html>
